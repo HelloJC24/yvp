@@ -2,7 +2,19 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        screen: "calc(100dvh - 8rem)",
+      },
+      colors: {
+        primary: "#23313F",
+        secondary: "#4B4F54",
+        gold: "#bc9f62",
+      },
+      gridTemplateColumns: {
+        card: "repeat(2, minmax(0, 450px))",
+      },
+    },
   },
   plugins: [],
 };
