@@ -51,8 +51,6 @@ const AboutUsScreen = () => {
     },
   ];
 
-  const [toggleAnswer, setToggleAnswer] = useState(false);
-
   const [questions, setQuestions] = useState([
     {
       id: 1,
@@ -144,11 +142,11 @@ const AboutUsScreen = () => {
       </section>
 
       <section className="w-full bg-white p-8 relative">
-        <div className="w-full flex flex-col sm:flex-row gap-x-6  px-4 sm:px-8">
+        <div className="w-full flex flex-col justify-center sm:flex-row gap-x-6  px-4 sm:px-8">
           <img
             src={Icon}
             alt=""
-            className="w-72 h-72 sm:w-96  rounded-2xl object-cover"
+            className="w-72 h-80 sm:w-96  rounded-2xl object-cover"
           />
 
           <div className="w-full flex-1 p-4">

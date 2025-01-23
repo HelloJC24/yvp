@@ -21,7 +21,7 @@ const HomeScreen = () => {
 
       <main className="w-full h-screen  bg-gradient-to-r from-white to-[#4f4f4f]">
         <div className=" h-full px-20  flex flex-col gap-y-4 justify-center items-center">
-          <h1 className="sm:text-6xl xl:text-8xl text-xl font-semibold text-center flex gap-x-4">
+          <h1 className="sm:text-6xl xl:text-8xl text-3xl font-semibold text-center flex gap-x-4">
             Your Reliable
             <span className="text-gold">Partner</span>
           </h1>
@@ -52,7 +52,7 @@ const HomeScreen = () => {
         </div>
       </main>
 
-      <section className="w-full min-h-[50vh] bg-white py-8 px-20">
+      <section className="w-full min-h-[50vh] bg-white py-8 px-4 sm:px-20">
         <p className="text-center font-[500] text-xl sm:text-2xl xl:text-3xl text-slate-500">
           Our Partners and Investors
         </p>
@@ -65,7 +65,7 @@ const HomeScreen = () => {
             className="w-[80%] border-y border-r border-slate-200 rounded-tr-2xl rounded-br-2xl py-4 px-2 sm:px-10
           flex flex-col sm:flex-row gap-x-4 items-center justify-start"
           >
-            <img src={Icon} className="w-60 h-60 rounded-xl" alt="" />
+            <img src={Icon} className="w-72 h-72 rounded-xl" alt="" />
 
             <div className="p-2 sm:p-6">
               <h1 className="text-4xl font-semibold py-4 text-primary">
@@ -88,9 +88,9 @@ const HomeScreen = () => {
         <div className="w-full flex flex-col items-end">
           <div
             className="w-[80%]  border-y border-l border-secondary bg-secondary rounded-tl-2xl rounded-bl-2xl py-4 px-2 sm:px-10
-          flex flex-col sm:flex-row gap-x-4 items-center justify-end"
+          flex flex-col sm:flex-row-reverse gap-x-4 items-center justify-end"
           >
-            <img src={Icon} className="w-60 h-60 rounded-xl" alt="" />
+            <img src={Icon} className="w-72 h-72 rounded-xl" alt="" />
 
             <div className="p-2 sm:p-6">
               <h1 className="text-4xl font-semibold py-4 text-white">
@@ -134,7 +134,9 @@ const HomeScreen = () => {
               <img src={Icon} className="w-full h-full object-cover" alt="" />
             </div>
             <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
-              <p className="text-xl text-white">Financial Planning</p>
+              <p className="text-base sm:text-xl text-white">
+                Financial Planning
+              </p>
 
               <ArrowChevronRightIcon size="20" fill="white" />
             </div>
@@ -145,7 +147,9 @@ const HomeScreen = () => {
               <img src={Icon} className="w-full h-full object-cover" alt="" />
             </div>
             <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
-              <p className="text-xl text-white">Mortgage Broking Service</p>
+              <p className="text-base sm:text-xl text-white">
+                Mortgage Broking Service
+              </p>
               <ArrowChevronRightIcon size="20" fill="white" />
             </div>
           </div>
@@ -155,7 +159,9 @@ const HomeScreen = () => {
               <img src={Icon} className="w-full h-full object-cover" alt="" />
             </div>
             <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
-              <p className="text-xl text-white">Real State Services</p>
+              <p className="text-base sm:text-xl text-white">
+                Real State Services
+              </p>
 
               <ArrowChevronRightIcon size="20" fill="white" />
             </div>
@@ -166,7 +172,7 @@ const HomeScreen = () => {
               <img src={Icon} className="w-full h-full object-cover" alt="" />
             </div>
             <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
-              <p className="text-xl text-white">Other services</p>
+              <p className="text-base sm:text-xl text-white">Other services</p>
               <ArrowChevronRightIcon size="20" fill="white" />
             </div>
           </div>

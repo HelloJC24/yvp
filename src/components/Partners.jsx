@@ -12,74 +12,69 @@ import Partners8 from "../assets/images/partners/8.png";
 import Partners9 from "../assets/images/partners/9.png";
 
 const OurPartnersAndInvestors = () => {
+  const partners = [
+    {
+      id: 1,
+      img: Partners1,
+    },
+    {
+      id: 2,
+      img: Partners2,
+    },
+    {
+      id: 3,
+      img: Partners3,
+    },
+    {
+      id: 4,
+      img: Partners4,
+    },
+    {
+      id: 5,
+      img: Partners5,
+    },
+    {
+      id: 6,
+      img: Partners6,
+    },
+    {
+      id: 7,
+      img: Partners7,
+    },
+    {
+      id: 8,
+      img: Partners8,
+    },
+    {
+      id: 9,
+      img: Partners9,
+    },
+    {
+      id: 10,
+      img: Partners10,
+    },
+    {
+      id: 11,
+      img: Partners11,
+    },
+    {
+      id: 12,
+      img: Partners12,
+    },
+  ];
+
   return (
     <div className="w-full flex flex-wrap gap-x-4 justify-center items-center">
-      <img
-        src={Partners1}
-        className="w-32 h-32 flex flex-wrap gap-x-4 justify-center items-center"
-        alt="img1"
-      />
-
-      <img
-        src={Partners2}
-        className="w-32 h-32 flex flex-wrap gap-x-4 justify-center items-center"
-        alt="img2"
-      />
-
-      <img
-        src={Partners3}
-        className="w-32 h-32 flex flex-wrap gap-x-4 justify-center items-center"
-        alt="img3"
-      />
-
-      <img
-        src={Partners4}
-        className="w-32 h-32 flex flex-wrap gap-x-4 justify-center items-center"
-        alt="img3"
-      />
-
-      <img
-        src={Partners5}
-        className="w-32 h-32 flex flex-wrap gap-x-4 justify-center items-center"
-        alt="img5"
-      />
-      <img
-        src={Partners6}
-        className="w-32 h-32 flex flex-wrap gap-x-4 justify-center items-center"
-        alt="img6"
-      />
-
-      <img
-        src={Partners7}
-        className="w-32 h-32 flex flex-wrap gap-x-4 justify-center items-center"
-        alt="img7"
-      />
-
-      <img
-        src={Partners8}
-        className="w-32 h-32 flex flex-wrap gap-x-4 justify-center items-center"
-        alt="img8"
-      />
-      <img
-        src={Partners9}
-        className="w-32 h-32 flex flex-wrap gap-x-4 justify-center items-center"
-        alt="img9"
-      />
-      <img
-        src={Partners10}
-        className="w-32 h-32 flex flex-wrap gap-x-4 justify-center items-center"
-        alt="img10"
-      />
-      <img
-        src={Partners11}
-        className="w-32 h-32 flex flex-wrap gap-x-4 justify-center items-center"
-        alt="img11"
-      />
-      <img
-        src={Partners12}
-        className="w-32 h-32 flex flex-wrap gap-x-4 justify-center items-center"
-        alt="img12"
-      />
+      {partners.map(({ id, img }) => {
+        return (
+          <img
+            key={id}
+            src={img}
+            className="w-20 h-20 sm:w-32 sm:h-32 flex flex-wrap gap-x-4 justify-center items-center"
+            alt="img1"
+          />
+        );
+      })}
     </div>
   );
 };

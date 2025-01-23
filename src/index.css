@@ -21,3 +21,14 @@ li:hover > svg {
 li:hover > a {
   color: #bc9f62;
 }
+
+input,
+textarea {
+  width: 100%;
+  border: none;
+
+  border: 1px solid #cbd5e1;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 1.3rem;
+}

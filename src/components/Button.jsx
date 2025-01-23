@@ -3,7 +3,7 @@ const Button = ({ bg, withIcon, textColor, onPress, children }) => {
     return (
       <div
         onClick={onPress}
-        className={`w-full cursor-pointer ${bg} rounded-2xl py-3 px-8 flex gap-x-4 justify-center items-center`}
+        className={`w-full cursor-pointer ${bg} rounded-2xl py-3 px-8 flex gap-x-4 justify-center items-center shadow-md`}
       >
         {children}
       </div>
@@ -13,7 +13,9 @@ const Button = ({ bg, withIcon, textColor, onPress, children }) => {
   return (
     <div
       onClick={onPress}
-      className={`w-full cursor-pointer ${bg} rounded-2xl py-3 px-8 `}
+      className={`w-full cursor-pointer ${
+        bg || "bg-primary"
+      } rounded-2xl py-3 px-8 shadow-md`}
     >
       <p
         className={`${
