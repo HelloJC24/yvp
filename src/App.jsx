@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AboutUsScreen from "./screens/about";
 import ContactUsScreen from "./screens/contact";
 import HomeScreen from "./screens/home";

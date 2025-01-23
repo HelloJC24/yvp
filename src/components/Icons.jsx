@@ -1,7 +1,16 @@
 import logo from "../assets/images/logo.png";
 
 export const AppLogo = (props) => {
-  return <img src={logo} alt="logo" width={props.size} height={props.size} />;
+  return (
+    <img
+      onClick={props.onClick}
+      src={logo}
+      className="cursor-pointer"
+      alt="logo"
+      width={props.size}
+      height={props.size}
+    />
+  );
 };
 
 export const FacebookIcon = (props) => {
@@ -189,6 +198,26 @@ export const ArrowChevronRightIcon = (props) => {
       height={props.size}
     >
       <path d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z" />
+    </svg>
+  );
+};
+
+export const CookieIcon = (props) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Outline"
+      viewBox="0 0 24 24"
+      fill={props.fill}
+      width={props.size}
+      height={props.size}
+    >
+      <circle cx="9.5" cy="9.5" r="1.5" />
+      <circle cx="18.5" cy="1.5" r="1.5" />
+      <circle cx="21.5" cy="6.5" r="1.5" />
+      <circle cx="9.5" cy="14.5" r="1.5" />
+      <circle cx="14.5" cy="14.5" r="1.5" />
+      <path d="M23.943,10.854a1,1,0,0,0-.9-.9A10,10,0,0,1,14.048.958a1,1,0,0,0-.9-.9C12.769.021,12.387,0,12,0A12,12,0,1,0,24,12C24,11.613,23.979,11.231,23.943,10.854ZM12,22A10,10,0,0,1,12,2l.17,0A12.006,12.006,0,0,0,22,11.83c0,.057,0,.113,0,.17A10.011,10.011,0,0,1,12,22Z" />
     </svg>
   );
 };

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { useNavigate } from "react-router-dom";
 import {
   AppLogo,
   ArrowChevronDownIcon,
@@ -11,9 +11,11 @@ import {
 } from "./Icons";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="w-full bg-white py-4 px-6 flex justify-between items-center sticky top-0 z-50">
-      <AppLogo size={100} />
+    <div className="w-full bg-white py-4 px-6 flex justify-between items-center sticky top-0 z-50 shadow-md">
+      <AppLogo size={100} onClick={() => navigate("/")} />
 
       <Navigation />
 
@@ -44,9 +46,9 @@ const Navigation = () => {
           onMouseLeave={handleMouseLeave}
           className=" flex gap-x-2 items-center cursor-pointer relative"
         >
-          <Link className="text-xl" href="">
+          <a className="text-xl" href="">
             <p className="hover:text-gold">Resources</p>
-          </Link>
+          </a>
           <ArrowChevronDownIcon size="15" />
 
           {showDropdown && (
@@ -60,21 +62,21 @@ const Navigation = () => {
           )}
         </li>
         <li className="flex gap-x-2 items-center cursor-pointer">
-          <Link className="text-xl" href="">
+          <a className="text-xl" href="">
             <p className="hover:text-gold">Services</p>
-          </Link>
+          </a>
           <ArrowChevronDownIcon size="15" />
         </li>
         <li className="flex gap-x-2 items-center cursor-pointer">
-          <Link className="text-xl" href="">
+          <a className="text-xl" href="">
             <p className="hover:text-gold">Careers</p>
-          </Link>
+          </a>
           <ArrowChevronDownIcon size="15" />
         </li>
         <li className="flex gap-x-2 items-center cursor-pointer">
-          <Link className="text-xl" href="">
+          <a className="text-xl" href="">
             <p className="hover:text-gold">Givings</p>
-          </Link>
+          </a>
           <ArrowChevronDownIcon size="15" />
         </li>
       </ul>
@@ -86,22 +88,22 @@ const Dropdown = () => {
   return (
     <ul className="dropdown-ul">
       <li className="flex gap-x-0 justify-between items-center">
-        <Link href="">
+        <a href="">
           <p>Learning Centre</p>
-        </Link>
+        </a>
 
         <ArrowRightIcon size="24" />
       </li>
       <li className="flex gap-x-0 justify-between items-center">
-        <Link href="">
+        <a href="/contact-us">
           <p>Contact us</p>
-        </Link>
+        </a>
         <ArrowRightIcon size="24" />
       </li>
       <li className="flex gap-x-0 justify-between items-center">
-        <Link href="">
+        <a href="">
           <p>Careers</p>
-        </Link>
+        </a>
         <ArrowRightIcon size="24" />
       </li>
     </ul>
@@ -113,27 +115,27 @@ const SocialIcon = () => {
     <div className="">
       <ul className="flex gap-x-4 items-center">
         <li>
-          <Link href="https://www.facebook.com/profile.php?id=61569410633625">
+          <a href="https://www.facebook.com/profile.php?id=61569410633625">
             <FacebookIcon size="24" />
-          </Link>
+          </a>
         </li>
         <li>
-          <Link href="https://www.linkedin.com/in/your-virtual-partner-346724339/">
+          <a href="https://www.aedin.com/in/your-virtual-partner-346724339/">
             <LinkedInIcon size="24" />
-          </Link>
+          </a>
         </li>
         <li>
-          <Link href="https://www.instagram.com/yourvirtualpartner.io/">
+          <a href="https://www.instagram.com/yourvirtualpartner.io/">
             <InstagramIcon size="24" />
-          </Link>
+          </a>
         </li>
         <li>
-          <Link
+          <a
             href="https://www.youtube.com/channel/UCyk_QxzhRlT2UdcIz2fRyOg"
-            className="nav-link"
+            className="nav-a"
           >
             <YoutubeIcon size="28" />
-          </Link>
+          </a>
         </li>
       </ul>
     </div>

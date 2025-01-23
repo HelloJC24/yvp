@@ -13,3 +13,11 @@
 ::-webkit-scrollbar-thumb {
   background: #bc9f62;
 }
+
+li:hover > svg {
+  fill: #bc9f62;
+}
+
+li:hover > a {
+  color: #bc9f62;
+}
