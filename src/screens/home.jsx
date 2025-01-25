@@ -18,7 +18,6 @@ const HomeScreen = () => {
       )}
 
       <Header />
-
       <main className="w-full h-screen  bg-gradient-to-r from-white to-[#4f4f4f]">
         <div className=" h-full px-20  flex flex-col gap-y-4 justify-center items-center">
           <h1 className="sm:text-6xl xl:text-8xl text-3xl font-semibold text-center flex gap-x-4">
@@ -30,8 +29,8 @@ const HomeScreen = () => {
           </p>
 
           <div className="sm:w-[50%] flex gap-x-4 items-center justify-center">
-            <Button bg="bg-primary">Book Appointment</Button>
-            <Button bg="bg-primary" withIcon={true}>
+            <Button>Book Appointment</Button>
+            <Button withIcon={true}>
               <svg
                 id="Layer_1"
                 viewBox="0 0 24 24"
@@ -44,7 +43,7 @@ const HomeScreen = () => {
                 <path d="m19 24h-14a5.006 5.006 0 0 1 -5-5v-14a5.006 5.006 0 0 1 5-5h14a5.006 5.006 0 0 1 5 5v14a5.006 5.006 0 0 1 -5 5zm-14-22a3 3 0 0 0 -3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-14a3 3 0 0 0 -3-3zm4.342 15.005a2.368 2.368 0 0 1 -1.186-.323 2.313 2.313 0 0 1 -1.164-2.021v-5.322a2.337 2.337 0 0 1 3.5-2.029l5.278 2.635a2.336 2.336 0 0 1 .049 4.084l-5.376 2.687a2.2 2.2 0 0 1 -1.101.289zm-.025-8a.314.314 0 0 0 -.157.042.327.327 0 0 0 -.168.292v5.322a.337.337 0 0 0 .5.293l5.376-2.688a.314.314 0 0 0 .12-.266.325.325 0 0 0 -.169-.292l-5.274-2.635a.462.462 0 0 0 -.228-.068z" />
               </svg>
 
-              <p className="text-white sm:text-xl xl:text-2xl font-[500] whitespace-nowrap">
+              <p className="text-white text-sm sm:text-xl xl:text-2xl whitespace-nowrap">
                 See Videos
               </p>
             </Button>
@@ -79,7 +78,7 @@ const HomeScreen = () => {
               </p>
 
               <div className="max-w-56 py-4">
-                <Button bg="bg-primary">Button 1</Button>
+                <Button>Button 1</Button>
               </div>
             </div>
           </div>

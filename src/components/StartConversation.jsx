@@ -3,7 +3,7 @@ import Button from "./Button";
 const StartConversation = () => {
   return (
     <div className="w-full bg-primary py-6 sm:py-10 px-20 flex flex-col sm:flex-row gap-x-20 justify-center items-center">
-      <h1 className="text-2xl xl:text-4xl text-white whitespace-nowrap">
+      <h1 className="text-2xl md:text-4xl text-white whitespace-nowrap">
         Ready to start a conversation?
       </h1>
 

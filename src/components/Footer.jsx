@@ -23,11 +23,15 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="w-full px-2 sm:px-14 flex justify-between items-center">
+      <div className="w-full px-2 sm:px-14 flex gap-x-2 justify-between items-center">
         <p className="text-sm text-white">YourVirtualPartner.io 2025</p>
-        <p className="text-sm text-white">ALL RIGHT RESERVED</p>
+        <p className="hidden sm:block text-sm text-white">ALL RIGHT RESERVED</p>
         <SocialIcon />
       </div>
+
+      <p className="block sm:hidden text-center p-4 text-sm text-white">
+        ALL RIGHT RESERVED
+      </p>
     </footer>
   );
 };
@@ -69,25 +73,31 @@ const ContactUs = () => {
 
 const Company = () => {
   return (
-    <div className="w-full">
+    <div className="w-full footer-nav">
       <h1 className="text-xl text-slate-300">Company</h1>
       <ul className="max-w-36">
         <li className="flex gap-x-0 justify-between items-center cursor-pointer">
-          <a href="">
-            <p className="text-base text-slate-300">About Us</p>
+          <a href="/about-us">
+            <p className="hover:text-white text-base text-slate-300">
+              About Us
+            </p>
           </a>
 
           <ArrowRightIcon size="24" fill="#cbd5e1" />
         </li>
         <li className="flex gap-x-0 justify-between items-center cursor-pointer">
           <a href="">
-            <p className="text-base text-slate-300">Services</p>
+            <p className="hover:text-white text-base text-slate-300">
+              Services
+            </p>
           </a>
           <ArrowRightIcon size="24" fill="#cbd5e1" />
         </li>
         <li className="flex gap-x-0 justify-between items-center cursor-pointer">
           <a href="">
-            <p className="text-base text-slate-300">Testimonials</p>
+            <p className="hover:text-white text-base text-slate-300">
+              Testimonials
+            </p>
           </a>
           <ArrowRightIcon size="24" fill="#cbd5e1" />
         </li>

@@ -2,7 +2,7 @@ import { CookieIcon } from "./Icons";
 
 const CookiesPopupModal = ({ close }) => {
   return (
-    <div className="fixed bottom-5 left-5 right-5 z-50 rounded-xl shadow-xl border border-slate-200 bg-white p-6 flex sm:flex-row sm:gap-y-0 gap-y-4 flex-col">
+    <div className="fixed bottom-5 left-5 right-5 z-50 rounded-xl shadow-xl border border-slate-300 bg-white p-6 flex sm:flex-row sm:gap-y-0 gap-y-4 flex-col">
       <div className="flex">
         <div className="bg-gold w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-xl">
           <CookieIcon size="50" fill="#fff" />

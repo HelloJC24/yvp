@@ -141,12 +141,12 @@ const AboutUsScreen = () => {
         })}
       </section>
 
-      <section className="w-full bg-white p-8 relative">
+      <section className="w-full min-h-[50vh] bg-white p-8 relative">
         <div className="w-full flex flex-col justify-center sm:flex-row gap-x-6  px-4 sm:px-8">
           <img
             src={Icon}
             alt=""
-            className="w-72 h-80 sm:w-96  rounded-2xl object-cover"
+            className="w-72 h-full sm:w-96 rounded-2xl object-cover"
           />
 
           <div className="w-full flex-1 p-4">
@@ -196,7 +196,7 @@ const Questions = ({ toggle, question, answer, active }) => {
         </div>
 
         {active && (
-          <div className="w-full px-4 py-6 my-4 bg-secondary rounded-2xl ">
+          <div className="w-full p-6 my-4 bg-secondary rounded-2xl ">
             <p className="text-white text-sm sm:text-base">{answer}</p>
           </div>
         )}

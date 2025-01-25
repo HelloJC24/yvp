@@ -14,7 +14,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full bg-white py-4 px-6 flex justify-between items-center sticky top-0 z-50 shadow-md">
+    <div className="hidden w-full bg-white py-2 px-6 sm:flex justify-between items-center sticky top-0 z-50 shadow-md">
       <AppLogo size={100} onClick={() => navigate("/")} />
 
       <Navigation />
@@ -39,7 +39,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center">
+    <nav className="hidden sm:flex justify-between items-center">
       <ul className="flex gap-x-6 items-center">
         <li
           onMouseEnter={handleMouseEnter}

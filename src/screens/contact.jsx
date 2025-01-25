@@ -38,15 +38,17 @@ const ContactUsScreen = () => {
           </h1>
         </div>
 
-        <form className="xl:w-[80%] mx-auto my-10 p-8 rounded-2xl bg-slate-200 grid gap-4 grid-cols-2">
+        <form className="xl:w-[80%] mx-auto my-10 p-4 sm:p-8 rounded-2xl bg-slate-200 grid gap-4 grid-cols-0 sm:grid-cols-2">
           <input
             type="text"
+            className="col-span-2 sm:col-span-1"
             placeholder="First Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
           <input
             type="text"
+            className="col-span-2 sm:col-span-1"
             placeholder="Last Name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
@@ -76,12 +78,14 @@ const ContactUsScreen = () => {
           <input
             type="text"
             placeholder="Company Name"
+            className="col-span-2 sm:col-span-1"
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
           />
           <input
             type="text"
             placeholder="Industry"
+            className="col-span-2 sm:col-span-1"
             value={industry}
             onChange={(e) => setIndustry(e.target.value)}
           />

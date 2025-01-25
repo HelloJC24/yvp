@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       height: {
-        screen: "calc(100dvh - 8rem)",
+        screen: "calc(100dvh - 7rem)",
       },
       colors: {
         primary: "#23313F",
