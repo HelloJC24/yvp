@@ -75,6 +75,44 @@ const AboutUsScreen = () => {
     },
   ]);
 
+  const ourTeams = [
+    {
+      id: 1,
+      profile: Icon,
+      name: "ALLEN CHAN",
+      position: "YVP DIRECTOR",
+      text: "Allen is the Director and Founder of YVP & ZENRG Finance. He has over 15 years of experience within the Mortgage and Finance industry and graduated from the University of Technology Sydney with a Bachelor of Mathematics and Finance. To further pursue his passion for finance, Allen obtained a Diploma of Finance and Mortgage Brokering Management from KAPLAN. He is also a full member of the Mortgage & Finance Association of Australia (MFAA), the peak national body for the mortgage and finance broking industry. As a Sydney local, Allen attended Newtown High School of the Performing Arts before purchasing his first home at the age of 23. Since then, he has purchased over 10 different types of properties with diverse taxation structures across multiple states. His keen interest and expertise in property investment have allowed him to accrue back the more than 6-figure sum he lost during the global financial crisis (GFC) of 2008. When Allen isn’t busily working away here at ZENRG Finance, you’ll find him enjoying road trips in his Lexus 450H hybrid vehicle, tinkering with high-tech gadgets, or spending time with his partner and two beautiful daughters. He also loves to MC and DJ at weddings and corporate events—with this passion for performing dating back to his appearance in the Opening Ceremony of the Sydney 2000 Olympics. Allen is passionate about helping others, and one day hopes to become a philanthropist to assist communities in need around the world.",
+    },
+    {
+      id: 2,
+      profile: Icon,
+      name: "GLENDA MAE NONO",
+      position: "EXECUTIVE ASSISTANT",
+      text: "Gone are the days of long commutes and missed puppy playtime! As a former banking professional turned virtual executive assistant, I've traded the boardroom for the blissful chaos of my home office. My four canine companions, my constant furry shadows, used to get the short end of the stick. Long hours at the bank meant precious little time for cuddles and playtime. Now, the workday unfolds amidst a symphony of tail wags and happy barks. My office is a haven of productivity and pure doggy delight. I can tackle projects while my furballs snooze nearby, or enjoy a midday play break with my furry friends. Working from home isn't just about flexibility; it's about prioritizing the things that truly matter. And for me, that means sharing every precious moment with my beloved pack.",
+    },
+    {
+      id: 3,
+      profile: Icon,
+      name: "JAM FINCA",
+      position: "HUMAN RESOURCE MANAGER",
+      text: "With over seven years of experience in Human Resources, Jam Finca is a dedicated professional with expertise in recruitment, employee support, and HR operations. She has effectively handled comprehensive HR processes, including talent acquisition, payroll management, and benefits administration, while showcasing excellent organizational and communication abilities. Having undergone training in Lean Six Sigma Yellow Belt and Red Belt methodologies and certified in Microsoft Power BI, Jam applies process improvement strategies to streamline operations and boost efficiency. As a Recruitment Manager, her combination of HR knowledge, analytical skills, and commitment to continuous improvement makes her a dynamic leader who excels at building strong teams and fostering organizational growth. In addition to her HR expertise, Jam enjoys photography, graphic design, and video editing, showcasing her creative side. Outside of work, she loves exploring new activities, traveling locally, and looks forward to traveling the world. Jam finds relaxation and inspiration in sunset viewing, which allows her to appreciate the beauty of nature and the environment.",
+    },
+    {
+      id: 4,
+      profile: Icon,
+      name: "ACE MATTHEW BEUP",
+      position: "SOCIAL MEDIA MANAGER",
+      text: "A highly skilled Creative Specialist with over 5 years of experience in graphic design, web content creation, and social media management, I bring a unique blend of technical expertise and creativity to every project. Proficient in tools like Adobe Photoshop, Canva, Premiere, Figma, and CapCut, I specialize in developing visually compelling designs and strategies that effectively communicate brand messages. My work spans a variety of industries, focusing on creating engaging visuals, managing brand identity, and enhancing online presence through SEO and data-driven social media strategies. Beyond design, I have a passion for sharing knowledge and empowering others. I have conducted workshops and training sessions on Canva and Photoshop in partnership with DICT Region IVB-Palawan, mentoring aspiring creatives across various municipalities. This teaching experience reflects my strong communication skills and ability to inspire others to achieve their creative potential. As a media consultant and branding expert, I excel in creating cohesive visual identities, from logo designs to full-scale marketing campaigns. My work is rooted in a deep understanding of design principles and audience engagement, ensuring that each project delivers measurable results. I immerse myself in photography and storytelling in my free time, constantly exploring new creative concepts that spark innovation. Whether behind a camera lens or at a design desk, I am committed to crafting visuals that inspire, connect, and leave a lasting impact.",
+    },
+    {
+      id: 5,
+      profile: Icon,
+      name: "REGINE VELASCO",
+      position: "HUMAN RESOURCE GENERALIST",
+      text: "A Certified Human Resource Associate with over 4 years of experience, I specialize in leveraging strong communication and analytical thinking to enhance core Human Resource practices. My expertise spans diverse HR functions, including recruitment, onboarding, employee relations, performance management, training and development, and strategic compensation and benefits administration. Throughout my career, I have successfully contributed to creating streamlined processes, fostering positive workplace cultures, and aligning HR strategies with organizational goals. Outside of my professional endeavors, I have a passion for lifelong learning and personal growth. In my free time, I enjoy immersing myself in thought-provoking books that expand my perspective and fuel my creativity. Additionally, I relish the opportunity to explore new destinations, creating lasting memories while discovering different cultures, cuisines, and landscapes with my family. This combination of professional dedication and personal interests drives me to bring both a structured and innovative approach to my work and life.",
+    },
+  ];
+
   const handleToggle = (id) => {
     const updatedQuestions = questions.map((question) => {
       if (question.id === id) {
@@ -109,8 +147,27 @@ const AboutUsScreen = () => {
       </main>
 
       <section className="w-full bg-white p-2 sm:p-8 relative">
+        <h1 className="text-2xl sm:text-4xl font-semibold py-4 text-center">
+          Our Team
+        </h1>
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-team-card justify-center gap-14 p-8">
+          {ourTeams.map(({ id, profile, name, position, text }) => {
+            return (
+              <OurTeam
+                key={id}
+                profile={profile}
+                name={name}
+                position={position}
+                text={text}
+              />
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="w-full bg-white p-2 sm:p-8 relative">
         <div className="w-56 h-4 rounded-full bg-slate-300 mx-auto my-4"></div>
-        <h1 className="text-3xl font-semibold py-3 text-center">
+        <h1 className="text-2xl sm:text-4xl font-semibold py-4 text-center">
           Our Core Values
         </h1>
         <div className="w-full grid gap-6 grid-cols-2 p-2 sm:p-8">
@@ -124,7 +181,7 @@ const AboutUsScreen = () => {
 
       <section className="w-full bg-white p-8 relative">
         <div className="w-56 h-4 rounded-full bg-slate-300 mx-auto my-4"></div>
-        <h1 className="text-3xl font-semibold py-3 text-center">
+        <h1 className="text-2xl sm:text-4xl font-semibold py-4 text-center">
           Frequently Asked Questions
         </h1>
 
@@ -142,7 +199,7 @@ const AboutUsScreen = () => {
       </section>
 
       <section className="w-full min-h-[50vh] bg-white p-8 relative">
-        <div className="w-full flex flex-col justify-center sm:flex-row gap-x-6  px-4 sm:px-8">
+        <div className="w-full flex flex-col justify-center md:flex-row gap-x-6  px-4 md:px-8">
           <img
             src={Icon}
             alt=""
@@ -174,6 +231,30 @@ const AboutUsScreen = () => {
 
       <StartConversation />
       <Footer />
+    </div>
+  );
+};
+
+const OurTeam = ({ profile, name, position, text }) => {
+  return (
+    <div className="min-w-72">
+      <div className="flex flex-col justify-center items-center cursor-pointer">
+        <img
+          src={profile}
+          alt=""
+          className="w-72 h-72 sm:w-full sm:h-80 border-4 border-primary object-cover mb-2"
+        />
+        <h1 className="text-center text-2xl font-bold text-primary">{name}</h1>
+        <p className="text-center text-base">{position}</p>
+      </div>
+
+      <div className="py-4">
+        <p className="text-sm sm:text-base pb-6">{text.substring(0, 400)}</p>
+
+        <b className="text-primary text-sm sm:text-base cursor-pointer">
+          <i>Read more.</i>
+        </b>
+      </div>
     </div>
   );
 };

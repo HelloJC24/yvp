@@ -13,6 +13,7 @@ export default {
       },
       gridTemplateColumns: {
         card: "repeat(2, minmax(0, 450px))",
+        "team-card": "repeat(3, minmax(0, 380px))",
       },
     },
   },

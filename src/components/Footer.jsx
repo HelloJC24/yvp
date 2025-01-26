@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
     <footer className="w-full bg-secondary p-4">
-      <div className="w-full px-2 sm:px-20 py-8 flex flex-col sm:flex-row gap-x-12 items-start sm:items-center justify-between">
+      <div className="w-full px-2 md:px-20 py-8 flex flex-col md:flex-row gap-x-12 items-start md:items-center justify-between">
         <AppLogo size={150} onClick={() => navigate("/")} />
 
         <div className="px-4 sm:px-10 flex-1 flex flex-col sm:flex-row gap-y-2 sm:gap-x-4 justify-between items-center">
