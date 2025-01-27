@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <div className="hidden w-full bg-white py-2 px-6 md:flex justify-between items-center sticky top-0 z-50 shadow-md">
-      <AppLogo size={100} onClick={() => navigate("/")} />
+      <AppLogo size={70} onClick={() => navigate("/")} />
 
       <Navigation />
 

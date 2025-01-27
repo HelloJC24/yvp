@@ -25,12 +25,12 @@ const Footer = () => {
 
       <div className="w-full px-2 sm:px-14 flex gap-x-2 justify-between items-center">
         <p className="text-sm text-white">YourVirtualPartner.io 2025</p>
-        <p className="hidden sm:block text-sm text-white">ALL RIGHT RESERVED</p>
+        <p className="hidden sm:block text-sm text-white">© ALL RIGHT RESERVED</p>
         <SocialIcon />
       </div>
 
       <p className="block sm:hidden text-center p-4 text-sm text-white">
-        ALL RIGHT RESERVED
+      © ALL RIGHT RESERVED
       </p>
     </footer>
   );
