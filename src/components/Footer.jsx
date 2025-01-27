@@ -112,17 +112,17 @@ const SocialIcon = () => {
       <ul className="flex gap-x-4 items-center">
         <li>
           <a href="https://www.facebook.com/profile.php?id=61569410633625">
-            <FacebookIcon size="20" fill="#ccc" />
+            <FacebookIcon size="20" fill="#fff" />
           </a>
         </li>
         <li>
           <a href="https://www.linkedin.com/in/your-virtual-partner-346724339/">
-            <LinkedInIcon size="20" fill="#ccc" />
+            <LinkedInIcon size="20" fill="#fff" />
           </a>
         </li>
         <li>
           <a href="https://www.instagram.com/yourvirtualpartner.io/">
-            <InstagramIcon size="20" fill="#ccc" />
+            <InstagramIcon size="20" fill="#fff" />
           </a>
         </li>
         <li>
@@ -130,7 +130,7 @@ const SocialIcon = () => {
             href="https://www.youtube.com/channel/UCyk_QxzhRlT2UdcIz2fRyOg"
             className="nav-link"
           >
-            <YoutubeIcon size="24" fill="#ccc" />
+            <YoutubeIcon size="24" fill="#fff" />
           </a>
         </li>
       </ul>
