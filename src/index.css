@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+.gallery-scroll {
+  /* For Firefox */
+  scrollbar-width: none;
+  /* For Internet Explorer/Edge */
+  -ms-overflow-style: none;
+}
+
+/* For WebKit browsers (Chrome, Safari, Opera) */
+.gallery-scroll::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent;
+}
+
 .modal-scroll::-webkit-scrollbar {
   width: 5px;
 }
@@ -54,7 +69,6 @@ textarea {
   font-weight: 300;
   font-style: normal;
 }
-
 
 .outfit-200 {
   font-family: "Outfit", serif;

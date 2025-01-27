@@ -1,23 +1,22 @@
 import { useState } from "react";
-import Icon from "../assets/images/icon.png";
 import Button from "../components/Button";
 import CookiesPopupModal from "../components/CookiesPopupModal";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { ArrowChevronRightIcon } from "../components/Icons";
+import { NewsletterCon } from "../components/Newsletter";
 import OurPartnersAndInvestors from "../components/Partners";
 import StartConversation from "../components/StartConversation";
-import {NewsletterCon} from "../components/Newsletter"
 
 const VideoPlayer = () => {
   return (
     <div className="w-screen h-full">
-      <video 
-        width="100%" 
-        height="auto" 
-        autoPlay 
-        loop 
-        muted 
+      <video
+        width="100%"
+        height="auto"
+        autoPlay
+        loop
+        muted
         controls
         src="https://fruitask.com/assets/file_upload/q5xuGH12Ps/Vk90OHQrSWlQTFhmZHFnZw.mp4"
       >
@@ -37,7 +36,7 @@ const HomeScreen = () => {
       )}
 
       <Header />
-      <main className="overflow-hidden relative w-full h-1/2  bg-gradient-to-r from-white to-[#4f4f4f]">
+      <main className="overflow-hidden relative w-full h-full sm:h-1/2  bg-gradient-to-r from-white to-[#4f4f4f]">
         <VideoPlayer />
         <div className="inset-0 absolute z-40 bg-white bg-opacity-50 gap-y-[80px]  h-full px-20 flex flex-col  justify-center items-center">
           <div className="text-center">
@@ -95,7 +94,11 @@ const HomeScreen = () => {
             className="w-[80%] border-y border-r border-slate-200 rounded-tr-2xl rounded-br-2xl py-4 px-2 sm:px-10
           flex flex-col sm:flex-row gap-x-4 items-center justify-start"
           >
-            <img src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SUpnZjF0MEJIZz09.jpg" className="object-cover w-72 h-72 rounded-xl" alt="" />
+            <img
+              src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SUpnZjF0MEJIZz09.jpg"
+              className="object-cover w-72 h-72 rounded-xl"
+              alt=""
+            />
 
             <div className="p-2 sm:p-6">
               <h1 className="text-4xl font-semibold py-4 text-primary">
@@ -120,7 +123,11 @@ const HomeScreen = () => {
             className="w-[80%]  border-y border-l border-secondary bg-secondary rounded-tl-2xl rounded-bl-2xl py-4 px-2 sm:px-10
           flex flex-col sm:flex-row-reverse gap-x-4 items-center justify-end"
           >
-            <img src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SlpzYXdJRklTOEhGS1BaK3MxND0.jpg" className="object-cover w-72 h-72 rounded-xl" alt="" />
+            <img
+              src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SlpzYXdJRklTOEhGS1BaK3MxND0.jpg"
+              className="object-cover w-72 h-72 rounded-xl"
+              alt=""
+            />
 
             <div className="p-2 sm:p-6">
               <h1 className="text-4xl font-semibold py-4 text-white">
@@ -161,7 +168,11 @@ const HomeScreen = () => {
         <div className="w-full grid grid-cols-card gap-6 justify-center items-center">
           <div className=" rounded-2xl shadow-xl overflow-hidden">
             <div className="w-full h-48 relative">
-              <img src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SnBzV3lKa2JDWjQ9.jpg" className="w-full h-full object-cover" alt="" />
+              <img
+                src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SnBzV3lKa2JDWjQ9.jpg"
+                className="w-full h-full object-cover"
+                alt=""
+              />
             </div>
             <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
               <p className="text-base sm:text-xl text-white">
@@ -174,7 +185,11 @@ const HomeScreen = () => {
 
           <div className=" rounded-2xl shadow-xl overflow-hidden">
             <div className="w-full h-48 relative">
-              <img src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SVprY3paa2JDWjQ9.jpg" className="w-full h-full object-cover" alt="" />
+              <img
+                src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SVprY3paa2JDWjQ9.jpg"
+                className="w-full h-full object-cover"
+                alt=""
+              />
             </div>
             <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
               <p className="text-base sm:text-xl text-white">
@@ -186,7 +201,11 @@ const HomeScreen = () => {
 
           <div className=" rounded-2xl shadow-xl overflow-hidden">
             <div className="w-full h-48 relative">
-              <img src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SlpzYnlJUkRTOG5KSS9aK3MxND0.jpg" className="w-full h-full object-cover" alt="" />
+              <img
+                src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SlpzYnlJUkRTOG5KSS9aK3MxND0.jpg"
+                className="w-full h-full object-cover"
+                alt=""
+              />
             </div>
             <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
               <p className="text-base sm:text-xl text-white">
@@ -199,7 +218,11 @@ const HomeScreen = () => {
 
           <div className=" rounded-2xl shadow-xl overflow-hidden">
             <div className="w-full h-48 relative">
-              <img src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SUo4WHlaa2JDWjQ9.jpg" className="w-full h-full object-cover" alt="" />
+              <img
+                src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SUo4WHlaa2JDWjQ9.jpg"
+                className="w-full h-full object-cover"
+                alt=""
+              />
             </div>
             <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
               <p className="text-base sm:text-xl text-white">Other services</p>
@@ -223,17 +246,11 @@ const HomeScreen = () => {
             enhances overall performance.
           </p>
         </div>
-
-      
       </section>
 
-
-
-<section>
-  <NewsletterCon />
-</section>
-
-
+      <section>
+        <NewsletterCon />
+      </section>
 
       <StartConversation />
 

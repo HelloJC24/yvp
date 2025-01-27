@@ -25,12 +25,14 @@ const Footer = () => {
 
       <div className="w-full px-2 sm:px-14 flex gap-x-2 justify-between items-center">
         <p className="text-sm text-white">YourVirtualPartner.io 2025</p>
-        <p className="hidden sm:block text-sm text-white">© ALL RIGHT RESERVED</p>
+        <p className="hidden sm:block text-sm text-white">
+          © ALL RIGHT RESERVED
+        </p>
         <SocialIcon />
       </div>
 
       <p className="block sm:hidden text-center p-4 text-sm text-white">
-      © ALL RIGHT RESERVED
+        © ALL RIGHT RESERVED
       </p>
     </footer>
   );
@@ -40,10 +42,7 @@ const Address = () => {
   return (
     <div className="w-full">
       <h1 className="text-xl text-slate-300">Address</h1>
-      <p className="text-base text-slate-300">
-        44/2 O&apos;Connell Street, Parramatta, NSW 2150, Level 49, 8 Parramatta
-        Square, Parramatta NSW 2150, Australias
-      </p>
+      <p className="text-base text-slate-300">Parramatta NSW 2150</p>
     </div>
   );
 };
@@ -54,9 +53,7 @@ const ContactUs = () => {
       <h1 className="text-xl text-slate-300">Contact Us</h1>
       <ul>
         <li>
-          <p className="text-base text-slate-300">
-            Phone number: +61-3563 2065
-          </p>
+          <p className="text-base text-slate-300">Phone number: 0435632065</p>
         </li>
         <li>
           <p className="text-base text-slate-300">
