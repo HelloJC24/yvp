@@ -86,7 +86,7 @@ const Company = () => {
           <ArrowRightIcon size="24" fill="#cbd5e1" />
         </li>
         <li className="flex gap-x-0 justify-between items-center cursor-pointer">
-          <a href="">
+          <a href="coming-soon">
             <p className="hover:text-white text-base text-slate-300">
               Services
             </p>
@@ -94,7 +94,7 @@ const Company = () => {
           <ArrowRightIcon size="24" fill="#cbd5e1" />
         </li>
         <li className="flex gap-x-0 justify-between items-center cursor-pointer">
-          <a href="">
+          <a href="coming-soon">
             <p className="hover:text-white text-base text-slate-300">
               Testimonials
             </p>
@@ -112,17 +112,17 @@ const SocialIcon = () => {
       <ul className="flex gap-x-4 items-center">
         <li>
           <a href="https://www.facebook.com/profile.php?id=61569410633625">
-            <FacebookIcon size="24" />
+            <FacebookIcon size="20" fill="#ccc" />
           </a>
         </li>
         <li>
           <a href="https://www.linkedin.com/in/your-virtual-partner-346724339/">
-            <LinkedInIcon size="24" />
+            <LinkedInIcon size="20" fill="#ccc" />
           </a>
         </li>
         <li>
           <a href="https://www.instagram.com/yourvirtualpartner.io/">
-            <InstagramIcon size="24" />
+            <InstagramIcon size="20" fill="#ccc" />
           </a>
         </li>
         <li>
@@ -130,7 +130,7 @@ const SocialIcon = () => {
             href="https://www.youtube.com/channel/UCyk_QxzhRlT2UdcIz2fRyOg"
             className="nav-link"
           >
-            <YoutubeIcon size="28" />
+            <YoutubeIcon size="24" fill="#ccc" />
           </a>
         </li>
       </ul>

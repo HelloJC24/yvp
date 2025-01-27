@@ -29,7 +29,16 @@ const HomeScreen = () => {
           </p>
 
           <div className="sm:w-[50%] flex gap-x-4 items-center justify-center">
-            <Button>Book Appointment</Button>
+            <Button
+              onPress={() =>
+                window.open(
+                  "https://outlook.office365.com/owa/calendar/ZenrgFinanceBookingCopy@zenrgfinance.com.au/bookings/",
+                  "_blank"
+                )
+              }
+            >
+              Book Appointment
+            </Button>
             <Button withIcon={true}>
               <svg
                 id="Layer_1"

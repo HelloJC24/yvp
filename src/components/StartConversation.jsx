@@ -8,7 +8,16 @@ const StartConversation = () => {
       </h1>
 
       <div className="max-w-96 p-2">
-        <Button bg="bg-white" textColor="text-primary">
+        <Button
+          onPress={() =>
+            window.open(
+              "https://outlook.office365.com/owa/calendar/ZenrgFinanceBookingCopy@zenrgfinance.com.au/bookings/",
+              "_blank"
+            )
+          }
+          bg="bg-white"
+          textColor="text-primary"
+        >
           Book Appointment
         </Button>
       </div>
