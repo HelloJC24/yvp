@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
-const CommingSoonScreen = () => {
+const ComingSoonScreen = () => {
   return (
     <div className="w-full h-full bg-white">
       <Header />
@@ -39,4 +39,4 @@ const UnderDevelopment = () => {
   );
 };
 
-export default CommingSoonScreen;
+export default ComingSoonScreen;

@@ -1,7 +1,6 @@
 import Partners1 from "../assets/images/partners/1.png";
 import Partners10 from "../assets/images/partners/10.png";
 import Partners11 from "../assets/images/partners/11.png";
-import Partners12 from "../assets/images/partners/12.png";
 import Partners2 from "../assets/images/partners/2.png";
 import Partners3 from "../assets/images/partners/3.png";
 import Partners4 from "../assets/images/partners/4.png";
@@ -56,10 +55,6 @@ const OurPartnersAndInvestors = () => {
     {
       id: 11,
       img: Partners11,
-    },
-    {
-      id: 12,
-      img: Partners12,
     },
   ];
 

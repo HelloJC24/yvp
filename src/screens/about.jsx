@@ -8,10 +8,14 @@ import Safety from "../assets/images/icons/safety.png";
 import Workteam from "../assets/images/icons/work-team.png";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { CloseIcon } from "../components/Icons";
 import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
 
 const AboutUsScreen = () => {
+  const [activeModal, setActiveModal] = useState(false);
+  const [selectedProfile, setSelectedProfile] = useState(null);
+
   const coreValues = [
     {
       id: 1,
@@ -124,8 +128,21 @@ const AboutUsScreen = () => {
     setQuestions(updatedQuestions);
   };
 
+  const handleSelectProfile = (id) => {
+    const profile = ourTeams.find((team) => team.id === id);
+    if (profile) {
+      setSelectedProfile(profile);
+      setActiveModal(true);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setActiveModal(false);
+    setSelectedProfile(null);
+  };
+
   return (
-    <div className="w-full h-full bg-white">
+    <div className="w-full h-full bg-white relative">
       <Header />
 
       <TitlteBar title="About Us" />
@@ -155,6 +172,7 @@ const AboutUsScreen = () => {
             return (
               <OurTeam
                 key={id}
+                onClick={() => handleSelectProfile(id)}
                 profile={profile}
                 name={name}
                 position={position}
@@ -231,14 +249,21 @@ const AboutUsScreen = () => {
 
       <StartConversation />
       <Footer />
+
+      {activeModal && selectedProfile && (
+        <ProfileModal close={handleCloseModal} {...selectedProfile} />
+      )}
     </div>
   );
 };
 
-const OurTeam = ({ profile, name, position, text }) => {
+const OurTeam = ({ onClick, profile, name, position, text }) => {
   return (
     <div className="min-w-72">
-      <div className="flex flex-col justify-center items-center cursor-pointer">
+      <div
+        onClick={onClick}
+        className="flex flex-col justify-center items-center cursor-pointer"
+      >
         <img
           src={profile}
           alt=""
@@ -254,6 +279,47 @@ const OurTeam = ({ profile, name, position, text }) => {
         <b className="text-primary text-sm sm:text-base cursor-pointer">
           <i>Read more.</i>
         </b>
+      </div>
+    </div>
+  );
+};
+
+const ProfileModal = ({ profile, name, position, text, close }) => {
+  return (
+    <div
+      className="w-full h-full fixed left-0 right-0 top-0 bg-black/20 
+  "
+    >
+      <div
+        className="modal-scroll w-[80%] max-h-[calc(100vh-10rem)] overflow-y-auto
+        shadow-md border border-primary mt-36 z-[1000] bg-white p-10 pt-20 md:p-20
+         mx-auto flex flex-col md:flex-row gap-y-10 md:gap-x-8 items-center md:items-start relative"
+      >
+        <div onClick={close} className="absolute right-4 top-4 cursor-pointer">
+          <CloseIcon size="25" />
+        </div>
+
+        <div className="flex flex-col justify-center items-center cursor-pointer">
+          <img
+            src={profile}
+            alt=""
+            className="w-full h-72 sm:w-full sm:h-80 border-4 border-primary object-cover mb-2"
+          />
+          <h1 className="text-center text-2xl font-bold text-primary">
+            {name}
+          </h1>
+          <p className="text-center text-base">{position}</p>
+        </div>
+
+        <div className="flex-1">
+          <h1 className="text-center text-3xl font-bold text-primary">
+            About{" "}
+            {name.split(" ")[0].charAt(0).toUpperCase() +
+              name.split(" ")[0].slice(1).toLowerCase()}
+          </h1>
+
+          <p className="py-6">{text}</p>
+        </div>
       </div>
     </div>
   );

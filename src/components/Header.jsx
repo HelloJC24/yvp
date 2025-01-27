@@ -46,7 +46,7 @@ const Navigation = () => {
           onMouseLeave={handleMouseLeave}
           className=" flex gap-x-2 items-center cursor-pointer relative"
         >
-          <a className="text-xl" href="">
+          <a className="text-xl">
             <p className="hover:text-gold">Resources</p>
           </a>
           <ArrowChevronDownIcon size="15" />
@@ -62,19 +62,19 @@ const Navigation = () => {
           )}
         </li>
         <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" href="">
+          <a className="text-xl" href="/coming-soon">
             <p className="hover:text-gold">Services</p>
           </a>
           <ArrowChevronDownIcon size="15" />
         </li>
         <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" href="">
+          <a className="text-xl" href="/coming-soon">
             <p className="hover:text-gold">Careers</p>
           </a>
           <ArrowChevronDownIcon size="15" />
         </li>
         <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" href="">
+          <a className="text-xl" href="/coming-soon">
             <p className="hover:text-gold">Givings</p>
           </a>
           <ArrowChevronDownIcon size="15" />
@@ -88,7 +88,7 @@ const Dropdown = () => {
   return (
     <ul className="dropdown-ul">
       <li className="flex gap-x-0 justify-between items-center">
-        <a href="">
+        <a href="/coming-soon">
           <p>Learning Centre</p>
         </a>
 
@@ -101,7 +101,7 @@ const Dropdown = () => {
         <ArrowRightIcon size="24" />
       </li>
       <li className="flex gap-x-0 justify-between items-center">
-        <a href="">
+        <a href="/coming-soon">
           <p>Careers</p>
         </a>
         <ArrowRightIcon size="24" />
@@ -116,17 +116,17 @@ const SocialIcon = () => {
       <ul className="flex gap-x-4 items-center">
         <li>
           <a href="https://www.facebook.com/profile.php?id=61569410633625">
-            <FacebookIcon size="24" />
+            <FacebookIcon size="24" fill="#333" />
           </a>
         </li>
         <li>
           <a href="https://www.aedin.com/in/your-virtual-partner-346724339/">
-            <LinkedInIcon size="24" />
+            <LinkedInIcon size="24" fill="#333" />
           </a>
         </li>
         <li>
           <a href="https://www.instagram.com/yourvirtualpartner.io/">
-            <InstagramIcon size="24" />
+            <InstagramIcon size="24" fill="#333" />
           </a>
         </li>
         <li>
@@ -134,7 +134,7 @@ const SocialIcon = () => {
             href="https://www.youtube.com/channel/UCyk_QxzhRlT2UdcIz2fRyOg"
             className="nav-a"
           >
-            <YoutubeIcon size="28" />
+            <YoutubeIcon size="28" fill="#333" />
           </a>
         </li>
       </ul>

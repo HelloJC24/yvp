@@ -27,7 +27,6 @@ const VideoPlayer = () => {
   );
 };
 
-
 const HomeScreen = () => {
   const [showCookiesPopup, setShowCookiesPopup] = useState(true);
 
@@ -39,21 +38,29 @@ const HomeScreen = () => {
 
       <Header />
       <main className="overflow-hidden relative w-full h-1/2  bg-gradient-to-r from-white to-[#4f4f4f]">
-      <VideoPlayer />
+        <VideoPlayer />
         <div className="inset-0 absolute z-40 bg-white bg-opacity-50 gap-y-[80px]  h-full px-20 flex flex-col  justify-center items-center">
-          
-         <div className="text-center">
-         <h1 className="sm:text-6xl xl:text-7xl text-3xl outfit-500 text-center flex gap-x-4">
-            Your Reliable
-            <span className="text-gold">Partner</span>
-          </h1>
-          <p className="sm:text-3xl text-base font-semibold text-white">
-            for Seamless Outsourcing
-          </p>
-         </div>
+          <div className="text-center">
+            <h1 className="sm:text-6xl xl:text-7xl text-3xl outfit-500 text-center flex gap-x-4">
+              Your Reliable
+              <span className="text-gold">Partner</span>
+            </h1>
+            <p className="sm:text-3xl text-base font-semibold text-white">
+              for Seamless Outsourcing
+            </p>
+          </div>
 
-          <div className=" sm:w-[50%] flex gap-x-4 items-center justify-center">
-            <Button>Book Appointment</Button>
+          <div className="sm:w-[50%] flex gap-x-4 items-center justify-center">
+            <Button
+              onPress={() =>
+                window.open(
+                  "https://outlook.office365.com/owa/calendar/ZenrgFinanceBookingCopy@zenrgfinance.com.au/bookings/",
+                  "_blank"
+                )
+              }
+            >
+              Book Appointment
+            </Button>
             <Button withIcon={true}>
               <svg
                 id="Layer_1"
