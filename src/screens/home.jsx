@@ -8,6 +8,23 @@ import { ArrowChevronRightIcon } from "../components/Icons";
 import OurPartnersAndInvestors from "../components/Partners";
 import StartConversation from "../components/StartConversation";
 
+const VideoPlayer = () => {
+  return (
+    <div className="w-screen h-full">
+      <video
+        width="100%"
+        height="auto"
+        controls="off"
+        autoPlay
+        loop
+        src="https://fruitask.com/assets/file_upload/q5xuGH12Ps/Vk90OHQrSWlQTFhmZHFnZw.mp4"
+      >
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  );
+};
+
 const HomeScreen = () => {
   const [showCookiesPopup, setShowCookiesPopup] = useState(true);
 
@@ -18,15 +35,18 @@ const HomeScreen = () => {
       )}
 
       <Header />
-      <main className="w-full h-screen  bg-gradient-to-r from-white to-[#4f4f4f]">
-        <div className=" h-full px-20  flex flex-col gap-y-4 justify-center items-center">
-          <h1 className="sm:text-6xl xl:text-8xl text-3xl font-semibold text-center flex gap-x-4">
-            Your Reliable
-            <span className="text-gold">Partner</span>
-          </h1>
-          <p className="sm:text-3xl text-base font-semibold text-white">
-            for Seamless Outsourcing
-          </p>
+      <main className="overflow-hidden relative w-full h-1/2  bg-gradient-to-r from-white to-[#4f4f4f]">
+        <VideoPlayer />
+        <div className="inset-0 absolute z-40 bg-white bg-opacity-50 gap-y-[80px]  h-full px-20 flex flex-col  justify-center items-center">
+          <div className="text-center">
+            <h1 className="sm:text-6xl xl:text-7xl text-3xl outfit-500 text-center flex gap-x-4">
+              Your Reliable
+              <span className="text-gold">Partner</span>
+            </h1>
+            <p className="sm:text-3xl text-base font-semibold text-white">
+              for Seamless Outsourcing
+            </p>
+          </div>
 
           <div className="sm:w-[50%] flex gap-x-4 items-center justify-center">
             <Button
