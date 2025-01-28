@@ -157,14 +157,14 @@ const AboutUsScreen = () => {
           bg="gold"
           title="Our Mission"
           image={Icon}
-          text="Our mission is to transform lives by providing businesses with skilled virtual associates from the Philippines. Through offshore recruitment, we aim to deliver top-quality services that empower individuals, “Changing Lives – Impacting Communities One Job at a Time!”"
+          text="To transform lives by delivering top-quality services through offshore recruitment, empowering businesses and communities."
         />
 
         <AboutCard
           bg="primary"
           title="Our Vision"
           image={Icon}
-          text="To be the leading partner in offshore recruitment globally, connecting global businesses with skilled talent while empowering professionals & enriching communities through sustainable job opportunities around the world."
+          text="To become the global leader in offshore recruitment, bridging the gap between businesses and talented professionals while enriching lives and communities through sustainable job opportunities."
         />
       </main>
 
@@ -232,21 +232,22 @@ const AboutUsScreen = () => {
           <div className="w-full flex-1 p-4">
             <b className="text-2xl text-secondary">Why?</b>
             <h1 className="text-3xl text-gold font-bold">
-              YOUR VIRTUAL PARTNERS
+              YOUR VIRTUAL PARTNER
             </h1>
 
             <p className="text-base sm:text-lg py-1">
-              Thriving Leaders, Flourishing Business, Positive Impact.
+            Customized Recruitment: Tailored solutions to match your unique business needs.
+
+
             </p>
             <p className="text-base sm:text-lg py-1">
-              We are convinced that when business owners thrive both at work and
-              in their personal lives, it initiates a ripple effect that fosters
-              success in their businesses, empowers their teams, and benefits
-              the broader community.
+            HR & Labor Compliance: Assurance is provided for every hire.
+Dedicated Support: We've got your back from onboarding to ongoing coaching.
+Global Talent Pool: Access a network of professionals ready to elevate your business.
+
             </p>
             <p className="text-base sm:text-lg py-1">
-              Their success fuels business growth, uplifts their employees, and
-              creates a lasting positive influence on society.
+            Cost Savings: Reduce overhead costs by up to 70%.
             </p>
           </div>
         </div>

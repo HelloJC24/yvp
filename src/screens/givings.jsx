@@ -451,6 +451,11 @@ const ImageGallery = () => {
           </button>
         ))}
       </div>
+<div className="flex justify-center space-x-2">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BAbqDpCrmr4?si=mw-699Me1yyFI-xs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aVjpM54PFqU?si=Be1lNWFetLLCDtQi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+</div>
+
     </div>
   );
 };

@@ -8,8 +8,7 @@ export const  NewsletterCon =() => {
           <div className="max-w-xl lg:max-w-lg">
             <h2 className="text-4xl font-semibold tracking-tight text-white">Subscribe to our newsletter</h2>
             <p className="mt-4 text-lg text-gray-300">
-              Nostrud amet eu ullamco nisi aute in ad minim nostrud adipisicing velit quis. Duis tempor incididunt
-              dolore.
+            Subscribe to our newsletter and be the first to receive expert outsourcing tips, industry insights, and exclusive updates.
             </p>
             <div className="mt-6 flex max-w-md gap-x-4">
               <label htmlFor="email-address" className="sr-only">
@@ -37,18 +36,23 @@ export const  NewsletterCon =() => {
               <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
               
               </div>
-              <dt className="mt-4 text-base font-semibold text-white">Weekly articles</dt>
+              <dt className="mt-4 text-base font-semibold text-white">Our Services</dt>
               <dd className="mt-2 text-base/7 text-gray-400">
-                Non laboris consequat cupidatat laborum magna. Eiusmod non irure cupidatat duis commodo amet.
+              Administrative Support
+Social Media Management
+Content Creation
+Customer Service
+Specialized Industry Support (Real Estate, Financial Planning, and more)
+
               </dd>
             </div>
             <div className="flex flex-col items-start">
               <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
                
               </div>
-              <dt className="mt-4 text-base font-semibold text-white">No spam</dt>
+              <dt className="mt-4 text-base font-semibold text-white">Who we are?</dt>
               <dd className="mt-2 text-base/7 text-gray-400">
-                Officia excepteur ullamco ut sint duis proident non adipisicing. Voluptate incididunt anim.
+              Your Virtual Partner (YVP) is a premier provider of virtual assistance services. We specialize in connecting businesses with skilled virtual associates from the Philippines, empowering companies to scale while creating sustainable opportunities that transform lives.
               </dd>
             </div>
           </dl>

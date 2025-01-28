@@ -7,7 +7,7 @@ import { ArrowChevronRightIcon } from "../components/Icons";
 import { NewsletterCon } from "../components/Newsletter";
 import OurPartnersAndInvestors from "../components/Partners";
 import StartConversation from "../components/StartConversation";
-
+import { useNavigate } from "react-router-dom";
 const VideoPlayer = () => {
   return (
     <div className="w-screen h-full">
@@ -28,7 +28,7 @@ const VideoPlayer = () => {
 
 const HomeScreen = () => {
   const [showCookiesPopup, setShowCookiesPopup] = useState(true);
-
+  const navigate = useNavigate();
   return (
     <div className="w-full h-full bg-white relative">
       {showCookiesPopup && (
@@ -102,17 +102,14 @@ const HomeScreen = () => {
 
             <div className="p-2 sm:p-6">
               <h1 className="text-4xl font-semibold py-4 text-primary">
-                This is you title
+              Empowering Your Business Through Smart Outsourcing
               </h1>
               <p className="text-base sm:text-lg text-primary">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nesciunt delectus dolorem quam corporis placeat natus molestiae
-                doloribus molestias! Temporibus ad reprehenderit animi, at quo
-                inventore expedita explicabo odit ea. Facilis maxime vel
+              Streamline your operations and scale effortlessly with Your Virtual Partners. From admin support to specialized tasks, we connect you with skilled professionals who work as an extension of your team—saving you time, reducing costs, and driving growth.
               </p>
 
-              <div className="max-w-56 py-4">
-                <Button>Button 1</Button>
+              <div  className="max-w-56 py-4">
+                <Button onPress={() => navigate("coming-soon")}>Explore</Button>
               </div>
             </div>
           </div>
@@ -131,18 +128,15 @@ const HomeScreen = () => {
 
             <div className="p-2 sm:p-6">
               <h1 className="text-4xl font-semibold py-4 text-white">
-                This is you title
+              Your Virtual Partners: Outsource Smarter, Achieve More
               </h1>
               <p className="text-base sm:text-lg text-white">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nesciunt delectus dolorem quam corporis placeat natus molestiae
-                doloribus molestias! Temporibus ad reprehenderit animi, at quo
-                inventore expedita explicabo odit ea. Facilis maxime vel
+              Discover the power of outsourcing with Your Virtual Partners. We provide top-tier virtual talent to handle your business needs, so you can focus on what matters most—growing your success.
               </p>
 
               <div className="max-w-56 py-4">
-                <Button bg="bg-white" textColor="text-secondary">
-                  Button 1
+                <Button onPress={() => navigate("/")} bg="bg-white" textColor="text-secondary">
+                  Explore
                 </Button>
               </div>
             </div>
