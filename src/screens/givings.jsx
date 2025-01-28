@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Img1 from "../assets/images/giving/img1.jpg";
 import Img10 from "../assets/images/giving/img10.jpg";
 import Img11 from "../assets/images/giving/img11.jpg";
@@ -74,14 +74,11 @@ const GivingsScreen = () => {
 
 const ImageGallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [temporaryPause, setTemporaryPause] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const thumbnailsRef = useRef(null);
   const interval = 5000;
-
   const images = [
     {
       id: 1,
@@ -318,35 +315,49 @@ const ImageGallery = () => {
       thumbnail: Img39,
     },
   ];
-  // Auto-scroll thumbnail into view
+
   useEffect(() => {
     if (thumbnailsRef.current) {
-      const thumbnails = thumbnailsRef.current;
-      const thumbnail = thumbnails.children[currentIndex];
+      const container = thumbnailsRef.current;
+      const thumbnail = container.children[currentIndex];
+
       if (thumbnail) {
-        const scrollOptions = {
+        // Calculate scroll position without affecting main page
+        const containerWidth = container.offsetWidth;
+        const thumbnailLeft = thumbnail.offsetLeft;
+        const thumbnailWidth = thumbnail.offsetWidth;
+
+        // Set scroll position directly instead of using scrollIntoView
+        container.scrollTo({
+          left: thumbnailLeft - (containerWidth - thumbnailWidth) / 2,
           behavior: "smooth",
-          block: "nearest",
-          inline: "center",
-        };
-        thumbnail.scrollIntoView(scrollOptions);
+        });
       }
     }
   }, [currentIndex]);
 
-  // Mouse drag functionality
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  // Thumbnail drag handlers
   const handleMouseDown = (e) => {
+    e.preventDefault();
     setIsDragging(true);
-    setStartX(e.pageX - thumbnailsRef.current.offsetLeft);
+    setStartX(e.pageX);
     setScrollLeft(thumbnailsRef.current.scrollLeft);
   };
 
   const handleMouseMove = (e) => {
     if (!isDragging) return;
     e.preventDefault();
-    const x = e.pageX - thumbnailsRef.current.offsetLeft;
-    const distance = (x - startX) * 2;
-    thumbnailsRef.current.scrollLeft = scrollLeft - distance;
+    const x = e.pageX - thumbnailsRef.current.getBoundingClientRect().left;
+    const walk = (x - startX) * 2; // Adjust scroll speed
+    thumbnailsRef.current.scrollLeft = scrollLeft - walk;
   };
 
   const handleMouseUp = () => {
@@ -357,43 +368,17 @@ const ImageGallery = () => {
     setIsDragging(false);
   };
 
-  const resumeAfterDelay = useCallback(() => {
-    setTemporaryPause(true);
-    const timer = setTimeout(() => {
-      setTemporaryPause(false);
-    }, interval);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    let timer;
-    if (isPlaying && !temporaryPause) {
-      timer = setInterval(() => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === images.length - 1 ? 0 : prevIndex + 1
-        );
-      }, interval);
-    }
-    return () => clearInterval(timer);
-  }, [isPlaying, temporaryPause, images.length]);
-
+  // Navigation functions
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
   const goToSlide = (index) => {
     setCurrentIndex(index);
-    if (isPlaying) {
-      resumeAfterDelay();
-    }
   };
 
   return (
@@ -451,11 +436,28 @@ const ImageGallery = () => {
           </button>
         ))}
       </div>
-<div className="flex justify-center space-x-2">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BAbqDpCrmr4?si=mw-699Me1yyFI-xs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aVjpM54PFqU?si=Be1lNWFetLLCDtQi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
-</div>
-
+      <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-2">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/BAbqDpCrmr4?si=mw-699Me1yyFI-xs"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/aVjpM54PFqU?si=Be1lNWFetLLCDtQi"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
   );
 };

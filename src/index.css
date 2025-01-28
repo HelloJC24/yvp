@@ -5,6 +5,9 @@
 .gallery-scroll {
   /* For Firefox */
   scrollbar-width: none;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
   /* For Internet Explorer/Edge */
   -ms-overflow-style: none;
 }
