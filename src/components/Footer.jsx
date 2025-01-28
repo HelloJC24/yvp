@@ -69,12 +69,13 @@ const ContactUs = () => {
 };
 
 const Company = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full footer-nav">
       <h1 className="text-xl text-slate-300">Company</h1>
       <ul className="max-w-36">
         <li className="flex gap-x-0 justify-between items-center cursor-pointer">
-          <a href="/about-us">
+          <a onClick={() => navigate("/about-us")}>
             <p className="hover:text-white text-base text-slate-300">
               About Us
             </p>
@@ -83,7 +84,7 @@ const Company = () => {
           <ArrowRightIcon size="24" fill="#cbd5e1" />
         </li>
         <li className="flex gap-x-0 justify-between items-center cursor-pointer">
-          <a href="coming-soon">
+          <a onClick={() => navigate("/coming-soon")}>
             <p className="hover:text-white text-base text-slate-300">
               Services
             </p>
@@ -91,7 +92,7 @@ const Company = () => {
           <ArrowRightIcon size="24" fill="#cbd5e1" />
         </li>
         <li className="flex gap-x-0 justify-between items-center cursor-pointer">
-          <a href="coming-soon">
+          <a onClick={() => navigate("/coming-soon")}>
             <p className="hover:text-white text-base text-slate-300">
               Testimonials
             </p>

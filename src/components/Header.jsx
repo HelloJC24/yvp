@@ -26,7 +26,7 @@ const Header = () => {
 
 const Navigation = () => {
   const [showDropdown, setToggleDropdown] = useState(false);
-
+  const navigate = useNavigate();
   let dropdownTimeout;
 
   const handleMouseEnter = () => {
@@ -62,19 +62,19 @@ const Navigation = () => {
           )}
         </li>
         <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" href="/coming-soon">
+          <a className="text-xl" onClick={() => navigate("/coming-soon")}>
             <p className="hover:text-gold">Services</p>
           </a>
           <ArrowChevronDownIcon size="15" />
         </li>
         <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" href="/coming-soon">
+          <a className="text-xl" onClick={() => navigate("/coming-soon")} >
             <p className="hover:text-gold">Careers</p>
           </a>
           <ArrowChevronDownIcon size="15" />
         </li>
         <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" href="/givings">
+          <a className="text-xl" onClick={() => navigate("/givings")}>
             <p className="hover:text-gold">Givings</p>
           </a>
           <ArrowChevronDownIcon size="15" />
@@ -85,23 +85,24 @@ const Navigation = () => {
 };
 
 const Dropdown = () => {
+  const navigate = useNavigate();
   return (
     <ul className="dropdown-ul">
       <li className="flex gap-x-0 justify-between items-center">
-        <a href="/coming-soon">
+        <a onClick={() => navigate("/coming-soon")}>
           <p>Learning Centre</p>
         </a>
 
         <ArrowRightIcon size="24" />
       </li>
       <li className="flex gap-x-0 justify-between items-center">
-        <a href="/contact-us">
+        <a onClick={() => navigate("/contact-us")}>
           <p>Contact us</p>
         </a>
         <ArrowRightIcon size="24" />
       </li>
       <li className="flex gap-x-0 justify-between items-center">
-        <a href="/coming-soon">
+        <a onClick={() => navigate("/coming-soon")}>
           <p>Careers</p>
         </a>
         <ArrowRightIcon size="24" />

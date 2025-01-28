@@ -156,14 +156,14 @@ const AboutUsScreen = () => {
         <AboutCard
           bg="gold"
           title="Our Mission"
-          image={Icon}
+          image="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SlpzYXo0RkhTczdDS1BaK3MxND0.jpg"
           text="To transform lives by delivering top-quality services through offshore recruitment, empowering businesses and communities."
         />
 
         <AboutCard
           bg="primary"
           title="Our Vision"
-          image={Icon}
+          image="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SlprV3pKa2JDWjQ9.jpg"
           text="To become the global leader in offshore recruitment, bridging the gap between businesses and talented professionals while enriching lives and communities through sustainable job opportunities."
         />
       </main>
