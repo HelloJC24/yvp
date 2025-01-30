@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 
 const TitlteBar = ({ title }) => {
   return (
-    <div className="w-full bg-primary py-6 text-center border-t-4 border-slate-500">
+    <div className="w-full bg-primary py-6 text-center border-t-4 border-slate-500 mt-24 sm:mt-20">
       <Helmet>
         <title>{title}</title>
       </Helmet>

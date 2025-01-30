@@ -50,7 +50,7 @@ import TitlteBar from "../components/TitlteBar";
 
 const GivingsScreen = () => {
   return (
-    <div className="w-full h-full bg-white">
+    <div className="w-full h-full bg-white relative overflow-hidden">
       <Header />
 
       <TitlteBar title="Givings" />
@@ -60,7 +60,7 @@ const GivingsScreen = () => {
           GALLERY
         </h1>
 
-        <div className="w-full sm:w-[80%] mx-auto">
+        <div className="w-full ">
           <ImageGallery />
         </div>
       </main>
@@ -438,6 +438,7 @@ const ImageGallery = () => {
       </div>
       <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-2">
         <iframe
+          className="w-full"
           width="560"
           height="315"
           src="https://www.youtube.com/embed/BAbqDpCrmr4?si=mw-699Me1yyFI-xs"
@@ -448,6 +449,7 @@ const ImageGallery = () => {
           allowfullscreen
         ></iframe>
         <iframe
+          className="w-full"
           width="560"
           height="315"
           src="https://www.youtube.com/embed/aVjpM54PFqU?si=Be1lNWFetLLCDtQi"

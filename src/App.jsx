@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, HashRouter as Router, Routes } from "react-router-dom";
 import AboutUsScreen from "./screens/about";
 import ArticlesScreen from "./screens/articles";
 import ComingSoonScreen from "./screens/coming_soon";
@@ -8,7 +8,7 @@ import HomeScreen from "./screens/home";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/about-us" element={<AboutUsScreen />} />
@@ -17,7 +17,7 @@ function App() {
         <Route path="/articles" element={<ArticlesScreen />} />
         <Route path="/givings" element={<GivingsScreen />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

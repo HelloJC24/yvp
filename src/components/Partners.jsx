@@ -59,7 +59,7 @@ const OurPartnersAndInvestors = () => {
   ];
 
   return (
-    <div className="w-full flex flex-wrap gap-x-4 justify-center items-center">
+    <div className="w-full max-w-7xl mx-auto flex flex-wrap gap-x-4 justify-center items-center">
       {partners.map(({ id, img }) => {
         return (
           <img

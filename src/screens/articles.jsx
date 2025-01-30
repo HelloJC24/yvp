@@ -6,7 +6,7 @@ import TitlteBar from "../components/TitlteBar";
 
 const ArticlesScreen = () => {
   return (
-    <div className="w-full h-full bg-white">
+    <div className="w-full h-full bg-white relative overflow-hidden">
       <Header />
       <TitlteBar title="Articles" />
 

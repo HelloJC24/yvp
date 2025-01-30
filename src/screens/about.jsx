@@ -1,5 +1,4 @@
-import { useState } from "react";
-import Icon from "../assets/images/icon.png";
+import { useEffect, useState } from "react";
 import Contribution from "../assets/images/icons//handshake.png";
 import Adaptability from "../assets/images/icons/adaptation.png";
 import Impletemantion from "../assets/images/icons/confidentiality.png";
@@ -86,7 +85,12 @@ const AboutUsScreen = () => {
         "https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/VnVaaXZmbFJPckd3VmZaa3JWND0.png",
       name: "ALLEN CHAN",
       position: "YVP DIRECTOR",
-      text: "Allen is the Director and Founder of YVP & ZENRG Finance. He has over 15 years of experience within the Mortgage and Finance industry and graduated from the University of Technology Sydney with a Bachelor of Mathematics and Finance. To further pursue his passion for finance, Allen obtained a Diploma of Finance and Mortgage Brokering Management from KAPLAN. He is also a full member of the Mortgage & Finance Association of Australia (MFAA), the peak national body for the mortgage and finance broking industry. As a Sydney local, Allen attended Newtown High School of the Performing Arts before purchasing his first home at the age of 23. Since then, he has purchased over 10 different types of properties with diverse taxation structures across multiple states. His keen interest and expertise in property investment have allowed him to accrue back the more than 6-figure sum he lost during the global financial crisis (GFC) of 2008. When Allen isn’t busily working away here at ZENRG Finance, you’ll find him enjoying road trips in his Lexus 450H hybrid vehicle, tinkering with high-tech gadgets, or spending time with his partner and two beautiful daughters. He also loves to MC and DJ at weddings and corporate events—with this passion for performing dating back to his appearance in the Opening Ceremony of the Sydney 2000 Olympics. Allen is passionate about helping others, and one day hopes to become a philanthropist to assist communities in need around the world.",
+      text: [
+        "Allen is the Director and Founder of YVP & ZENRG Finance. He has over 15 years of experience within the Mortgage and Finance industry and graduated from the University of Technology Sydney with a Bachelor of Mathematics and Finance. To further pursue his passion for finance, Allen obtained a Diploma of Finance and Mortgage Brokering Management from KAPLAN. He is also a full member of the Mortgage & Finance Association of Australia (MFAA), the peak national body for the mortgage and finance broking industry.",
+        "As a Sydney local, Allen attended Newtown High School of the Performing Arts before purchasing his first home at the age of 23. Since then, he has purchased over 10 different types of properties with diverse taxation structures across multiple states. His keen interest and expertise in property investment have allowed him to accrue back the more than 6-figure sum he lost during the global financial crisis (GFC) of 2008.",
+        "When Allen isn’t busily working away here at ZENRG Finance, you’ll find him enjoying road trips in his Lexus 450H hybrid vehicle, tinkering with high-tech gadgets, or spending time with his partner and two beautiful daughters. He also loves to MC and DJ at weddings and corporate events—with this passion for performing dating back to his appearance in the Opening Ceremony of the Sydney 2000 Olympics.",
+        "Allen is passionate about helping others, and one day hopes to become a philanthropist to assist communities in need around the world.",
+      ],
     },
     {
       id: 2,
@@ -94,7 +98,11 @@ const AboutUsScreen = () => {
         "https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/VU9acnR2TXdXYlN3WHZoYWpIY2l0V09sRGc9PQ.png",
       name: "GLENDA MAE NONO",
       position: "EXECUTIVE ASSISTANT",
-      text: "Gone are the days of long commutes and missed puppy playtime! As a former banking professional turned virtual executive assistant, I've traded the boardroom for the blissful chaos of my home office. My four canine companions, my constant furry shadows, used to get the short end of the stick. Long hours at the bank meant precious little time for cuddles and playtime. Now, the workday unfolds amidst a symphony of tail wags and happy barks. My office is a haven of productivity and pure doggy delight. I can tackle projects while my furballs snooze nearby, or enjoy a midday play break with my furry friends. Working from home isn't just about flexibility; it's about prioritizing the things that truly matter. And for me, that means sharing every precious moment with my beloved pack.",
+      text: [
+        "Gone are the days of long commutes and missed puppy playtime! As a former banking professional turned virtual executive assistant, I've traded the boardroom for the blissful chaos of my home office. My four canine companions, my constant furry shadows, used to get the short end of the stick. Long hours at the bank meant precious little time for cuddles and playtime.",
+        "Now, the workday unfolds amidst a symphony of tail wags and happy barks. My office is a haven of productivity and pure doggy delight. I can tackle projects while my furballs snooze nearby, or enjoy a midday play break with my furry friends.",
+        "Working from home isn't just about flexibility; it's about prioritizing the things that truly matter. And for me, that means sharing every precious moment with my beloved pack.",
+      ],
     },
     {
       id: 3,
@@ -102,7 +110,11 @@ const AboutUsScreen = () => {
         "https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/WGV0ajJQRTRON3F3TmFoNnBBPT0.png",
       name: "JAM FINCA",
       position: "HUMAN RESOURCE MANAGER",
-      text: "With over seven years of experience in Human Resources, Jam Finca is a dedicated professional with expertise in recruitment, employee support, and HR operations. She has effectively handled comprehensive HR processes, including talent acquisition, payroll management, and benefits administration, while showcasing excellent organizational and communication abilities. Having undergone training in Lean Six Sigma Yellow Belt and Red Belt methodologies and certified in Microsoft Power BI, Jam applies process improvement strategies to streamline operations and boost efficiency. As a Recruitment Manager, her combination of HR knowledge, analytical skills, and commitment to continuous improvement makes her a dynamic leader who excels at building strong teams and fostering organizational growth. In addition to her HR expertise, Jam enjoys photography, graphic design, and video editing, showcasing her creative side. Outside of work, she loves exploring new activities, traveling locally, and looks forward to traveling the world. Jam finds relaxation and inspiration in sunset viewing, which allows her to appreciate the beauty of nature and the environment.",
+      text: [
+        "With over seven years of experience in Human Resources, Jam Finca is a dedicated professional with expertise in recruitment, employee support, and HR operations. She has effectively handled comprehensive HR processes, including talent acquisition, payroll management, and benefits administration, while showcasing excellent organizational and communication abilities.",
+        "Having undergone training in Lean Six Sigma Yellow Belt and Red Belt methodologies and certified in Microsoft Power BI, Jam applies process improvement strategies to streamline operations and boost efficiency. As a Recruitment Manager, her combination of HR knowledge, analytical skills, and commitment to continuous improvement makes her a dynamic leader who excels at building strong teams and fostering organizational growth.",
+        "In addition to her HR expertise, Jam enjoys photography, graphic design, and video editing, showcasing her creative side. Outside of work, she loves exploring new activities, traveling locally, and looks forward to traveling the world. Jam finds relaxation and inspiration in sunset viewing, which allows her to appreciate the beauty of nature and the environment.",
+      ],
     },
     {
       id: 4,
@@ -110,7 +122,12 @@ const AboutUsScreen = () => {
         "https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/VnVscjJQb3dMYTI1WG84MGdYdzR5ejI3QncwPQ.png",
       name: "ACE MATTHEW BEUP",
       position: "SOCIAL MEDIA MANAGER",
-      text: "A highly skilled Creative Specialist with over 5 years of experience in graphic design, web content creation, and social media management, I bring a unique blend of technical expertise and creativity to every project. Proficient in tools like Adobe Photoshop, Canva, Premiere, Figma, and CapCut, I specialize in developing visually compelling designs and strategies that effectively communicate brand messages. My work spans a variety of industries, focusing on creating engaging visuals, managing brand identity, and enhancing online presence through SEO and data-driven social media strategies. Beyond design, I have a passion for sharing knowledge and empowering others. I have conducted workshops and training sessions on Canva and Photoshop in partnership with DICT Region IVB-Palawan, mentoring aspiring creatives across various municipalities. This teaching experience reflects my strong communication skills and ability to inspire others to achieve their creative potential. As a media consultant and branding expert, I excel in creating cohesive visual identities, from logo designs to full-scale marketing campaigns. My work is rooted in a deep understanding of design principles and audience engagement, ensuring that each project delivers measurable results. I immerse myself in photography and storytelling in my free time, constantly exploring new creative concepts that spark innovation. Whether behind a camera lens or at a design desk, I am committed to crafting visuals that inspire, connect, and leave a lasting impact.",
+      text: [
+        "A highly skilled Creative Specialist with over 5 years of experience in graphic design, web content creation, and social media management, I bring a unique blend of technical expertise and creativity to every project. Proficient in tools like Adobe Photoshop, Canva, Premiere, Figma, and CapCut, I specialize in developing visually compelling designs and strategies that effectively communicate brand messages. My work spans a variety of industries, focusing on creating engaging visuals, managing brand identity, and enhancing online presence through SEO and data-driven social media strategies.",
+        "Beyond design, I have a passion for sharing knowledge and empowering others. I have conducted workshops and training sessions on Canva and Photoshop in partnership with DICT Region IVB-Palawan, mentoring aspiring creatives across various municipalities. This teaching experience reflects my strong communication skills and ability to inspire others to achieve their creative potential.",
+        "As a media consultant and branding expert, I excel in creating cohesive visual identities, from logo designs to full-scale marketing campaigns. My work is rooted in a deep understanding of design principles and audience engagement, ensuring that each project delivers measurable results.",
+        "I immerse myself in photography and storytelling in my free time, constantly exploring new creative concepts that spark innovation. Whether behind a camera lens or at a design desk, I am committed to crafting visuals that inspire, connect, and leave a lasting impact.",
+      ],
     },
     {
       id: 5,
@@ -118,7 +135,10 @@ const AboutUsScreen = () => {
         "https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/UmU5cHNmazBXYSswVjVsSGdIWkQ2MzJz.png",
       name: "REGINE VELASCO",
       position: "HUMAN RESOURCE GENERALIST",
-      text: "A Certified Human Resource Associate with over 4 years of experience, I specialize in leveraging strong communication and analytical thinking to enhance core Human Resource practices. My expertise spans diverse HR functions, including recruitment, onboarding, employee relations, performance management, training and development, and strategic compensation and benefits administration. Throughout my career, I have successfully contributed to creating streamlined processes, fostering positive workplace cultures, and aligning HR strategies with organizational goals. Outside of my professional endeavors, I have a passion for lifelong learning and personal growth. In my free time, I enjoy immersing myself in thought-provoking books that expand my perspective and fuel my creativity. Additionally, I relish the opportunity to explore new destinations, creating lasting memories while discovering different cultures, cuisines, and landscapes with my family. This combination of professional dedication and personal interests drives me to bring both a structured and innovative approach to my work and life.",
+      text: [
+        "A Certified Human Resource Associate with over 4 years of experience, I specialize in leveraging strong communication and analytical thinking to enhance core Human Resource practices. My expertise spans diverse HR functions, including recruitment, onboarding, employee relations, performance management, training and development, and strategic compensation and benefits administration. Throughout my career, I have successfully contributed to creating streamlined processes, fostering positive workplace cultures, and aligning HR strategies with organizational goals.",
+        "Outside of my professional endeavors, I have a passion for lifelong learning and personal growth. In my free time, I enjoy immersing myself in thought-provoking books that expand my perspective and fuel my creativity. Additionally, I relish the opportunity to explore new destinations, creating lasting memories while discovering different cultures, cuisines, and landscapes with my family. This combination of professional dedication and personal interests drives me to bring both a structured and innovative approach to my work and life.",
+      ],
     },
   ];
 
@@ -147,12 +167,12 @@ const AboutUsScreen = () => {
   };
 
   return (
-    <div className="w-full h-full bg-white relative">
+    <div className="w-full h-full bg-white relative overflow-hidden">
       <Header />
 
       <TitlteBar title="About Us" />
 
-      <main className="w-full flex flex-col gap-y-6 p-4 sm:p-12">
+      <main className="w-full max-w-7xl mx-auto flex flex-col gap-y-6 p-4 sm:p-12">
         <AboutCard
           bg="gold"
           title="Our Mission"
@@ -172,7 +192,7 @@ const AboutUsScreen = () => {
         <h1 className="text-2xl sm:text-4xl font-semibold py-4 text-center">
           Our Team
         </h1>
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-team-card justify-center gap-14 p-8">
+        <div className="w-full max-w-7xl mx-auto flex flex-wrap justify-center gap-14 p-4">
           {ourTeams.map(({ id, profile, name, position, text }) => {
             return (
               <OurTeam
@@ -193,7 +213,7 @@ const AboutUsScreen = () => {
         <h1 className="text-2xl sm:text-4xl font-semibold py-4 text-center">
           Our Core Values
         </h1>
-        <div className="w-full grid gap-6 grid-cols-2 p-2 sm:p-8">
+        <div className="w-full max-w-7xl mx-auto grid gap-6 grid-cols-2 p-2 sm:p-8">
           {coreValues.map(({ id, icon, title, text }) => {
             return (
               <CoreValuesCard key={id} icon={icon} title={title} text={text} />
@@ -221,33 +241,32 @@ const AboutUsScreen = () => {
         })}
       </section>
 
-      <section className="w-full min-h-[50vh] bg-white p-8 relative">
-        <div className="w-full flex flex-col justify-center md:flex-row gap-x-6  px-4 md:px-8">
+      <section className="w-full min-h-[50vh] bg-white p-2 sm:p-8 relative">
+        <div className="w-full max-w-7xl mx-auto flex flex-col gap-y-4  justify-center md:flex-row gap-x-6  px-4 md:px-8">
           <img
             src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SlpzZnlJOUFWNU9CZkE9PQ.jpg"
             alt=""
             className="w-72 h-full sm:w-96 rounded-2xl object-cover"
           />
 
-          <div className="w-full flex-1 p-4">
+          <div className="w-full flex-1 sm:p-4">
             <b className="text-2xl text-secondary">Why?</b>
             <h1 className="text-3xl text-gold font-bold">
               YOUR VIRTUAL PARTNER
             </h1>
 
             <p className="text-base sm:text-lg py-1">
-            Customized Recruitment: Tailored solutions to match your unique business needs.
-
-
+              Customized Recruitment: Tailored solutions to match your unique
+              business needs.
             </p>
             <p className="text-base sm:text-lg py-1">
-            HR & Labor Compliance: Assurance is provided for every hire.
-Dedicated Support: We've got your back from onboarding to ongoing coaching.
-Global Talent Pool: Access a network of professionals ready to elevate your business.
-
+              HR & Labor Compliance: Assurance is provided for every hire.
+              Dedicated Support: We've got your back from onboarding to ongoing
+              coaching. Global Talent Pool: Access a network of professionals
+              ready to elevate your business.
             </p>
             <p className="text-base sm:text-lg py-1">
-            Cost Savings: Reduce overhead costs by up to 70%.
+              Cost Savings: Reduce overhead costs by up to 70%.
             </p>
           </div>
         </div>
@@ -257,7 +276,11 @@ Global Talent Pool: Access a network of professionals ready to elevate your busi
       <Footer />
 
       {activeModal && selectedProfile && (
-        <ProfileModal close={handleCloseModal} {...selectedProfile} />
+        <ProfileModal
+          close={handleCloseModal}
+          isOpen={activeModal}
+          {...selectedProfile}
+        />
       )}
     </div>
   );
@@ -265,7 +288,7 @@ Global Talent Pool: Access a network of professionals ready to elevate your busi
 
 const OurTeam = ({ onClick, profile, name, position, text }) => {
   return (
-    <div className="min-w-72">
+    <div className="max-w-80">
       <div
         onClick={onClick}
         className="flex flex-col justify-center items-center cursor-pointer"
@@ -280,9 +303,14 @@ const OurTeam = ({ onClick, profile, name, position, text }) => {
       </div>
 
       <div className="py-4">
-        <p className="text-sm sm:text-base pb-6">{text.substring(0, 400)}</p>
+        <p className="text-sm sm:text-base pb-6">
+          {text[0]?.substring(0, 300)}...
+        </p>
 
-        <b className="text-primary text-sm sm:text-base cursor-pointer">
+        <b
+          onClick={onClick}
+          className="text-primary text-sm sm:text-base cursor-pointer"
+        >
           <i>Read more.</i>
         </b>
       </div>
@@ -290,12 +318,25 @@ const OurTeam = ({ onClick, profile, name, position, text }) => {
   );
 };
 
-const ProfileModal = ({ profile, name, position, text, close }) => {
+const ProfileModal = ({ profile, name, position, text, isOpen, close }) => {
+  // dissable the background scrolling when the modal is active
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // Reset on unmount
+    };
+  }, [isOpen]);
+
   return (
-    <div className="w-full h-full fixed left-0 right-0 bottom-0 bg-black/20 flex justify-center items-center">
+    <div className="w-full h-full fixed left-0 right-0 bottom-0 bg-black/20 flex justify-center items-center p-4">
       <div
-        className="modal-scroll w-[80%] max-h-[calc(100vh-9rem)] overflow-y-auto
-        shadow-md border border-primary mt-20 z-50 bg-white p-10 pt-20 md:p-20
+        className="modal-scroll w-full sm:w-[80%] max-h-[calc(100vh-9rem)] overflow-y-auto
+        shadow-md border border-primary mt-20 z-50 bg-white p-6 pt-20 md:p-20
           flex flex-col md:flex-row gap-y-10 md:gap-x-8 items-center md:items-start relative"
       >
         <div onClick={close} className="absolute right-4 top-4 cursor-pointer">
@@ -315,13 +356,19 @@ const ProfileModal = ({ profile, name, position, text, close }) => {
         </div>
 
         <div className="flex-1">
-          <h1 className="text-center text-3xl font-bold text-primary">
-            About{" "}
+          <h1 className="text-center text-3xl font-bold text-primary pb-4">
+            Get to Know{" "}
             {name.split(" ")[0].charAt(0).toUpperCase() +
               name.split(" ")[0].slice(1).toLowerCase()}
           </h1>
 
-          <p className="py-6 text-lg">{text}</p>
+          {text?.map((value, index) => {
+            return (
+              <p key={index} className="py-2 indent-8 text-lg text-justify">
+                {value}
+              </p>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -347,7 +394,7 @@ const Questions = ({ toggle, question, answer, active }) => {
 
         {active && (
           <div className="w-full p-6 my-4 bg-secondary rounded-2xl ">
-            <p className="text-white text-sm sm:text-base">{answer}</p>
+            <p className="text-white text-base">{answer}</p>
           </div>
         )}
       </div>
@@ -358,7 +405,7 @@ const Questions = ({ toggle, question, answer, active }) => {
 const CoreValuesCard = ({ icon, title, text }) => {
   return (
     <div className="rounded-xl p-4 border border-slate-200">
-      <div className="flex gap-x-4 items-center">
+      <div className="flex flex-col sm:flex-row gap-x-4 sm:items-center">
         <img
           src={icon}
           alt=""
@@ -378,8 +425,12 @@ const AboutCard = ({ image, title, text, bg }) => {
     <div className={`w-full rounded-2xl bg-${bg} px-8 py-6`}>
       <h1 className="text-2xl font-semibold text-white py-2">{title}</h1>
 
-      <div className="flex gap-x-4 flex-col  sm:flex-row">
-        <img src={image} alt="" className="w-40 h-40 object-cover rounded-xl" />
+      <div className="flex gap-x-4 flex-col gap-y-2 sm:flex-row">
+        <img
+          src={image}
+          alt=""
+          className="w-full sm:w-40 h-40 object-cover rounded-xl"
+        />
 
         <p className="text-lg text-white">{text}</p>
       </div>

@@ -1,34 +1,29 @@
 import { useNavigate } from "react-router";
-import {
-  AppLogo,
-  ArrowRightIcon,
-  FacebookIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  YoutubeIcon,
-} from "./Icons";
+import { SocialIcon } from "./Header";
+import { AppLogo, ArrowRightIcon } from "./Icons";
 
 const Footer = () => {
   const navigate = useNavigate();
 
   return (
     <footer className="w-full bg-secondary p-4">
-      <div className="w-full px-2 md:px-20 py-8 flex flex-col md:flex-row gap-x-12 items-start md:items-center justify-between">
+      <div className="w-full max-w-7xl mx-auto px-2  py-8 flex flex-col md:flex-row justify-center items-start md:items-center">
         <AppLogo size={150} onClick={() => navigate("/")} />
 
-        <div className="px-4 sm:px-10 flex-1 flex flex-col sm:flex-row gap-y-2 sm:gap-x-4 justify-between items-center">
+        <div className="px-4 sm:px-10 w-full flex flex-col sm:flex-row gap-y-2 sm:gap-x-4 justify-center items-start">
           <Address />
           <ContactUs />
           <Company />
         </div>
       </div>
 
-      <div className="w-full px-2 sm:px-14 flex gap-x-2 justify-between items-center">
+      <div className="w-full max-w-7xl mx-auto px-2 flex flex-col  sm:flex-row gap-y-2 gap-x-2 justify-between items-center">
         <p className="text-sm text-white">YourVirtualPartner.io 2025</p>
         <p className="hidden sm:block text-sm text-white">
           © ALL RIGHT RESERVED
         </p>
-        <SocialIcon />
+
+        <SocialIcon iconColor="#fff" />
       </div>
 
       <p className="block sm:hidden text-center p-4 text-sm text-white">
@@ -40,7 +35,7 @@ const Footer = () => {
 
 const Address = () => {
   return (
-    <div className="w-full">
+    <div className="min-w-60">
       <h1 className="text-xl text-slate-300">Address</h1>
       <p className="text-base text-slate-300">Parramatta NSW 2150</p>
     </div>
@@ -98,38 +93,6 @@ const Company = () => {
             </p>
           </a>
           <ArrowRightIcon size="24" fill="#cbd5e1" />
-        </li>
-      </ul>
-    </div>
-  );
-};
-
-const SocialIcon = () => {
-  return (
-    <div className="">
-      <ul className="flex gap-x-4 items-center">
-        <li>
-          <a href="https://www.facebook.com/profile.php?id=61569410633625">
-            <FacebookIcon size="20" fill="#fff" />
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/your-virtual-partner-346724339/">
-            <LinkedInIcon size="20" fill="#fff" />
-          </a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/yourvirtualpartner.io/">
-            <InstagramIcon size="20" fill="#fff" />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.youtube.com/channel/UCyk_QxzhRlT2UdcIz2fRyOg"
-            className="nav-link"
-          >
-            <YoutubeIcon size="24" fill="#fff" />
-          </a>
         </li>
       </ul>
     </div>
