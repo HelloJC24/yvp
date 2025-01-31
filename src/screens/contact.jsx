@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import Button from "../components/Button";
@@ -23,21 +24,33 @@ const ContactUsScreen = () => {
     // Handle form submission here
 
     try {
-      const res = { status: "success" };
+      const res = await axios.post(
+        "https://yourvirtualpartner.io/config/submit/",
+        {
+          firstName,
+          lastName,
+          email,
+          address,
+          companyName,
+          industry,
+          hearAboutUs,
+          helpWith,
+          hiringTimeframe,
+        }
+      );
+      console.log(res);
 
-      if (res.status === "success") {
-        toast.success("Email sent successfully!", {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
-      }
+      toast.success("Email sent successfully!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     } catch (e) {
       console.log(e);
     }
