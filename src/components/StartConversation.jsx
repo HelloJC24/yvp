@@ -11,7 +11,7 @@ const StartConversation = () => {
         <Button
           onPress={() =>
             window.open(
-              "https://outlook.office365.com/owa/calendar/ZenrgFinanceBookingCopy@zenrgfinance.com.au/bookings/",
+              "https://calendar.app.google/MgZAPLZaPbi5fTVo6",
               "_blank"
             )
           }

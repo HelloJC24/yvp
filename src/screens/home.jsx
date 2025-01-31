@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import CookiesPopupModal from "../components/CookiesPopupModal";
@@ -11,7 +11,7 @@ import StartConversation from "../components/StartConversation";
 const VideoPlayer = () => {
   return (
     <div className="w-screen h-full">
-      <video
+      {/* <video
         width="100%"
         height="auto"
         autoPlay
@@ -21,18 +21,39 @@ const VideoPlayer = () => {
         src="https://fruitask.com/assets/file_upload/q5xuGH12Ps/Vk90OHQrSWlQTFhmZHFnZw.mp4"
       >
         Your browser does not support the video tag.
-      </video>
+      </video> */}
+      <img src="https://yourvirtualpartner.io/storage/video/HOME%20PAGE.gif" className="w-full h-full"></img>
     </div>
   );
 };
 
 const HomeScreen = () => {
-  const [showCookiesPopup, setShowCookiesPopup] = useState(true);
+  const [showCookiesPopup, setShowCookiesPopup] = useState(false);
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    const consent = localStorage.getItem("cookieConsent");
+    if (!consent) {
+      setShowCookiesPopup(true);
+    }
+  }, []);
+
+
+  const handleAccept = () => {
+    localStorage.setItem("cookieConsent", "accepted");
+    setShowCookiesPopup(false)
+  };
+
+  const handleReject = () => {
+    localStorage.setItem("cookieConsent", "rejected");
+    setShowCookiesPopup(false)
+  };
+
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
       {showCookiesPopup && (
-        <CookiesPopupModal close={() => setShowCookiesPopup(false)} />
+        <CookiesPopupModal close={() => handleReject()} />
       )}
 
       <Header />
@@ -53,7 +74,7 @@ const HomeScreen = () => {
             <Button
               onPress={() =>
                 window.open(
-                  "https://outlook.office365.com/owa/calendar/ZenrgFinanceBookingCopy@zenrgfinance.com.au/bookings/",
+                  "https://calendar.app.google/MgZAPLZaPbi5fTVo6",
                   "_blank"
                 )
               }

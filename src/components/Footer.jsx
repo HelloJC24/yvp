@@ -47,6 +47,12 @@ const ContactUs = () => {
     <div className="w-full">
       <h1 className="text-xl text-slate-300">Contact Us</h1>
       <ul>
+      <li>
+          <a href="https://forms.gle/QM9VJhyNrqXyxP5V9" className="underline text-base text-slate-300">Business to Business</a>
+        </li>
+        <li>
+          <a href="https://forms.gle/v4QCUw2u8i9FhFcc9" className="underline text-base text-slate-300">Business to Consumer</a>
+        </li>
         <li>
           <p className="text-base text-slate-300">Phone number: 0435632065</p>
         </li>

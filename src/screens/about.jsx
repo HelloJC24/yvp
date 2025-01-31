@@ -82,7 +82,7 @@ const AboutUsScreen = () => {
     {
       id: 1,
       profile:
-        "https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/VnVaaXZmbFJPckd3VmZaa3JWND0.png",
+        "https://yourvirtualpartner.io/storage/team/ALLEN%20CHAN.png",
       name: "ALLEN CHAN",
       position: "YVP DIRECTOR",
       text: [
@@ -95,7 +95,7 @@ const AboutUsScreen = () => {
     {
       id: 2,
       profile:
-        "https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/VU9acnR2TXdXYlN3WHZoYWpIY2l0V09sRGc9PQ.png",
+        "https://yourvirtualpartner.io/storage/team/GLENDA%20MAE%20NONO.png",
       name: "GLENDA MAE NONO",
       position: "EXECUTIVE ASSISTANT",
       text: [
@@ -107,7 +107,7 @@ const AboutUsScreen = () => {
     {
       id: 3,
       profile:
-        "https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/WGV0ajJQRTRON3F3TmFoNnBBPT0.png",
+        "https://yourvirtualpartner.io/storage/team/JAM%20FINCA.png",
       name: "JAM FINCA",
       position: "HUMAN RESOURCE MANAGER",
       text: [
@@ -119,7 +119,7 @@ const AboutUsScreen = () => {
     {
       id: 4,
       profile:
-        "https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/VnVscjJQb3dMYTI1WG84MGdYdzR5ejI3QncwPQ.png",
+        "https://yourvirtualpartner.io/storage/team/ACE%20MATTHEW%20BEUP.png",
       name: "ACE MATTHEW BEUP",
       position: "SOCIAL MEDIA MANAGER",
       text: [
@@ -132,7 +132,7 @@ const AboutUsScreen = () => {
     {
       id: 5,
       profile:
-        "https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/UmU5cHNmazBXYSswVjVsSGdIWkQ2MzJz.png",
+        "https://yourvirtualpartner.io/storage/team/REGINE%20VELASCO.png",
       name: "REGINE VELASCO",
       position: "HUMAN RESOURCE GENERALIST",
       text: [
@@ -311,7 +311,7 @@ const OurTeam = ({ onClick, profile, name, position, text }) => {
           onClick={onClick}
           className="text-primary text-sm sm:text-base cursor-pointer"
         >
-          <i>Read more.</i>
+          <i  onClick={onClick}>Read more.</i>
         </b>
       </div>
     </div>
@@ -347,7 +347,7 @@ const ProfileModal = ({ profile, name, position, text, isOpen, close }) => {
           <img
             src={profile}
             alt=""
-            className="w-full h-72 sm:w-72 sm:h-80 border-4 border-primary object-cover mb-2"
+            className="w-full h-72 sm:w-72 sm:h-80 border-4 border-primary object-cover object-[0,1px]  mb-2"
           />
           <h1 className="text-center text-2xl font-bold text-primary">
             {name}
