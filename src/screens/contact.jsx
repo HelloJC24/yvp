@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import { MapMarkerIcon } from "../components/Icons";
 import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
+import { SUBMIT_CONTACT_FORM_API } from "../config/constant";
 
 const ContactUsScreen = () => {
   const [firstName, setFirstName] = useState("");
@@ -19,25 +20,25 @@ const ContactUsScreen = () => {
   const [helpWith, setHelpWith] = useState("");
   const [hiringTimeframe, setHiringTimeframe] = useState("");
 
+  // for address under the map
+  const [companyAddress, setCompanyAddress] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     // Handle form submission here
 
     try {
-      const res = await axios.post(
-        "https://yourvirtualpartner.io/config/submit/",
-        {
-          firstName,
-          lastName,
-          email,
-          address,
-          companyName,
-          industry,
-          hearAboutUs,
-          helpWith,
-          hiringTimeframe,
-        }
-      );
+      const res = await axios.post(SUBMIT_CONTACT_FORM_API, {
+        firstName,
+        lastName,
+        email,
+        address,
+        companyName,
+        industry,
+        hearAboutUs,
+        helpWith,
+        hiringTimeframe,
+      });
       console.log(res);
 
       toast.success("Email sent successfully!", {
@@ -177,12 +178,12 @@ const ContactUsScreen = () => {
         </div>
         <p className="text-center text-base py-4 flex gap-x-2 items-center justify-center">
           <MapMarkerIcon size="20" fill="#23313f" />
-          44/2 O&apos;Connell Street, Parramatta, NSW 2150, Australia
+          {companyAddress}
         </p>
       </main>
 
       <StartConversation />
-      <Footer />
+      <Footer address={(v) => setCompanyAddress(v)} />
     </div>
   );
 };

@@ -1,5 +1,7 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { HEADER_API, SOCIALS_API } from "../config/constant";
 import {
   AppLogo,
   ArrowChevronDownIcon,
@@ -16,12 +18,34 @@ const Header = () => {
   const { width, height } = useWindowSize();
   const [activeSidemenu, setActiveSideMenu] = useState(false);
   const navigate = useNavigate();
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const res = await axios.get(HEADER_API);
+        const data = res.data;
+        console.log("header: ", data);
+        setData(data);
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    loadData();
+  }, []);
 
   return (
     <div className=" w-full bg-white py-2 pt-4 md:pt-2 px-6 flex justify-between items-end md:items-center fixed top-0 z-50 shadow-md">
-      <AppLogo size={70} onClick={() => navigate("/")} />
+      <AppLogo
+        image={data?.logo_image}
+        alt={data?.alt}
+        size={70}
+        onClick={() => navigate("/")}
+      />
 
-      <Navigation />
+      <Navigation data={data} />
 
       <div className="hidden md:block">
         <SocialIcon iconColor="#333" />
@@ -39,12 +63,12 @@ const Header = () => {
       </div>
 
       {/* for mobile view */}
-      <MobileNavMenu activeSidemenu={activeSidemenu} />
+      <MobileNavMenu data={data} activeSidemenu={activeSidemenu} />
     </div>
   );
 };
 
-const MobileNavMenu = ({ activeSidemenu }) => {
+const MobileNavMenu = ({ data, activeSidemenu }) => {
   const navigate = useNavigate();
   const [activeDropdown, setActiveDropdown] = useState(false);
 
@@ -55,53 +79,41 @@ const MobileNavMenu = ({ activeSidemenu }) => {
       }  block md:hidden duration-100 ease-in border border-slate-200 absolute top-28 right-0  bg-white min-w-56 p-4 rounded-md shadow-md z-[100]`}
     >
       <ul className="flex flex-col gap-x-6 items-start">
-        <li className=" cursor-pointer">
-          <div
-            onClick={() => setActiveDropdown(!activeDropdown)}
-            className="flex gap-x-2 items-center"
-          >
-            <a className="text-xl">
-              <p className="hover:text-gold">Resources</p>
-            </a>
-            <ArrowChevronDownIcon size="10" />
-          </div>
+        {data?.data?.map((item, index) => {
+          return (
+            <li
+              key={index}
+              className={`${
+                !item?.dropdown && "flex gap-x-2 items-center"
+              } cursor-pointer relative`}
+              onClick={() => !item?.dropdown && navigate(item?.redirect)}
+            >
+              <div
+                onClick={() =>
+                  item?.dropdown && setActiveDropdown(!activeDropdown)
+                }
+                className="flex gap-x-2 items-center"
+              >
+                <a className="text-xl">
+                  <p className="hover:text-gold">{item?.item}</p>
+                </a>
+                <ArrowChevronDownIcon size="10" />
+              </div>
 
-          {activeDropdown && (
-            <div className="px-2 w-full duration-300">
-              <Dropdown />
-            </div>
-          )}
-        </li>
-        <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" onClick={() => navigate("/coming-soon")}>
-            <p className="hover:text-gold">Services</p>
-          </a>
-          <ArrowChevronDownIcon size="10" />
-        </li>
-        <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" onClick={() => navigate("/coming-soon")}>
-            <p className="hover:text-gold">Careers</p>
-          </a>
-          <ArrowChevronDownIcon size="10" />
-        </li>
-        <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" onClick={() => navigate("/givings")}>
-            <p className="hover:text-gold">Givings</p>
-          </a>
-          <ArrowChevronDownIcon size="10" />
-        </li>
-        <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" onClick={() => navigate("/about-us")}>
-            <p className="hover:text-gold">Our Team</p>
-          </a>
-          <ArrowChevronDownIcon size="10" />
-        </li>
+              {item?.dropdown && activeDropdown && (
+                <div className="px-2 w-full duration-300">
+                  <Dropdown dropItem={item?.drop_item} />
+                </div>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
 };
 
-const Navigation = () => {
+const Navigation = ({ data }) => {
   const [showDropdown, setToggleDropdown] = useState(false);
   const navigate = useNavigate();
   let dropdownTimeout;
@@ -118,79 +130,64 @@ const Navigation = () => {
   return (
     <nav className="hidden md:flex justify-between items-center">
       <ul className="flex gap-x-6 items-center">
-        <li
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className=" flex gap-x-2 items-center cursor-pointer relative"
-        >
-          <a className="text-xl">
-            <p className="hover:text-gold">Resources</p>
-          </a>
-          <ArrowChevronDownIcon size="15" />
-
-          {showDropdown && (
-            <div
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className=" absolute top-8 -left-20  bg-white rounded-xl border border-slate-200 shadow-lg p-4"
+        {data?.data?.map((item, index) => {
+          return (
+            <li
+              key={index}
+              className="flex gap-x-2 items-center cursor-pointer relative"
+              onMouseEnter={item?.dropdown ? handleMouseEnter : null}
+              onMouseLeave={item?.dropdown ? handleMouseLeave : null}
             >
-              <Dropdown />
-            </div>
-          )}
-        </li>
-        <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" onClick={() => navigate("/coming-soon")}>
-            <p className="hover:text-gold">Services</p>
-          </a>
-          <ArrowChevronDownIcon size="15" />
-        </li>
-        <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" onClick={() => navigate("/coming-soon")}>
-            <p className="hover:text-gold">Careers</p>
-          </a>
-          <ArrowChevronDownIcon size="15" />
-        </li>
-        <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" onClick={() => navigate("/givings")}>
-            <p className="hover:text-gold">Givings</p>
-          </a>
-          <ArrowChevronDownIcon size="15" />
-        </li>
-        <li className="flex gap-x-2 items-center cursor-pointer">
-          <a className="text-xl" onClick={() => navigate("/about-us")}>
-            <p className="hover:text-gold">Our Team</p>
-          </a>
-          <ArrowChevronDownIcon size="15" />
-        </li>
+              <a
+                className="text-xl"
+                onClick={() => !item?.dropdown && navigate(item?.redirect)}
+              >
+                <p className="hover:text-gold">{item?.item}</p>
+              </a>
+              <ArrowChevronDownIcon size="15" />
+
+              {item?.dropdown && showDropdown && (
+                <div
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  className=" absolute top-8 -left-20  bg-white rounded-xl border border-slate-200 shadow-lg p-4"
+                >
+                  <Dropdown dropItem={item?.drop_item} />
+                </div>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
 };
 
-const Dropdown = () => {
+const Dropdown = ({ dropItem }) => {
   const { width } = useWindowSize();
 
   const navigate = useNavigate();
   return (
     <ul className="w-full">
-      <li className="w-full flex gap-x-4 justify-between items-center">
-        <a onClick={() => navigate("/coming-soon")}>
-          <p className="text-lg whitespace-nowrap">Learning Centre</p>
-        </a>
+      {dropItem?.map((item, index) => {
+        return (
+          <li
+            key={index}
+            className="w-full flex gap-x-4 justify-between items-center"
+          >
+            <a onClick={() => navigate(item?.redirect)}>
+              <p className="text-lg whitespace-nowrap">{item?.title}</p>
+            </a>
 
-        <ArrowRightIcon size={width < 800 ? "20" : "24"} />
-      </li>
-      <li className="w-full flex gap-x-4 justify-between items-center">
-        <a onClick={() => navigate("/contact-us")}>
-          <p className="text-lg whitespace-nowrap">Contact us</p>
-        </a>
-        <ArrowRightIcon size={width < 800 ? "20" : "24"} />
-      </li>
+            <ArrowRightIcon size={width < 800 ? "20" : "24"} />
+          </li>
+        );
+      })}
     </ul>
   );
 };
 
-const useWindowSize = () => {
+export const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -213,72 +210,60 @@ const useWindowSize = () => {
 
 export const SocialIcon = ({ iconColor }) => {
   const { width } = useWindowSize();
+  const [socials, setSocials] = useState([]);
+
+  useEffect(() => {
+    const LoadSocials = async () => {
+      try {
+        const res = await axios.get(SOCIALS_API);
+        const data = res.data?.data;
+        setSocials(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    LoadSocials();
+  }, []);
 
   const openNextTab = (url) => {
-    window.open(url, "_blank");
+    if (url) window.open(url, "_blank");
+  };
+
+  const Icons = (icon) => {
+    const size = width < 800 ? "20" : "24";
+    switch (icon) {
+      case "facebook":
+        return <FacebookIcon size={size} fill={iconColor} />;
+      case "tiktok":
+        return <TiktokIcon size={size} fill={iconColor} />;
+      case "instagram":
+        return <InstagramIcon size={size} fill={iconColor} />;
+      case "linkedin":
+        return <LinkedInIcon size={size} fill={iconColor} />;
+      case "youtube":
+        return (
+          <YoutubeIcon size={width < 800 ? "20" : "28"} fill={iconColor} />
+        );
+      default:
+        return null;
+    }
   };
 
   return (
     <div className="">
       <ul className="flex gap-x-4 items-center">
-        <li>
-          <span
-            className="cursor-pointer text-xs"
-            onClick={() =>
-              openNextTab(
-                "https://www.facebook.com/profile.php?id=61569410633625"
-              )
-            }
-          >
-            <FacebookIcon size={width < 800 ? "20" : "24"} fill={iconColor} />
-          </span>
-        </li>
-        <li>
-          <span
-            className="cursor-pointer"
-            onClick={() =>
-              openNextTab(
-                "https://www.tiktok.com/@yourvirtualpartner?fbclid=IwY2xjawH74DNleHRuA2FlbQIxMAABHSn6YHiu8d1vPh4Xb2zdqbmuuULAnxfk5Wjy7yOB5blAqx4I4j9Fj7ONng_aem_l2xN7JmxUWzaOJBj12rGJw"
-              )
-            }
-          >
-            <TiktokIcon size={width < 800 ? "20" : "24"} fill={iconColor} />
-          </span>
-        </li>
-        <li>
-          <span
-            className="cursor-pointer"
-            onClick={() =>
-              openNextTab(
-                "https://www.aedin.com/in/your-virtual-partner-346724339/"
-              )
-            }
-          >
-            <LinkedInIcon size={width < 800 ? "20" : "24"} fill={iconColor} />
-          </span>
-        </li>
-        <li>
-          <span
-            className="cursor-pointer"
-            onClick={() =>
-              openNextTab("https://www.instagram.com/yourvirtualpartner.io/")
-            }
-          >
-            <InstagramIcon size={width < 800 ? "20" : "24"} fill={iconColor} />
-          </span>
-        </li>
-        <li>
-          <span
-            className="cursor-pointer"
-            onClick={() =>
-              openNextTab(
-                "https://www.youtube.com/channel/UCyk_QxzhRlT2UdcIz2fRyOg"
-              )
-            }
-          >
-            <YoutubeIcon size={width < 800 ? "20" : "28"} fill={iconColor} />
-          </span>
-        </li>
+        {socials?.map((item, index) => {
+          return (
+            <li key={index}>
+              <span
+                className="cursor-pointer text-xs"
+                onClick={() => openNextTab(item?.redirect)}
+              >
+                {Icons(item?.icon)}
+              </span>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

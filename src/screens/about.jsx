@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import Contribution from "../assets/images/icons//handshake.png";
 import Adaptability from "../assets/images/icons/adaptation.png";
@@ -10,11 +11,12 @@ import Header from "../components/Header";
 import { CloseIcon } from "../components/Icons";
 import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
+import { FAQS, MISSION_VISSION_API, TEAM_API } from "../config/constant";
 
 const AboutUsScreen = () => {
   const [activeModal, setActiveModal] = useState(false);
   const [selectedProfile, setSelectedProfile] = useState(null);
-
+  const [missionVission, setMissionVission] = useState([]);
   const coreValues = [
     {
       id: 1,
@@ -54,97 +56,55 @@ const AboutUsScreen = () => {
     },
   ];
 
-  const [questions, setQuestions] = useState([
-    {
-      id: 1,
-      question: "WHAT SERVICES DO YOU OFFER AS A VIRTUAL ASSISTANCE COMPANY?",
-      answer:
-        "The process of hiring a virtual assistant is simple. You can contact us through our website or call us directly. We will then schedule a meeting to discuss your needs and requirements. We will then match you with a virtual assistant who has the skills and experience you need. Once you have chosen a virtual assistant, we will provide you with all the information you need to get started.",
-      active: false,
-    },
-    {
-      id: 2,
-      question: "PURPOSE OF VIRTUAL ASSISTANCE COMPANY?",
-      answer:
-        "The process of hiring a virtual assistant is simple. You can contact us through our website or call us directly. We will then schedule a meeting to discuss your needs and requirements. We will then match you with a virtual assistant who has the skills and experience you need. Once you have chosen a virtual assistant, we will provide you with all the information you need to get started.",
-      active: false,
-    },
-    {
-      id: 3,
-      question: "DO VIRTUAL ASSISTANCE COMPANY ORGANIZE EVENTS & PROGRAMMES?",
-      answer:
-        "We provide a wide range of services, including Administrative support (e.g., scheduling, email management) Customer service and support Bookkeeping and financial management Project management and coordination",
-      active: false,
-    },
-  ]);
+  const [questions, setQuestions] = useState([]);
 
-  const ourTeams = [
-    {
-      id: 1,
-      profile:
-        "https://yourvirtualpartner.io/storage/team/ALLEN%20CHAN.png",
-      name: "ALLEN CHAN",
-      position: "YVP DIRECTOR",
-      text: [
-        "Allen is the Director and Founder of YVP & ZENRG Finance. He has over 15 years of experience within the Mortgage and Finance industry and graduated from the University of Technology Sydney with a Bachelor of Mathematics and Finance. To further pursue his passion for finance, Allen obtained a Diploma of Finance and Mortgage Brokering Management from KAPLAN. He is also a full member of the Mortgage & Finance Association of Australia (MFAA), the peak national body for the mortgage and finance broking industry.",
-        "As a Sydney local, Allen attended Newtown High School of the Performing Arts before purchasing his first home at the age of 23. Since then, he has purchased over 10 different types of properties with diverse taxation structures across multiple states. His keen interest and expertise in property investment have allowed him to accrue back the more than 6-figure sum he lost during the global financial crisis (GFC) of 2008.",
-        "When Allen isn’t busily working away here at ZENRG Finance, you’ll find him enjoying road trips in his Lexus 450H hybrid vehicle, tinkering with high-tech gadgets, or spending time with his partner and two beautiful daughters. He also loves to MC and DJ at weddings and corporate events—with this passion for performing dating back to his appearance in the Opening Ceremony of the Sydney 2000 Olympics.",
-        "Allen is passionate about helping others, and one day hopes to become a philanthropist to assist communities in need around the world.",
-      ],
-    },
-    {
-      id: 2,
-      profile:
-        "https://yourvirtualpartner.io/storage/team/GLENDA%20MAE%20NONO.png",
-      name: "GLENDA MAE NONO",
-      position: "EXECUTIVE ASSISTANT",
-      text: [
-        "Gone are the days of long commutes and missed puppy playtime! As a former banking professional turned virtual executive assistant, I've traded the boardroom for the blissful chaos of my home office. My four canine companions, my constant furry shadows, used to get the short end of the stick. Long hours at the bank meant precious little time for cuddles and playtime.",
-        "Now, the workday unfolds amidst a symphony of tail wags and happy barks. My office is a haven of productivity and pure doggy delight. I can tackle projects while my furballs snooze nearby, or enjoy a midday play break with my furry friends.",
-        "Working from home isn't just about flexibility; it's about prioritizing the things that truly matter. And for me, that means sharing every precious moment with my beloved pack.",
-      ],
-    },
-    {
-      id: 3,
-      profile:
-        "https://yourvirtualpartner.io/storage/team/JAM%20FINCA.png",
-      name: "JAM FINCA",
-      position: "HUMAN RESOURCE MANAGER",
-      text: [
-        "With over seven years of experience in Human Resources, Jam Finca is a dedicated professional with expertise in recruitment, employee support, and HR operations. She has effectively handled comprehensive HR processes, including talent acquisition, payroll management, and benefits administration, while showcasing excellent organizational and communication abilities.",
-        "Having undergone training in Lean Six Sigma Yellow Belt and Red Belt methodologies and certified in Microsoft Power BI, Jam applies process improvement strategies to streamline operations and boost efficiency. As a Recruitment Manager, her combination of HR knowledge, analytical skills, and commitment to continuous improvement makes her a dynamic leader who excels at building strong teams and fostering organizational growth.",
-        "In addition to her HR expertise, Jam enjoys photography, graphic design, and video editing, showcasing her creative side. Outside of work, she loves exploring new activities, traveling locally, and looks forward to traveling the world. Jam finds relaxation and inspiration in sunset viewing, which allows her to appreciate the beauty of nature and the environment.",
-      ],
-    },
-    {
-      id: 4,
-      profile:
-        "https://yourvirtualpartner.io/storage/team/ACE%20MATTHEW%20BEUP.png",
-      name: "ACE MATTHEW BEUP",
-      position: "SOCIAL MEDIA MANAGER",
-      text: [
-        "A highly skilled Creative Specialist with over 5 years of experience in graphic design, web content creation, and social media management, I bring a unique blend of technical expertise and creativity to every project. Proficient in tools like Adobe Photoshop, Canva, Premiere, Figma, and CapCut, I specialize in developing visually compelling designs and strategies that effectively communicate brand messages. My work spans a variety of industries, focusing on creating engaging visuals, managing brand identity, and enhancing online presence through SEO and data-driven social media strategies.",
-        "Beyond design, I have a passion for sharing knowledge and empowering others. I have conducted workshops and training sessions on Canva and Photoshop in partnership with DICT Region IVB-Palawan, mentoring aspiring creatives across various municipalities. This teaching experience reflects my strong communication skills and ability to inspire others to achieve their creative potential.",
-        "As a media consultant and branding expert, I excel in creating cohesive visual identities, from logo designs to full-scale marketing campaigns. My work is rooted in a deep understanding of design principles and audience engagement, ensuring that each project delivers measurable results.",
-        "I immerse myself in photography and storytelling in my free time, constantly exploring new creative concepts that spark innovation. Whether behind a camera lens or at a design desk, I am committed to crafting visuals that inspire, connect, and leave a lasting impact.",
-      ],
-    },
-    {
-      id: 5,
-      profile:
-        "https://yourvirtualpartner.io/storage/team/REGINE%20VELASCO.png",
-      name: "REGINE VELASCO",
-      position: "HUMAN RESOURCE GENERALIST",
-      text: [
-        "A Certified Human Resource Associate with over 4 years of experience, I specialize in leveraging strong communication and analytical thinking to enhance core Human Resource practices. My expertise spans diverse HR functions, including recruitment, onboarding, employee relations, performance management, training and development, and strategic compensation and benefits administration. Throughout my career, I have successfully contributed to creating streamlined processes, fostering positive workplace cultures, and aligning HR strategies with organizational goals.",
-        "Outside of my professional endeavors, I have a passion for lifelong learning and personal growth. In my free time, I enjoy immersing myself in thought-provoking books that expand my perspective and fuel my creativity. Additionally, I relish the opportunity to explore new destinations, creating lasting memories while discovering different cultures, cuisines, and landscapes with my family. This combination of professional dedication and personal interests drives me to bring both a structured and innovative approach to my work and life.",
-      ],
-    },
-  ];
+  const [ourTeams, setOurTeams] = useState([]);
 
-  const handleToggle = (id) => {
-    const updatedQuestions = questions.map((question) => {
-      if (question.id === id) {
+  useEffect(() => {
+    const loadMV = async () => {
+      try {
+        const res = await axios.get(MISSION_VISSION_API);
+        const data = res.data?.data;
+        setMissionVission(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const loadTeams = async () => {
+      try {
+        const res = await axios.get(TEAM_API);
+        const data = res.data?.data;
+        setOurTeams(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const loadFaqs = async () => {
+      try {
+        const res = await axios.get(FAQS);
+        const data = res.data?.data;
+
+        setQuestions(
+          data?.map((question) => ({
+            ...question,
+            active: false,
+          }))
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    loadMV();
+    loadTeams();
+    loadFaqs();
+  }, []);
+
+  const handleToggle = (index) => {
+    const updatedQuestions = questions.map((question, i) => {
+      if (i === index) {
         return { ...question, active: !question.active };
       }
       return question;
@@ -173,19 +133,18 @@ const AboutUsScreen = () => {
       <TitlteBar title="About Us" />
 
       <main className="w-full max-w-7xl mx-auto flex flex-col gap-y-6 p-4 sm:p-12">
-        <AboutCard
-          bg="gold"
-          title="Our Mission"
-          image="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SlpzYXo0RkhTczdDS1BaK3MxND0.jpg"
-          text="To transform lives by delivering top-quality services through offshore recruitment, empowering businesses and communities."
-        />
-
-        <AboutCard
-          bg="primary"
-          title="Our Vision"
-          image="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SlprV3pKa2JDWjQ9.jpg"
-          text="To become the global leader in offshore recruitment, bridging the gap between businesses and talented professionals while enriching lives and communities through sustainable job opportunities."
-        />
+        {missionVission?.map((item, index) => {
+          return (
+            <AboutCard
+              key={index}
+              bg={index === 0 ? "gold" : index === 1 ? "primary" : ""}
+              title={item?.title}
+              image={item?.image}
+              alt={item?.alt}
+              text={item?.subtitle}
+            />
+          );
+        })}
       </main>
 
       <section className="w-full bg-white p-2 sm:p-8 relative">
@@ -193,15 +152,16 @@ const AboutUsScreen = () => {
           Our Team
         </h1>
         <div className="w-full max-w-7xl mx-auto flex flex-wrap justify-center gap-14 p-4">
-          {ourTeams.map(({ id, profile, name, position, text }) => {
+          {ourTeams.map(({ id, image, alt, name, role, about }) => {
             return (
               <OurTeam
                 key={id}
                 onClick={() => handleSelectProfile(id)}
-                profile={profile}
+                image={image}
+                alt={alt}
                 name={name}
-                position={position}
-                text={text}
+                role={role}
+                about={about}
               />
             );
           })}
@@ -228,12 +188,12 @@ const AboutUsScreen = () => {
           Frequently Asked Questions
         </h1>
 
-        {questions.map(({ id, question, answer, active }) => {
+        {questions.map(({ title, answer, active }, index) => {
           return (
             <Questions
-              key={id}
-              toggle={() => handleToggle(id)}
-              question={question}
+              key={index}
+              toggle={() => handleToggle(index)}
+              title={title}
               answer={answer}
               active={active}
             />
@@ -286,7 +246,7 @@ const AboutUsScreen = () => {
   );
 };
 
-const OurTeam = ({ onClick, profile, name, position, text }) => {
+const OurTeam = ({ onClick, image, alt, name, role, about }) => {
   return (
     <div className="max-w-80">
       <div
@@ -294,31 +254,32 @@ const OurTeam = ({ onClick, profile, name, position, text }) => {
         className="flex flex-col justify-center items-center cursor-pointer"
       >
         <img
-          src={profile}
+          src={image}
           alt=""
           className="w-72 h-72 sm:w-full sm:h-80 border-4 border-primary object-cover object-[0,1px] mb-2"
+          alt={alt}
         />
         <h1 className="text-center text-2xl font-bold text-primary">{name}</h1>
-        <p className="text-center text-base">{position}</p>
+        <p className="text-center text-base">{role}</p>
       </div>
 
       <div className="py-4">
         <p className="text-sm sm:text-base pb-6">
-          {text[0]?.substring(0, 300)}...
+          {about[0]?.substring(0, 300)}...
         </p>
 
         <b
           onClick={onClick}
           className="text-primary text-sm sm:text-base cursor-pointer"
         >
-          <i  onClick={onClick}>Read more.</i>
+          <i onClick={onClick}>Read more.</i>
         </b>
       </div>
     </div>
   );
 };
 
-const ProfileModal = ({ profile, name, position, text, isOpen, close }) => {
+const ProfileModal = ({ image, alt, name, role, about, isOpen, close }) => {
   // dissable the background scrolling when the modal is active
   useEffect(() => {
     if (isOpen) {
@@ -335,7 +296,7 @@ const ProfileModal = ({ profile, name, position, text, isOpen, close }) => {
   return (
     <div className="w-full h-full fixed left-0 right-0 bottom-0 bg-black/20 flex justify-center items-center p-4">
       <div
-        className="modal-scroll w-full sm:w-[80%] max-h-[calc(100vh-9rem)] overflow-y-auto
+        className="modal-scroll w-full sm:w-[90%] xl:w-[80%] max-h-[calc(100vh-9rem)] overflow-y-auto
         shadow-md border border-primary mt-20 z-50 bg-white p-6 pt-20 md:p-20
           flex flex-col md:flex-row gap-y-10 md:gap-x-8 items-center md:items-start relative"
       >
@@ -345,14 +306,14 @@ const ProfileModal = ({ profile, name, position, text, isOpen, close }) => {
 
         <div className="flex flex-col justify-center items-center cursor-pointer">
           <img
-            src={profile}
-            alt=""
+            src={image}
+            alt={alt}
             className="w-full h-72 sm:w-72 sm:h-80 border-4 border-primary object-cover object-[0,1px]  mb-2"
           />
           <h1 className="text-center text-2xl font-bold text-primary">
             {name}
           </h1>
-          <p className="text-center text-base">{position}</p>
+          <p className="text-center text-base">{role}</p>
         </div>
 
         <div className="flex-1">
@@ -362,7 +323,7 @@ const ProfileModal = ({ profile, name, position, text, isOpen, close }) => {
               name.split(" ")[0].slice(1).toLowerCase()}
           </h1>
 
-          {text?.map((value, index) => {
+          {about?.map((value, index) => {
             return (
               <p key={index} className="py-2 indent-8 text-lg text-justify">
                 {value}
@@ -375,12 +336,12 @@ const ProfileModal = ({ profile, name, position, text, isOpen, close }) => {
   );
 };
 
-const Questions = ({ toggle, question, answer, active }) => {
+const Questions = ({ toggle, title, answer, active }) => {
   return (
     <div className="w-full p-2 sm:px-8">
       <div className="py-4 border-b-4 border-slate-300">
         <h1 className="text-xl sm:text-2xl py-2 font-bold text-primary">
-          {question}
+          {title}
         </h1>
 
         <div
@@ -420,7 +381,7 @@ const CoreValuesCard = ({ icon, title, text }) => {
   );
 };
 
-const AboutCard = ({ image, title, text, bg }) => {
+const AboutCard = ({ image, alt, title, text, bg }) => {
   return (
     <div className={`w-full rounded-2xl bg-${bg} px-8 py-6`}>
       <h1 className="text-2xl font-semibold text-white py-2">{title}</h1>
@@ -428,7 +389,7 @@ const AboutCard = ({ image, title, text, bg }) => {
       <div className="flex gap-x-4 flex-col gap-y-2 sm:flex-row">
         <img
           src={image}
-          alt=""
+          alt={alt}
           className="w-full sm:w-40 h-40 object-cover rounded-xl"
         />
 

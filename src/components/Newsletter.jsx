@@ -1,4 +1,22 @@
+import axios from "axios";
+import { useState } from "react";
+import { NEWSLETTER_API } from "../config/constant";
+
 export const NewsletterCon = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = async () => {
+    try {
+      if (!email) return;
+
+      const res = await axios.get(`${NEWSLETTER_API}?email=${email}`);
+      console.log(res.data);
+      setEmail("");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -22,11 +40,14 @@ export const NewsletterCon = () => {
                 required
                 placeholder="Enter your email"
                 autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="min-w-0 flex-auto rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
               />
               <button
                 type="submit"
                 className="flex-none rounded-md bg-gold px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                onClick={handleSubscribe}
               >
                 Subscribe
               </button>

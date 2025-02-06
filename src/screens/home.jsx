@@ -1,4 +1,5 @@
-import { useState,useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import CookiesPopupModal from "../components/CookiesPopupModal";
@@ -7,8 +8,10 @@ import Header from "../components/Header";
 import { ArrowChevronRightIcon } from "../components/Icons";
 import { NewsletterCon } from "../components/Newsletter";
 import OurPartnersAndInvestors from "../components/Partners";
+import GoogleReviews from "../components/Reviews";
 import StartConversation from "../components/StartConversation";
-const VideoPlayer = () => {
+import { CONTENT_API, COVER_API, SERVICES_API } from "../config/constant";
+const VideoPlayer = ({ url }) => {
   return (
     <div className="w-screen h-full">
       {/* <video
@@ -22,7 +25,7 @@ const VideoPlayer = () => {
       >
         Your browser does not support the video tag.
       </video> */}
-      <img src="https://yourvirtualpartner.io/storage/video/HOME%20PAGE.gif" className="w-full h-full"></img>
+      <img src={url} className="w-full h-full"></img>
     </div>
   );
 };
@@ -30,7 +33,24 @@ const VideoPlayer = () => {
 const HomeScreen = () => {
   const [showCookiesPopup, setShowCookiesPopup] = useState(false);
   const navigate = useNavigate();
+  const [cover, setCover] = useState(null);
 
+  useEffect(() => {
+    const CoverData = async () => {
+      try {
+        const res = await axios.get(COVER_API);
+        const data = res.data?.data;
+        const btnData = res.data?.button;
+        const video = res.data?.video;
+        setCover({ video, ...data, ...btnData });
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    CoverData();
+  }, []);
 
   useEffect(() => {
     const consent = localStorage.getItem("cookieConsent");
@@ -39,49 +59,50 @@ const HomeScreen = () => {
     }
   }, []);
 
-
   const handleAccept = () => {
     localStorage.setItem("cookieConsent", "accepted");
-    setShowCookiesPopup(false)
+    setShowCookiesPopup(false);
   };
 
   const handleReject = () => {
     localStorage.setItem("cookieConsent", "rejected");
-    setShowCookiesPopup(false)
+    setShowCookiesPopup(false);
   };
 
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
-      {showCookiesPopup && (
-        <CookiesPopupModal close={() => handleReject()} />
-      )}
+      {showCookiesPopup && <CookiesPopupModal close={() => handleReject()} />}
 
       <Header />
       <main className="mt-24 sm:mt-20 overflow-hidden relative w-full h-full  bg-gradient-to-r from-white to-[#4f4f4f]">
-        <VideoPlayer />
+        <VideoPlayer url={cover?.video} />
         <div className="inset-0 absolute h-full z-20 bg-white bg-opacity-50 gap-y-6 sm:gap-y-[80px] px-20 flex flex-col  justify-center items-center">
           <div className="text-center">
             <h1 className="sm:text-6xl xl:text-7xl text-3xl outfit-500 text-center ">
-              Your Reliable
-              <span className="ml-3 text-gold">Partner</span>
+              {cover?.title1 || "Your Reliable"}
+              <span className="ml-3 text-gold">
+                {cover?.title2 || "Partner"}
+              </span>
             </h1>
             <p className="sm:text-3xl text-base font-semibold text-white">
-              for Seamless Outsourcing
+              {cover?.subtag || "for Seamless Outsourcing"}
             </p>
           </div>
 
           <div className="w-full hidden sm:w-[50%] sm:flex  gap-x-4 items-center justify-center px-4">
             <Button
               onPress={() =>
-                window.open(
-                  "https://calendar.app.google/MgZAPLZaPbi5fTVo6",
-                  "_blank"
-                )
+                window.open(cover?.button?.[0]?.redirect, "_blank")
               }
             >
-              Unlock Your Virtual Partner
+              {cover?.button?.[0]?.text || "Unlock Your Virtual Partner"}
             </Button>
-            <Button withIcon={true}>
+            <Button
+              onPress={() =>
+                window.open(cover?.button?.[1]?.redirect, "_blank")
+              }
+              withIcon={true}
+            >
               <svg
                 id="Layer_1"
                 viewBox="0 0 24 24"
@@ -95,7 +116,7 @@ const HomeScreen = () => {
               </svg>
 
               <p className="text-white text-sm sm:text-xl xl:text-2xl whitespace-nowrap">
-                Start Your VA Journey
+                {cover?.button?.[1]?.text || "Start Your VA Journey"}
               </p>
             </Button>
           </div>
@@ -108,17 +129,21 @@ const HomeScreen = () => {
             <Button
               padding="px-3 py-2"
               onPress={() =>
-                window.open(
-                  "https://outlook.office365.com/owa/calendar/ZenrgFinanceBookingCopy@zenrgfinance.com.au/bookings/",
-                  "_blank"
-                )
+                window.open(cover?.button?.[0]?.redirect, "_blank")
               }
             >
-              Unlock Your Virtual Partner
+              {cover?.button?.[0]?.text || "Unlock Your Virtual Partner"}
             </Button>
           </div>
           <div className="max-w-60">
-            <Button padding="px-3 py-2">Start Your VA Journey</Button>
+            <Button
+              onPress={() =>
+                window.open(cover?.button?.[1]?.redirect, "_blank")
+              }
+              padding="px-3 py-2"
+            >
+              {cover?.button?.[1]?.text || "Start Your VA Journey"}
+            </Button>
           </div>
         </div>
         <p className="mt-4 sm:mt-0 text-center font-[500] text-xl sm:text-2xl xl:text-3xl text-slate-500">
@@ -127,78 +152,7 @@ const HomeScreen = () => {
         <OurPartnersAndInvestors />
       </section>
 
-      <section className="w-full bg-white py-6 flex flex-col gap-y-10">
-        <div className="w-full flex flex-col items-start">
-          <div
-            className="w-[80%] border-y border-r border-slate-200 rounded-tr-2xl rounded-br-2xl p-4 sm:px-10
-          "
-          >
-            <div className="max-w-7xl flex flex-col md:flex-row gap-x-4 items-start md:items-center justify-start">
-              <img
-                src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SUpnZjF0MEJIZz09.jpg"
-                className="object-cover w-full sm:w-72 h-72 rounded-xl"
-                alt=""
-              />
-
-              <div className="p-2 sm:p-6">
-                <h1 className="text-4xl font-semibold py-4 text-primary">
-                  Empowering Your Business Through Smart Outsourcing
-                </h1>
-                <p className="text-base sm:text-lg text-primary">
-                  Streamline your operations and scale effortlessly with Your
-                  Virtual Partners. From admin support to specialized tasks, we
-                  connect you with skilled professionals who work as an
-                  extension of your team—saving you time, reducing costs, and
-                  driving growth.
-                </p>
-
-                <div className="max-w-56 py-4">
-                  <Button onPress={() => navigate("coming-soon")}>
-                    Explore
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="w-full flex flex-col items-end">
-          <div
-            className="w-[80%]  border-y border-l border-secondary bg-secondary rounded-tl-2xl rounded-bl-2xl p-4 sm:px-10
-          flex justify-end"
-          >
-            <div className="max-w-7xl flex flex-col md:flex-row-reverse gap-x-4 items-start md:items-center justify-end">
-              <img
-                src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SlpzYXdJRklTOEhGS1BaK3MxND0.jpg"
-                className="object-cover w-full sm:w-72 h-72 rounded-xl"
-                alt=""
-              />
-
-              <div className="p-2 sm:p-6">
-                <h1 className="text-4xl font-semibold py-4 text-white">
-                  Your Virtual Partners: Outsource Smarter, Achieve More
-                </h1>
-                <p className="text-base sm:text-lg text-white">
-                  Discover the power of outsourcing with Your Virtual Partners.
-                  We provide top-tier virtual talent to handle your business
-                  needs, so you can focus on what matters most—growing your
-                  success.
-                </p>
-
-                <div className="max-w-56 py-4">
-                  <Button
-                    onPress={() => navigate("/")}
-                    bg="bg-white"
-                    textColor="text-secondary"
-                  >
-                    Explore
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HomeThirdSection />
 
       <section className="w-full bg-gold p-8 ">
         <div className="w-full text-center ">
@@ -214,75 +168,9 @@ const HomeScreen = () => {
         </div>
       </section>
 
-      <section className="w-full bg-white p-6">
-        <div className="w-full grid grid-cols-1 sm:grid-cols-card gap-6 justify-center items-center">
-          <div className=" rounded-2xl shadow-xl overflow-hidden">
-            <div className="w-full h-48 relative">
-              <img
-                src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SnBzV3lKa2JDWjQ9.jpg"
-                className="w-full h-full object-cover"
-                alt=""
-              />
-            </div>
-            <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
-              <p className="text-base sm:text-xl text-white">
-                Financial Planning
-              </p>
+      <ServicesSection />
 
-              <ArrowChevronRightIcon size="20" fill="white" />
-            </div>
-          </div>
-
-          <div className=" rounded-2xl shadow-xl overflow-hidden">
-            <div className="w-full h-48 relative">
-              <img
-                src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SVprY3paa2JDWjQ9.jpg"
-                className="w-full h-full object-cover"
-                alt=""
-              />
-            </div>
-            <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
-              <p className="text-base sm:text-xl text-white">
-                Mortgage Broking Service
-              </p>
-              <ArrowChevronRightIcon size="20" fill="white" />
-            </div>
-          </div>
-
-          <div className=" rounded-2xl shadow-xl overflow-hidden">
-            <div className="w-full h-48 relative">
-              <img
-                src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SlpzYnlJUkRTOG5KSS9aK3MxND0.jpg"
-                className="w-full h-full object-cover"
-                alt=""
-              />
-            </div>
-            <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
-              <p className="text-base sm:text-xl text-white">
-                Real State Services
-              </p>
-
-              <ArrowChevronRightIcon size="20" fill="white" />
-            </div>
-          </div>
-
-          <div className=" rounded-2xl shadow-xl overflow-hidden">
-            <div className="w-full h-48 relative">
-              <img
-                src="https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/SUo4WHlaa2JDWjQ9.jpg"
-                className="w-full h-full object-cover"
-                alt=""
-              />
-            </div>
-            <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
-              <p className="text-base sm:text-xl text-white">Other services</p>
-              <ArrowChevronRightIcon size="20" fill="white" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="w-full bg-white p-8 relative">
+      <section className="w-full bg-white p-4 sm:p-8 relative">
         <div className="w-56 h-4 rounded-full bg-gold mx-auto my-4"></div>
 
         <div className="w-full text-center py-4">
@@ -296,6 +184,10 @@ const HomeScreen = () => {
             enhances overall performance.
           </p>
         </div>
+
+        <div className="py-4">
+          <GoogleReviews />
+        </div>
       </section>
 
       <section>
@@ -306,6 +198,138 @@ const HomeScreen = () => {
 
       <Footer />
     </div>
+  );
+};
+
+const HomeThirdSection = () => {
+  const navigate = useNavigate();
+  const [content, setContent] = useState([]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const res = await axios.get(CONTENT_API);
+
+        const data = res.data?.data;
+        setContent(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  return (
+    <section className="w-full bg-white py-6 flex flex-col gap-y-10">
+      {content?.map((item, index) => {
+        const isLeftSide = index === 0;
+        return (
+          <div
+            key={index}
+            className={`w-full flex flex-col ${
+              isLeftSide ? "items-start" : "items-end"
+            }`}
+          >
+            <div
+              className={`w-[80%] ${
+                isLeftSide
+                  ? "border-y border-r border-slate-200 rounded-tr-2xl rounded-br-2xl"
+                  : "border-y border-l border-secondary bg-secondary rounded-tl-2xl rounded-bl-2xl"
+              } p-4 sm:px-10`}
+            >
+              <div
+                className={`max-w-7xl flex flex-col ${
+                  isLeftSide ? "md:flex-row" : "md:flex-row-reverse"
+                }  gap-x-4 items-start md:items-center justify-start`}
+              >
+                <img
+                  src={item?.image}
+                  className="object-cover w-full sm:w-72 h-72 rounded-xl"
+                  alt={item?.alt}
+                />
+
+                <div className="p-2 sm:p-6">
+                  <h1
+                    className={`text-4xl font-semibold py-4 ${
+                      isLeftSide ? "text-primary" : "text-white"
+                    }`}
+                  >
+                    {item?.title}
+                  </h1>
+                  <p
+                    className={`text-base sm:text-lg ${
+                      isLeftSide ? "text-primary" : "text-white"
+                    }`}
+                  >
+                    {item?.subtitle}
+                  </p>
+
+                  <div className="max-w-56 py-4">
+                    <Button
+                      bg={isLeftSide ? "bg-primary" : "bg-white"}
+                      textColor={isLeftSide ? "text-white" : "text-primary"}
+                      onPress={() => navigate(item?.redirect)}
+                    >
+                      {item?.button}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </section>
+  );
+};
+
+const ServicesSection = () => {
+  const [services, setServices] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const res = await axios.get(SERVICES_API);
+
+        const data = res.data?.data;
+        setServices(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  return (
+    <section className="w-full bg-white p-6">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-card gap-6 justify-center items-center">
+        {services?.map((item, index) => {
+          return (
+            <div
+              key={index}
+              onClick={() => navigate(item?.redirect)}
+              className="cursor-pointer rounded-2xl shadow-xl overflow-hidden"
+            >
+              <div className="w-full h-48 relative">
+                <img
+                  src={item?.image}
+                  className="w-full h-full object-cover"
+                  alt={item?.alt}
+                />
+              </div>
+              <div className="w-full min-h-20 bg-secondary p-4 flex gap-x-6 justify-center items-center">
+                <p className="text-base sm:text-xl text-white">{item?.title}</p>
+
+                <ArrowChevronRightIcon size="20" fill="white" />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 };
 

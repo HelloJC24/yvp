@@ -24,14 +24,14 @@ const CookiesPopupModal = ({ close }) => {
       <div className="flex sm:flex-col flex-row-reverse gap-x-2 sm:gap-x-0 gap-y-2">
         <div
           onClick={close}
-          className="flex-1 sm:px-14 py-2 rounded-full cursor-pointer bg-primary"
+          className="flex-1 flex justify-center items-center sm:px-14 py-2 rounded-full cursor-pointer bg-primary"
         >
           <p className="text-white text-xl text-center">Accept</p>
         </div>
 
         <div
           onClick={close}
-          className="flex-1 sm:px-14 py-2 rounded-full cursor-pointer bg-white border border-primary"
+          className="flex-1 flex justify-center items-center sm:px-14 py-2 rounded-full cursor-pointer bg-white border border-primary"
         >
           <p className="text-primary text-xl text-center">Reject</p>
         </div>

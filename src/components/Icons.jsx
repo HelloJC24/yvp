@@ -1,12 +1,10 @@
-import logo from "../assets/images/logo.png";
-
 export const AppLogo = (props) => {
   return (
     <img
       onClick={props.onClick}
-      src={logo}
+      src={props.image}
       className="cursor-pointer"
-      alt="logo"
+      alt={props.alt}
       width={props.size}
       height={props.size}
     />
@@ -249,6 +247,21 @@ export const CloseIcon = (props) => {
       height={props.size}
     >
       <path d="M23.707.293h0a1,1,0,0,0-1.414,0L12,10.586,1.707.293a1,1,0,0,0-1.414,0h0a1,1,0,0,0,0,1.414L10.586,12,.293,22.293a1,1,0,0,0,0,1.414h0a1,1,0,0,0,1.414,0L12,13.414,22.293,23.707a1,1,0,0,0,1.414,0h0a1,1,0,0,0,0-1.414L13.414,12,23.707,1.707A1,1,0,0,0,23.707.293Z" />
+    </svg>
+  );
+};
+
+export const StarIcon = (props) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Filled"
+      viewBox="0 0 24 24"
+      fill={props.fill}
+      width={props.size}
+      height={props.size}
+    >
+      <path d="M1.327,12.4,4.887,15,3.535,19.187A3.178,3.178,0,0,0,4.719,22.8a3.177,3.177,0,0,0,3.8-.019L12,20.219l3.482,2.559a3.227,3.227,0,0,0,4.983-3.591L19.113,15l3.56-2.6a3.227,3.227,0,0,0-1.9-5.832H16.4L15.073,2.432a3.227,3.227,0,0,0-6.146,0L7.6,6.568H3.231a3.227,3.227,0,0,0-1.9,5.832Z" />
     </svg>
   );
 };

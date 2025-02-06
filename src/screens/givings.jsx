@@ -1,52 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import Img1 from "../assets/images/giving/1.png";
-import Img10 from "../assets/images/giving/10.png";
-import Img11 from "../assets/images/giving/11.png";
-import Img12 from "../assets/images/giving/12.png";
-import Img13 from "../assets/images/giving/13.png";
-import Img14 from "../assets/images/giving/14.png";
-import Img15 from "../assets/images/giving/15.png";
-import Img16 from "../assets/images/giving/16.png";
-import Img17 from "../assets/images/giving/17.png";
-import Img18 from "../assets/images/giving/18.png";
-import Img19 from "../assets/images/giving/19.png";
-import Img2 from "../assets/images/giving/2.png";
-import Img20 from "../assets/images/giving/20.png";
-import Img21 from "../assets/images/giving/21.png";
-import Img22 from "../assets/images/giving/22.png";
-import Img23 from "../assets/images/giving/23.png";
-import Img24 from "../assets/images/giving/24.png";
-import Img25 from "../assets/images/giving/25.png";
-import Img26 from "../assets/images/giving/26.png";
-import Img27 from "../assets/images/giving/27.png";
-import Img28 from "../assets/images/giving/28.png";
-import Img29 from "../assets/images/giving/29.png";
-import Img3 from "../assets/images/giving/3.png";
-import Img30 from "../assets/images/giving/30.png";
-import Img31 from "../assets/images/giving/31.png";
-import Img32 from "../assets/images/giving/32.png";
-import Img33 from "../assets/images/giving/33.png";
-import Img34 from "../assets/images/giving/34.png";
-import Img35 from "../assets/images/giving/1.png";
-import Img36 from "../assets/images/giving/2.png";
-import Img37 from "../assets/images/giving/3.png";
-import Img38 from "../assets/images/giving/4.png";
-import Img39 from "../assets/images/giving/5.png";
-import Img4 from "../assets/images/giving/4.png";
-import Img5 from "../assets/images/giving/5.png";
-import Img6 from "../assets/images/giving/6.png";
-import Img7 from "../assets/images/giving/7.png";
-import Img8 from "../assets/images/giving/8.png";
-import Img9 from "../assets/images/giving/9.png";
+
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
+import axios from "axios";
 import {
   ArrowChevronLeftIcon,
   ArrowChevronRightIcon,
 } from "../components/Icons";
 import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
+import { GIVINGS_GALLERY_API } from "../config/constant";
 
 const GivingsScreen = () => {
   return (
@@ -79,242 +43,21 @@ const ImageGallery = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const thumbnailsRef = useRef(null);
   const interval = 5000;
-  const images = [
-    {
-      id: 1,
-      url: Img1,
-      alt: "",
-      thumbnail: Img1,
-    },
-    {
-      id: 2,
-      url: Img2,
-      alt: "",
-      thumbnail: Img2,
-    },
-    {
-      id: 3,
-      url: Img3,
-      alt: "",
-      thumbnail: Img3,
-    },
-    {
-      id: 4,
-      url: Img4,
-      alt: "",
-      thumbnail: Img4,
-    },
-    {
-      id: 5,
-      url: Img5,
-      alt: "",
-      thumbnail: Img5,
-    },
-    {
-      id: 6,
-      url: Img6,
-      alt: "",
-      thumbnail: Img6,
-    },
-    {
-      id: 7,
-      url: Img7,
-      alt: "",
-      thumbnail: Img7,
-    },
-    {
-      id: 8,
-      url: Img8,
-      alt: "",
-      thumbnail: Img8,
-    },
-    {
-      id: 9,
-      url: Img9,
-      alt: "",
-      thumbnail: Img9,
-    },
-    {
-      id: 10,
-      url: Img10,
-      alt: "",
-      thumbnail: Img10,
-    },
-    {
-      id: 11,
-      url: Img11,
-      alt: "",
-      thumbnail: Img11,
-    },
-    {
-      id: 12,
-      url: Img12,
-      alt: "",
-      thumbnail: Img12,
-    },
-    {
-      id: 13,
-      url: Img13,
-      alt: "",
-      thumbnail: Img13,
-    },
-    {
-      id: 14,
-      url: Img14,
-      alt: "",
-      thumbnail: Img14,
-    },
-    {
-      id: 15,
-      url: Img15,
-      alt: "",
-      thumbnail: Img15,
-    },
-    {
-      id: 16,
-      url: Img16,
-      alt: "",
-      thumbnail: Img16,
-    },
-    {
-      id: 17,
-      url: Img17,
-      alt: "",
-      thumbnail: Img17,
-    },
-    {
-      id: 18,
-      url: Img18,
-      alt: "",
-      thumbnail: Img18,
-    },
-    {
-      id: 19,
-      url: Img19,
-      alt: "",
-      thumbnail: Img19,
-    },
-    {
-      id: 20,
-      url: Img20,
-      alt: "",
-      thumbnail: Img20,
-    },
-    {
-      id: 21,
-      url: Img21,
-      alt: "",
-      thumbnail: Img21,
-    },
-    {
-      id: 22,
-      url: Img22,
-      alt: "",
-      thumbnail: Img22,
-    },
-    {
-      id: 23,
-      url: Img23,
-      alt: "",
-      thumbnail: Img23,
-    },
-    {
-      id: 24,
-      url: Img24,
-      alt: "",
-      thumbnail: Img24,
-    },
-    {
-      id: 25,
-      url: Img25,
-      alt: "",
-      thumbnail: Img25,
-    },
-    {
-      id: 26,
-      url: Img26,
-      alt: "",
-      thumbnail: Img26,
-    },
-    {
-      id: 27,
-      url: Img27,
-      alt: "",
-      thumbnail: Img27,
-    },
-    {
-      id: 28,
-      url: Img28,
-      alt: "",
-      thumbnail: Img28,
-    },
-    {
-      id: 29,
-      url: Img29,
-      alt: "",
-      thumbnail: Img29,
-    },
-    {
-      id: 30,
-      url: Img30,
-      alt: "",
-      thumbnail: Img30,
-    },
-    {
-      id: 31,
-      url: Img31,
-      alt: "",
-      thumbnail: Img31,
-    },
-    {
-      id: 32,
-      url: Img32,
-      alt: "",
-      thumbnail: Img32,
-    },
-    {
-      id: 33,
-      url: Img33,
-      alt: "",
-      thumbnail: Img33,
-    },
-    {
-      id: 34,
-      url: Img34,
-      alt: "",
-      thumbnail: Img34,
-    },
-    {
-      id: 35,
-      url: Img35,
-      alt: "",
-      thumbnail: Img35,
-    },
-    {
-      id: 36,
-      url: Img36,
-      alt: "",
-      thumbnail: Img36,
-    },
-    {
-      id: 37,
-      url: Img37,
-      alt: "",
-      thumbnail: Img37,
-    },
-    {
-      id: 38,
-      url: Img38,
-      alt: "",
-      thumbnail: Img38,
-    },
-    {
-      id: 39,
-      url: Img39,
-      alt: "",
-      thumbnail: Img39,
-    },
-  ];
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const loadGalleryData = async () => {
+      try {
+        const res = await axios.get(GIVINGS_GALLERY_API);
+        console.log(res.data.data);
+        setImages(res.data?.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    loadGalleryData();
+  }, []);
 
   useEffect(() => {
     if (thumbnailsRef.current) {
@@ -386,8 +129,8 @@ const ImageGallery = () => {
       {/* Main Image */}
       <div className="relative aspect-video mb-4 rounded-lg overflow-hidden bg-gray-100">
         <img
-          src={images[currentIndex].url}
-          alt={images[currentIndex].alt}
+          src={images[currentIndex]?.url}
+          alt={images[currentIndex]?.alt}
           className="w-full h-full object-cover"
         />
 
@@ -409,7 +152,7 @@ const ImageGallery = () => {
       {/* Thumbnails with drag scroll */}
       <div
         ref={thumbnailsRef}
-        className={`flex space-x-2 overflow-x-auto pb-2 gallery-scroll cursor-${
+        className={`flex space-x-2 overflow-x-auto pb-2 remove-scrollbar cursor-${
           isDragging ? "grabbing" : "grab"
         }`}
         onMouseDown={handleMouseDown}
@@ -417,9 +160,9 @@ const ImageGallery = () => {
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
       >
-        {images.map((image, index) => (
+        {images?.map((image, index) => (
           <button
-            key={image.id}
+            key={index}
             onClick={() => goToSlide(index)}
             className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden transition-opacity ${
               currentIndex === index
@@ -428,8 +171,8 @@ const ImageGallery = () => {
             }`}
           >
             <img
-              src={image.thumbnail}
-              alt={`Thumbnail ${index + 1}`}
+              src={image?.url}
+              alt={`Thumbnail ${image?.alt}`}
               className="w-full h-full object-cover"
               draggable="false"
             />
@@ -443,10 +186,10 @@ const ImageGallery = () => {
           height="315"
           src="https://www.youtube.com/embed/BAbqDpCrmr4?si=mw-699Me1yyFI-xs"
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
         ></iframe>
         <iframe
           className="w-full"
@@ -454,10 +197,10 @@ const ImageGallery = () => {
           height="315"
           src="https://www.youtube.com/embed/aVjpM54PFqU?si=Be1lNWFetLLCDtQi"
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
         ></iframe>
       </div>
     </div>

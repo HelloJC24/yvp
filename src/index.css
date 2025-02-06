@@ -2,18 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.gallery-scroll {
-  /* For Firefox */
-  scrollbar-width: none;
-  scroll-behavior: smooth;
-  overscroll-behavior-x: contain;
-  scrollbar-width: thin;
-  /* For Internet Explorer/Edge */
-  -ms-overflow-style: none;
-}
-
 /* For WebKit browsers (Chrome, Safari, Opera) */
-.gallery-scroll::-webkit-scrollbar {
+.remove-scrollbar::-webkit-scrollbar {
   display: none;
   width: 0 !important;
   height: 0 !important;
