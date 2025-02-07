@@ -255,7 +255,6 @@ const OurTeam = ({ onClick, image, alt, name, role, about }) => {
       >
         <img
           src={image}
-          alt=""
           className="w-72 h-72 sm:w-full sm:h-80 border-4 border-primary object-cover object-[0,1px] mb-2"
           alt={alt}
         />

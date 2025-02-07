@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { NEWSLETTER_API } from "../config/constant";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export const NewsletterCon = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +12,19 @@ export const NewsletterCon = () => {
 
       const res = await axios.get(`${NEWSLETTER_API}?email=${email}`);
       console.log(res.data);
+      if(res.data.status == 'ok'){
+             toast.success("You are now subscribed to our newsletter!", {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
+      }
       setEmail("");
     } catch (err) {
       console.log(err);
@@ -19,6 +33,19 @@ export const NewsletterCon = () => {
 
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24 lg:py-32">
+       <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
           <div className="max-w-xl lg:max-w-lg">

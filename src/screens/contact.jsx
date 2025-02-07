@@ -90,18 +90,18 @@ const ContactUsScreen = () => {
         <form className="w-full my-10 p-4 sm:p-8 rounded-2xl bg-slate-200 grid gap-4 grid-cols-0 sm:grid-cols-2">
           <input
             type="text"
-            className="col-span-2 sm:col-span-1"
-            placeholder="First Name"
+            className="col-span-2"
+            placeholder="Full Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
-          <input
+          {/* <input
             type="text"
             className="col-span-2 sm:col-span-1"
             placeholder="Last Name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-          />
+          /> */}
           <input
             className="col-span-2"
             type="email"
