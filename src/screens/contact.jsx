@@ -13,6 +13,7 @@ const ContactUsScreen = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [industry, setIndustry] = useState("");
@@ -32,6 +33,7 @@ const ContactUsScreen = () => {
         firstName,
         lastName,
         email,
+        phone,
         address,
         companyName,
         industry,
@@ -41,7 +43,7 @@ const ContactUsScreen = () => {
       });
       console.log(res);
 
-      toast.success("Email sent successfully!", {
+      toast.success("Email sent successfully! Will get back to you soon.", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -110,6 +112,13 @@ const ContactUsScreen = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
 
+        <input
+            className="col-span-2"
+            type="phone"
+            placeholder="Phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
           <textarea
             className="col-span-2 resize-none"
             rows={2}
