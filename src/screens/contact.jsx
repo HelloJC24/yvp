@@ -13,6 +13,7 @@ const ContactUsScreen = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [industry, setIndustry] = useState("");
@@ -32,6 +33,7 @@ const ContactUsScreen = () => {
         firstName,
         lastName,
         email,
+        phone,
         address,
         companyName,
         industry,
@@ -41,7 +43,7 @@ const ContactUsScreen = () => {
       });
       console.log(res);
 
-      toast.success("Email sent successfully!", {
+      toast.success("Email sent successfully! Will get back to you soon.", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -90,18 +92,18 @@ const ContactUsScreen = () => {
         <form className="w-full my-10 p-4 sm:p-8 rounded-2xl bg-slate-200 grid gap-4 grid-cols-0 sm:grid-cols-2">
           <input
             type="text"
-            className="col-span-2 sm:col-span-1"
-            placeholder="First Name"
+            className="col-span-2"
+            placeholder="Full Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
-          <input
+          {/* <input
             type="text"
             className="col-span-2 sm:col-span-1"
             placeholder="Last Name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-          />
+          /> */}
           <input
             className="col-span-2"
             type="email"
@@ -110,6 +112,13 @@ const ContactUsScreen = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
 
+        <input
+            className="col-span-2"
+            type="phone"
+            placeholder="Phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
           <textarea
             className="col-span-2 resize-none"
             rows={2}

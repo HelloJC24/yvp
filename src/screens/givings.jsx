@@ -44,6 +44,7 @@ const ImageGallery = () => {
   const thumbnailsRef = useRef(null);
   const interval = 5000;
   const [images, setImages] = useState([]);
+  const [youtube,setYoutube] = useState([])
 
   useEffect(() => {
     const loadGalleryData = async () => {
@@ -51,6 +52,7 @@ const ImageGallery = () => {
         const res = await axios.get(GIVINGS_GALLERY_API);
         console.log(res.data.data);
         setImages(res.data?.data);
+        setYoutube(res.data?.youtube)
       } catch (e) {
         console.log(e);
       }
@@ -179,29 +181,24 @@ const ImageGallery = () => {
           </button>
         ))}
       </div>
-      <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-2">
+      <div className="justify-start flex flex-wrap -mx-2.5 sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-2">
+       {
+        youtube?.map((bleeh,item)=>(
+
         <iframe
-          className="w-full"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/BAbqDpCrmr4?si=mw-699Me1yyFI-xs"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
-        <iframe
-          className="w-full"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/aVjpM54PFqU?si=Be1lNWFetLLCDtQi"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
+         className="w-full"
+         width="560"
+         height="315"
+         src={bleeh.url}
+         title={bleeh.title}
+         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+         referrerPolicy="strict-origin-when-cross-origin"
+         allowFullScreen
+       ></iframe>
+
+
+        ))}
+        
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ const OurPartnersAndInvestors = () => {
       {partners.map((item, index) => {
         return (
           <img
-            onClick={() => navigate(item?.redirect)}
+            onClick={() => window.open(item?.redirect,"_blank")}
             key={index}
             src={item?.image}
             className="w-20 h-20 sm:w-32 sm:h-32 flex flex-wrap gap-x-4 justify-center items-center"

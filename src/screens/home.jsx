@@ -97,14 +97,14 @@ const HomeScreen = () => {
           <div className="w-full hidden sm:w-[50%] sm:flex  gap-x-4 items-center justify-center px-4">
             <Button
               onPress={() =>
-                window.open(cover?.button?.[0]?.redirect, "_blank")
+                window.open(cover?.[0].redirect, "_blank")
               }
             >
               {cover?.button?.[0]?.text || "Unlock Your Virtual Partner"}
             </Button>
             <Button
               onPress={() =>
-                window.open(cover?.button?.[1]?.redirect, "_blank")
+                window.open(cover?.[1].redirect, "_blank")
               }
               withIcon={true}
             >
@@ -228,7 +228,7 @@ const HomeThirdSection = () => {
   return (
     <section className="w-full bg-white py-6 flex flex-col gap-y-10">
       {content?.map((item, index) => {
-        const isLeftSide = index === 0;
+        const isLeftSide = item?.style  == 'left' ? true : false;
         return (
           <div
             key={index}
