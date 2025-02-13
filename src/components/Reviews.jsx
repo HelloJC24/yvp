@@ -6,11 +6,10 @@ import { REVIEWS_API } from "../config/constant";
 import { ArrowChevronLeftIcon, ArrowChevronRightIcon, StarIcon } from "./Icons";
 // Import Swiper styles
 import "swiper/css";
-import { useWindowSize } from "./Header";
 
 // Review Card Subcomponent
 const ReviewCard = ({ name, image, alt, review, ratings }) => (
-  <div className="bg-white p-6 rounded-lg shadow-md w-full sm:mni-w-96 h-60 border border-slate-200 flex flex-col justify-center items-center">
+  <div className="bg-white p-6 rounded-lg shadow-sm w-full max-h-72 border border-slate-200 flex flex-col justify-center items-center">
     <div className="flex flex-col gap-y-2 items-center ">
       <img
         src={image}
@@ -43,7 +42,6 @@ const ReviewCard = ({ name, image, alt, review, ratings }) => (
 const GoogleReviews = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-  const { width, height } = useWindowSize();
 
   const [reviews, setReviews] = useState([]);
 
@@ -60,8 +58,6 @@ const GoogleReviews = () => {
     loadReviews();
   }, []);
 
-  const responsive =
-    width < 600 ? 1 : width > 600 && reviews.length > 3 ? 3 : 2;
   return (
     <div className="max-w-6xl mx-auto relative">
       <div>
@@ -86,7 +82,7 @@ const GoogleReviews = () => {
         loop={true}
         loopFillGroupWithBlank={true}
         breakpoints={{
-          640: { slidesPerView: responsive, slidesPerGroup: responsive }, // Tablets and above
+          640: { slidesPerView: 3, slidesPerGroup: 3 },
           0: { slidesPerView: 1, slidesPerGroup: 1 }, // Mobile screens
         }}
         navigation={{
@@ -104,7 +100,7 @@ const GoogleReviews = () => {
         className="swiper"
       >
         {reviews?.map((review, index) => (
-          <SwiperSlide key={index} className="row">
+          <SwiperSlide key={index} className="row py-2">
             <ReviewCard
               name={review.name}
               image={review.image}

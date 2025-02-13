@@ -2,6 +2,7 @@ const Button = ({
   bg,
   withIcon,
   textColor,
+  fontSize,
   radius,
   padding,
   onPress,
@@ -27,12 +28,12 @@ const Button = ({
       onClick={onPress}
       className={`w-full cursor-pointer ${bg || "bg-primary"} ${
         radius || "rounded-3xl"
-      } ${padding || "py-3 px-8"} shadow-md border border-primary`}
+      } ${padding || "py-3 px-8"} shadow-md `}
     >
       <p
-        className={`${
-          textColor || "text-white"
-        } text-center text-sm  sm:text-xl xl:text-2xl whitespace-nowrap `}
+        className={`${textColor || "text-white"} text-center ${
+          fontSize || "text-sm  sm:text-xl xl:text-2xl"
+        }  whitespace-nowrap `}
       >
         {children}
       </p>

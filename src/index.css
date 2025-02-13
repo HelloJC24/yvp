@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-gold: #bc9f62;
+}
+
 /* For WebKit browsers (Chrome, Safari, Opera) */
 .remove-scrollbar::-webkit-scrollbar {
   display: none;
@@ -27,15 +31,15 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #bc9f62;
+  background: var(--bg-gold);
 }
 
 li:hover > svg {
-  fill: #bc9f62;
+  fill: var(--bg-gold);
 }
 
 li:hover > a {
-  color: #bc9f62;
+  color: var(--bg-gold);
 }
 
 input,
@@ -82,5 +86,37 @@ textarea {
   textarea {
     padding: 0.8rem 1rem;
     font-size: 1rem;
+  }
+}
+
+/* loader component */
+.loader {
+  border: 4px solid var(--bg-gold);
+  border-left-color: transparent;
+  border-radius: 50%;
+}
+
+.loader {
+  border: 4px solid var(--bg-gold);
+  border-left-color: transparent;
+  width: 60px;
+  height: 60px;
+}
+
+.loader {
+  border: 4px solid var(--bg-gold);
+  border-left-color: transparent;
+  width: 60px;
+  height: 60px;
+  animation: spin89345 1s linear infinite;
+}
+
+@keyframes spin89345 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

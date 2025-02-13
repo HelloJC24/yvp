@@ -5,7 +5,7 @@ import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
 const ComingSoonScreen = () => {
   return (
-    <div className="w-full h-full bg-white relative overflow-hidden">
+    <div className="w-full h-full bg-white">
       <Header />
 
       <TitlteBar title="Coming soon" />

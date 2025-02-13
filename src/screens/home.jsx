@@ -6,6 +6,7 @@ import CookiesPopupModal from "../components/CookiesPopupModal";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { ArrowChevronRightIcon } from "../components/Icons";
+import Loading from "../components/Loading";
 import { NewsletterCon } from "../components/Newsletter";
 import OurPartnersAndInvestors from "../components/Partners";
 import GoogleReviews from "../components/Reviews";
@@ -34,15 +35,18 @@ const HomeScreen = () => {
   const [showCookiesPopup, setShowCookiesPopup] = useState(false);
   const navigate = useNavigate();
   const [cover, setCover] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const CoverData = async () => {
+      setIsLoading(true);
       try {
         const res = await axios.get(COVER_API);
         const data = res.data?.data;
         const btnData = res.data?.button;
         const video = res.data?.video;
         setCover({ video, ...data, ...btnData });
+        setIsLoading(false);
         console.log(res.data);
       } catch (err) {
         console.log(err);
@@ -71,6 +75,7 @@ const HomeScreen = () => {
 
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
+      {isLoading && <Loading />}
       {showCookiesPopup && <CookiesPopupModal close={() => handleReject()} />}
 
       <Header />
@@ -251,7 +256,7 @@ const HomeThirdSection = () => {
 
                 <div className="p-2 sm:p-6">
                   <h1
-                    className={`text-4xl font-semibold py-4 ${
+                    className={`text-2xl sm:text-4xl font-semibold py-4 ${
                       isLeftSide ? "text-primary" : "text-white"
                     }`}
                   >

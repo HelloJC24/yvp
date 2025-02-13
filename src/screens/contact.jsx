@@ -76,7 +76,7 @@ const ContactUsScreen = () => {
       <Header />
       <TitlteBar title="Contact Us" />
 
-      <main className="w-full p-8 max-w-7xl mx-auto">
+      <main className="w-full p-4 sm:p-8 max-w-7xl mx-auto">
         <div className="text-center py-8 w-full">
           <h1 className="text-xl sm:text-3xl font-semibold">
             Join us and collaborate.
