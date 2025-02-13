@@ -19,7 +19,7 @@ const GivingsScreen = () => {
 
       <TitlteBar title="Givings" />
 
-      <main className="w-full p-6 sm:p-20">
+      <main className="w-full p-4 sm:p-20">
         <h1 className="text-3xl text-primary font-bold text-center p-4">
           GALLERY
         </h1>
@@ -44,7 +44,7 @@ const ImageGallery = () => {
   const thumbnailsRef = useRef(null);
   const interval = 5000;
   const [images, setImages] = useState([]);
-  const [youtube,setYoutube] = useState([])
+  const [youtube, setYoutube] = useState([]);
 
   useEffect(() => {
     const loadGalleryData = async () => {
@@ -52,7 +52,7 @@ const ImageGallery = () => {
         const res = await axios.get(GIVINGS_GALLERY_API);
         console.log(res.data.data);
         setImages(res.data?.data);
-        setYoutube(res.data?.youtube)
+        setYoutube(res.data?.youtube);
       } catch (e) {
         console.log(e);
       }
@@ -127,7 +127,7 @@ const ImageGallery = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4">
+    <div className="max-w-6xl mx-auto p-4">
       {/* Main Image */}
       <div className="relative aspect-video mb-4 rounded-lg overflow-hidden bg-gray-100">
         <img
@@ -181,24 +181,20 @@ const ImageGallery = () => {
           </button>
         ))}
       </div>
-      <div className="justify-start flex flex-wrap -mx-2.5 sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-2">
-       {
-        youtube?.map((bleeh,item)=>(
-
-        <iframe
-         className="w-full"
-         width="560"
-         height="315"
-         src={bleeh.url}
-         title={bleeh.title}
-         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-         referrerPolicy="strict-origin-when-cross-origin"
-         allowFullScreen
-       ></iframe>
-
-
+      <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-2 pt-10">
+        {youtube?.map((bleeh, item, index) => (
+          <iframe
+            key={index}
+            className="w-full"
+            width="560"
+            height="315"
+            src={bleeh.url}
+            title={bleeh.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
         ))}
-        
       </div>
     </div>
   );
