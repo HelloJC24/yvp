@@ -1,12 +1,34 @@
-import React from "react";
-import SplashIcon from "../assets/images/icon.png";
+import React, { useState } from "react";
+import Img3 from "../assets/images/new-images/icon 3.png";
+import Img4 from "../assets/images/new-images/icon 4.png";
+
+import Img1 from "../assets/images/new-images/icon 1.png";
+import CareersWallImg from "../assets/images/new-images/video container.png";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { ArrowChevronDownIcon } from "../components/Icons";
 import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
 
 const CareersScreen = () => {
+  const [dropdownData, setDropdownData] = useState([
+    { title: "Mortgage Broker", text: "" },
+    { title: "Social Media Manager", text: "" },
+    { title: "Telemarketer", text: "" },
+    { title: "HR Generalist", text: "" },
+    { title: "Mortgage Associates", text: "" },
+    { title: "Health and Psychologist", text: "" },
+  ]);
+
+  const handleToggle = (index) => {
+    const updatedData = dropdownData.map((data, i) => {
+      return { ...data, active: index === i ? !data.active : false };
+    });
+
+    setDropdownData(updatedData);
+  };
+
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
       <Header />
@@ -15,9 +37,9 @@ const CareersScreen = () => {
 
       <section className="w-full max-w-7xl mx-auto p-6 sm:py-20">
         <img
-          src={SplashIcon}
+          src={CareersWallImg}
           alt="img"
-          className="w-full rounded-3xl object-cover sm:max-h-[580px] border border-slate-200"
+          className="w-full  object-cover sm:max-h-[680px]"
         />
       </section>
 
@@ -30,7 +52,7 @@ const CareersScreen = () => {
           <div className="w-full flex flex-col md:flex-row gap-y-6 sm:gap-x-10 items-center">
             <div className="relative">
               <img
-                src={SplashIcon}
+                src={Img1}
                 alt=""
                 className="w-full sm:w-[480px] h-full sm:max-h-[400px] object-cover rounded-2xl"
               />
@@ -53,29 +75,24 @@ const CareersScreen = () => {
               </h1>
 
               <p className="py-2 text-base sm:text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, eligendi officiis. Tempora animi, quam doloribus illo
-                a, esse labore optio voluptates, ipsa rem reprehenderit
-                laudantium eligendi repellat consequuntur. Magni dolorem
-                consequuntur tempore debitis optio. Sint eum aliquam quos
-                numquam alias eos dolorem. Nihil voluptates sit, natus accusamus
-                voluptate omnis quae!
+                In today’s fast-evolving digital world, remote work is more than
+                just a trend—it’s the future.YVP equips you with the skills,
+                resources, and opportunities to thrive in a virtual workspace.
               </p>
               <p className="py-2 text-base sm:text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Corrupti excepturi quo necessitatibus nihil nostrum optio earum
-                laborum, aut eveniet sapiente omnis aspernatur amet nemo unde
-                blanditiis molestiae fugiat quidem rerum.
+                From expert training and career development to flexible job
+                opportunities, we help you build a sustainable and rewarding
+                career.
               </p>
               <p className="py-2 text-base sm:text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Sapiente blanditiis dolore excepturi facilis quasi nobis minima
-                hic. Qui, sunt cupiditate!
+                Join a network of professionals embracing the freedom and
+                potential of remote work. Start your journey with YVP and turn
+                your virtual experience into real success.
               </p>
             </div>
           </div>
 
-          <div className="w-full flex flex-col md:flex-row-reverse gap-y-6 sm:gap-x-10 items-center">
+          {/* <div className="w-full flex flex-col md:flex-row-reverse gap-y-6 sm:gap-x-10 items-center">
             <div className="relative">
               <img
                 src={SplashIcon}
@@ -121,7 +138,7 @@ const CareersScreen = () => {
                 hic. Qui, sunt cupiditate!
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -138,12 +155,12 @@ const CareersScreen = () => {
         <div className="w-full flex flex-col items-center border-y-8 border-slate-200 py-8">
           <div className="w-full flex gap-x-20 items-center">
             <img
-              src={SplashIcon}
+              src={Img3}
               alt=""
               className="w-full max-h-80 object-cover rounded-2xl"
             />
             <img
-              src={SplashIcon}
+              src={Img4}
               alt=""
               className="w-full max-h-80 object-cover rounded-2xl"
             />
@@ -162,19 +179,20 @@ const CareersScreen = () => {
         </div>
 
         <div className="w-full border-b-4 border-slate-200 py-8">
-          <p className="text-xl sm:text-2xl text-primary font-medium pb-4">
-            Grow Your Career with YVP
-          </p>
+          <h1 className="text-xl sm:text-5xl pb-2 text-primary font-semibold">
+            How to become a <span className="text-gold">VA Partner</span>?
+          </h1>
 
-          <div className="w-full bg-secondary p-4 rounded-2xl">
-            <p className="text-white text-base sm:text-lg">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-              ut similique ipsum aliquid suscipit qui ad vel, amet sint
-              cupiditate labore! Necessitatibus modi ab excepturi itaque, quis
-              quo nostrum, incidunt distinctio sint optio quod exercitationem
-              assumenda nihil rerum nisi. Sed quos aspernatur eveniet ducimus
-              iure adipisci enim. Eum, labore velit!
-            </p>
+          <div className="w-full sm:p-10 grid grid-cols-2 items-start gap-2 sm:gap-8">
+            {dropdownData?.map((item, index) => (
+              <DropdownSelect
+                key={index}
+                title={item.title}
+                text={item.text}
+                active={item.active}
+                toggle={() => handleToggle(index)}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -182,6 +200,25 @@ const CareersScreen = () => {
       <StartConversation />
 
       <Footer />
+    </div>
+  );
+};
+
+const DropdownSelect = ({ toggle, title, text, active }) => {
+  return (
+    <div className="bg-secondary p-2 rounded-xl">
+      <div className="flex justify-between items-center px-2">
+        <h1 className="text-base sm:text-lg py-2  text-white">{title}</h1>
+        <div onClick={toggle} className="cursor-pointer">
+          <ArrowChevronDownIcon fill="#fff" size="20" />
+        </div>
+      </div>
+
+      {active && (
+        <div className="w-full p-6  rounded-2xl ">
+          <p className="text-white text-base">{text}</p>
+        </div>
+      )}
     </div>
   );
 };

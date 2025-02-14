@@ -74,7 +74,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <div className="w-full h-full bg-white relative overflow-hidden">
+    <div className="w-full h-full bg-white relative overflow-hidden ">
       {isLoading && <Loading />}
       {showCookiesPopup && <CookiesPopupModal close={() => handleReject()} />}
 
@@ -95,17 +95,11 @@ const HomeScreen = () => {
           </div>
 
           <div className="w-full hidden sm:w-[50%] sm:flex  gap-x-4 items-center justify-center px-4">
-            <Button
-              onPress={() =>
-                window.open(cover?.[0].redirect, "_blank")
-              }
-            >
+            <Button onPress={() => window.open(cover?.[0].redirect, "_blank")}>
               {cover?.button?.[0]?.text || "Unlock Your Virtual Partner"}
             </Button>
             <Button
-              onPress={() =>
-                window.open(cover?.[1].redirect, "_blank")
-              }
+              onPress={() => window.open(cover?.[1].redirect, "_blank")}
               withIcon={true}
             >
               <svg
@@ -228,7 +222,7 @@ const HomeThirdSection = () => {
   return (
     <section className="w-full bg-white py-6 flex flex-col gap-y-10">
       {content?.map((item, index) => {
-        const isLeftSide = item?.style  == 'left' ? true : false;
+        const isLeftSide = item?.style == "left" ? true : false;
         return (
           <div
             key={index}

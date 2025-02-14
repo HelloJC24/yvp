@@ -2,6 +2,7 @@ import { Route, HashRouter as Router, Routes } from "react-router-dom";
 import AboutUsScreen from "./screens/about";
 import ArticlesScreen from "./screens/articles";
 import BlogScreen from "./screens/blogs";
+import BusinessScreen from "./screens/business";
 import CareersScreen from "./screens/careers";
 import ComingSoonScreen from "./screens/coming_soon";
 import ContactUsScreen from "./screens/contact";
@@ -24,6 +25,7 @@ function App() {
         <Route path="/blogs" element={<BlogScreen />} />
         <Route path="/mentoring" element={<MentoringScreen />} />
         <Route path="/upcoming-event" element={<UpcomingEventsScreen />} />
+        <Route path="/business" element={<BusinessScreen />} />
       </Routes>
     </Router>
   );

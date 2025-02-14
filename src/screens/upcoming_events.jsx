@@ -1,5 +1,12 @@
 import React from "react";
-import SplashIcon from "../assets/images/icon.png";
+import Img1_7 from "../assets/images/new-images/icon 1-7.png";
+import Img2_2 from "../assets/images/new-images/icon 2-2.png";
+import Img3_1 from "../assets/images/new-images/icon 3-1.png";
+import Img4_1 from "../assets/images/new-images/icon 4-1.png";
+import Img5_2 from "../assets/images/new-images/icon 5-2.png";
+import Img6_2 from "../assets/images/new-images/icon 6-2.png";
+import Img7_2 from "../assets/images/new-images/icon 7-2.png";
+
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -20,7 +27,7 @@ const UpcomingEventsScreen = () => {
         <div className="w-full relative">
           <div className="w-full h-full absolute bg-gradient-to-t from-black/80 to-transparent rounded-2xl"></div>
           <img
-            src={SplashIcon}
+            src={Img5_2}
             alt="img"
             className="w-full rounded-3xl object-cover sm:max-h-[580px] border border-slate-200"
           />
@@ -39,7 +46,7 @@ const UpcomingEventsScreen = () => {
       </section>
 
       <section className="max-w-7xl mx-auto p-6 sm:p-10">
-        <h1 className=" text-2xl sm:text-4xl text-primary font-medium pb-6">
+        <h1 className=" text-2xl sm:text-4xl text-primary font-bold pb-6">
           <span className="text-gold">Upcoming Events at YVP!</span>- Stay Tuned
           for Exciting Opportunites!
         </h1>
@@ -47,7 +54,7 @@ const UpcomingEventsScreen = () => {
         <div className="w-full py-6 flex flex-col md:flex-row gap-y-6 sm:gap-x-10">
           <div className="h-full relative">
             <img
-              src={SplashIcon}
+              src={Img1_7}
               alt=""
               className="w-full sm:w-[480px] h-full sm:max-h-[400px] object-cover rounded-2xl"
             />
@@ -67,19 +74,31 @@ const UpcomingEventsScreen = () => {
             <h1 className="text-3xl font-semibold text-gold">
               TONY ROBBINS EXPERIENCE
             </h1>
-            <p className="text-base py-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-              recusandae nesciunt quos laborum dolor iure commodi ullam magnam
-              at, pariatur velit necessitatibus laudantium illum eius ipsam
-              cumque maiores quo quam modi corporis vitae. Nisi fugiat possimus,
-              facilis, facere eaque, fuga accusamus quaerat quo odio unde illum
-              repellat earum voluptatem aliquid.
+            <p className="text-lg py-4">
+              Join exclusive Tony Robbins events that empower you with
+              life-changing strategies for success, leadership, and personal
+              growth. These events are designed to help you break through
+              limitations, build confidence, and achieve high performance.
             </p>
 
             <div className="flex flex-col gap-y-6 py-4">
-              <DescriptionItem />
-              <DescriptionItem />
-              <DescriptionItem />
+              <DescriptionItem
+                title="Unleash the Power Within (UPW)"
+                text="Breakthrough event for success & mindset transformation"
+              />
+              <DescriptionItem
+                title="Business Mastery"
+                text="Learn financial and business strategies from top industry leaders"
+              />
+              <DescriptionItem
+                title="Date with Destiny"
+                text="A deep dive into personal and professional purpose"
+              />
+
+              <DescriptionItem
+                title="Leadership Academy"
+                text="Enhance leadership and communication skills"
+              />
             </div>
           </div>
         </div>
@@ -87,7 +106,7 @@ const UpcomingEventsScreen = () => {
         <div className="w-full py-6 flex flex-col md:flex-row-reverse gap-y-6 sm:gap-x-10">
           <div className="h-full relative">
             <img
-              src={SplashIcon}
+              src={Img2_2}
               alt=""
               className="w-full sm:w-[480px] h-full sm:max-h-[400px] object-cover rounded-2xl"
             />
@@ -108,17 +127,18 @@ const UpcomingEventsScreen = () => {
               YVP Family Immersion Trip
             </h1>
 
-            <p className="text-base py-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-              recusandae nesciunt quos laborum dolor iure commodi ullam magnam
-              at, pariatur velit necessitatibus laudantium illum eius ipsam
-              cumque maiores quo quam modi corporis vitae. Nisi fugiat possimus,
-              facilis, facere eaque, fuga accusamus quaerat quo odio unde illum
-              repellat earum voluptatem aliquid.
+            <p className="text-base sm:text-lg py-4">
+              Celebrate your journey with YVP in a unique bonding experience!
+              This retreat is designed for team-building, professional
+              networking, and personal reflection, allowing you to connect with
+              fellow virtual professionals in a relaxing and inspiring
+              environment.Make an impact by helping underserved communities
+              through YVP’s partnership with Gawad Kalinga. Together, we’re
+              fostering positive change through:
             </p>
 
             <div className="">
-              <p className="text-base font-bold">
+              <p className="text-sm sm:text-base font-bold">
                 Feeding Programs
                 <br />
                 Career Training for Future Virtual Assistants <br />
@@ -135,11 +155,11 @@ const UpcomingEventsScreen = () => {
           <span className="text-gold">Mentoring Workshops</span>
         </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-10 py-4">
-          <CareerGrowthCard />
-          <CareerGrowthCard />
-          <CareerGrowthCard />
-          <CareerGrowthCard />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-4">
+          <CareerGrowthCard image={Img3_1} btnText="BOOK HERE" />
+          <CareerGrowthCard image={Img4_1} btnText="JOIN HERE" />
+          <CareerGrowthCard image={Img6_2} btnText="SEE MORE" />
+          <CareerGrowthCard image={Img7_2} btnText="BE A MENTEE" />
         </div>
       </section>
 
@@ -150,19 +170,10 @@ const UpcomingEventsScreen = () => {
   );
 };
 
-const CareerGrowthCard = () => {
+const CareerGrowthCard = ({ image, btnText, redirect }) => {
   return (
-    <div className="rounded-2xl relative ">
-      <img
-        src={SplashIcon}
-        alt="img"
-        className="w-full sm:max-h-72 rounded-3xl object-cover"
-      />
-      <div className="max-w-48 absolute top-4 right-4 sm:top-8 sm:right-8">
-        <p className="text-xl sm:text-3xl font-medium text-center">
-          SUCCESS & MINDSET COACHING
-        </p>
-      </div>
+    <div className="rounded-2xl  relative overflow-hidden">
+      <img src={image} alt="img" className="w-full h-full object-contain " />
 
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
         <Button
@@ -171,23 +182,18 @@ const CareerGrowthCard = () => {
           radius="rounded-full"
           padding="py-2 px-8"
         >
-          BOOK HERE
+          {btnText}
         </Button>
       </div>
     </div>
   );
 };
 
-const DescriptionItem = () => {
+const DescriptionItem = ({ title, text }) => {
   return (
-    <div>
-      <p className="text-base">
-        <span className="font-bold">Application & Screening</span> - Lorem
-        ipsum, dolor sit amet consectetur adipisicing elit. Magnam, culpa amet
-        laboriosam ratione beatae rerum quisquam quibusdam, nostrum, hic maxime
-        pariatur magni neque. Consequatur,
-      </p>
-    </div>
+    <p className="text-base sm:text-lg">
+      <span className="font-bold">{title}</span> - {text}
+    </p>
   );
 };
 
