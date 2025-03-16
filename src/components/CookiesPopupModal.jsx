@@ -1,6 +1,6 @@
 import { CookieIcon } from "./Icons";
 
-const CookiesPopupModal = ({ close }) => {
+const CookiesPopupModal = ({ close, accept }) => {
   return (
     <div className="fixed bottom-5 left-5 right-5 z-50 rounded-xl shadow-xl border border-slate-300 bg-white p-6 flex sm:flex-row sm:gap-y-0 gap-y-4 flex-col">
       <div className="flex flex-col gap-y-2 sm:gap-y-0 sm:flex-row items-center">
@@ -23,7 +23,7 @@ const CookiesPopupModal = ({ close }) => {
 
       <div className="flex sm:flex-col flex-row-reverse gap-x-2 sm:gap-x-0 gap-y-2">
         <div
-          onClick={close}
+          onClick={accept}
           className="flex-1 flex justify-center items-center sm:px-14 py-2 rounded-full cursor-pointer bg-primary"
         >
           <p className="text-white text-xl text-center">Accept</p>

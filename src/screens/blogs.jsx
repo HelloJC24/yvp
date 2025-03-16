@@ -12,9 +12,6 @@ import Img7_2 from "../assets/images/new-images/icon 7.png";
 import Img8_2 from "../assets/images/new-images/icon 8.png";
 
 import Button from "../components/Button";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
 
 const BlogScreen = () => {
@@ -183,8 +180,6 @@ const BlogScreen = () => {
 
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
-      <Header />
-
       <TitlteBar title="Blogs" />
 
       <section className="w-full max-w-7xl mx-auto p-6 pt-10 ">
@@ -212,7 +207,7 @@ const BlogScreen = () => {
       </section>
 
       <section className="max-w-7xl mx-auto p-6 sm:p-10">
-        <h1 className=" text-2xl sm:text-4xl text-primary font-medium pb-6">
+        <h1 className=" text-xl sm:text-4xl text-primary font-medium pb-6">
           Why pursue a career at Your Virtual Partner?
         </h1>
 
@@ -261,7 +256,7 @@ const BlogScreen = () => {
             </div>
           </div>
 
-          <div className="w-full flex gap-x-4 py-8">
+          <div className="w-full flex flex-col sm:flex-row gap-y-4 sm:gap-x-4 py-8">
             <div className="flex-1 bg-gold p-4 rounded-2xl">
               {descriptionData[0].item1?.map((item, index) => {
                 return (
@@ -322,7 +317,7 @@ const BlogScreen = () => {
             </div>
           </div>
 
-          <div className="w-full flex gap-x-4 py-8">
+          <div className="w-full flex flex-col sm:flex-row gap-y-4 sm:gap-x-4 py-8">
             <div className="flex-1 bg-gold p-4 rounded-2xl">
               {descriptionData[1].item1?.map((item, index) => {
                 return (
@@ -387,7 +382,7 @@ const BlogScreen = () => {
             </div>
           </div>
 
-          <div className="w-full flex gap-x-4 py-8">
+          <div className="w-full flex flex-col sm:flex-row gap-y-4 sm:gap-x-4 py-8">
             <div className="flex-1 bg-secondary p-4 rounded-2xl">
               {descriptionData[2].item1?.map((item, index) => {
                 return (
@@ -449,7 +444,7 @@ const BlogScreen = () => {
             </div>
           </div>
 
-          <div className="w-full flex gap-x-4 py-8">
+          <div className="w-full flex flex-col sm:flex-row gap-y-4 sm:gap-x-4 py-8">
             <div className="flex-1 bg-secondary p-4 rounded-2xl">
               {descriptionData[3].item1?.map((item, index) => {
                 return (
@@ -475,10 +470,6 @@ const BlogScreen = () => {
           </div>
         </div>
       </section>
-
-      <StartConversation />
-
-      <Footer />
     </div>
   );
 };

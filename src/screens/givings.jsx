@@ -1,22 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-
 import axios from "axios";
 import {
   ArrowChevronLeftIcon,
   ArrowChevronRightIcon,
 } from "../components/Icons";
-import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
 import { GIVINGS_GALLERY_API } from "../config/constant";
 
 const GivingsScreen = () => {
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
-      <Header />
-
       <TitlteBar title="Givings" />
 
       <main className="w-full p-4 sm:p-20">
@@ -28,10 +22,6 @@ const GivingsScreen = () => {
           <ImageGallery />
         </div>
       </main>
-
-      <StartConversation />
-
-      <Footer />
     </div>
   );
 };

@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import BusinessWallImg from "../assets/images/new-images/business-wall.png";
 import Img2 from "../assets/images/new-images/icon 2.png";
 import Button from "../components/Button";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 import { ArrowChevronDownIcon } from "../components/Icons";
-import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
 
 const BusinessScreen = () => {
@@ -28,8 +25,6 @@ const BusinessScreen = () => {
 
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
-      <Header />
-
       <TitlteBar title="Business" />
 
       <section className="w-full max-w-7xl mx-auto p-6 pt-10 ">
@@ -99,38 +94,36 @@ const BusinessScreen = () => {
           </div>
         </div>
       </section>
-
-      <section className="max-w-7xl mx-auto p-6 sm:p-10">
-        <div className="w-full border-b-4 border-slate-200 py-8">
-          <h1 className="text-xl sm:text-5xl pb-2 text-primary font-semibold">
-            <span className="text-gold">Find your Talents</span> Here
-          </h1>
-
-          <div className="w-full sm:p-10 grid grid-cols-2 items-start gap-2 sm:gap-8">
-            {dropdownData?.map((item, index) => (
-              <DropdownSelect
-                key={index}
-                title={item.title}
-                text={item.text}
-                active={item.active}
-                toggle={() => handleToggle(index)}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <StartConversation />
-
-      <Footer />
     </div>
   );
 };
 
+{
+  /* <section className="max-w-7xl mx-auto p-6 sm:p-10">
+  <div className="w-full border-b-4 border-slate-200 py-8">
+    <h1 className="text-xl sm:text-5xl pb-2 text-primary font-semibold">
+      <span className="text-gold">Find your Talents</span> Here
+    </h1>
+
+    <div className="w-full sm:p-10 grid grid-cols-1 sm:grid-cols-2 items-start gap-4 sm:gap-8">
+      {dropdownData?.map((item, index) => (
+        <DropdownSelect
+          key={index}
+          title={item.title}
+          text={item.text}
+          active={item.active}
+          toggle={() => handleToggle(index)}
+        />
+      ))}
+    </div>
+  </div>
+</section>; */
+}
+
 const DropdownSelect = ({ toggle, title, text, active }) => {
   return (
     <div className="bg-secondary p-2 rounded-xl">
-      <div className="flex justify-between items-center px-2">
+      <div onClick={toggle} className="flex justify-between items-center px-2">
         <h1 className="text-base sm:text-lg py-2  text-white">{title}</h1>
         <div onClick={toggle} className="cursor-pointer">
           <ArrowChevronDownIcon fill="#fff" size="20" />

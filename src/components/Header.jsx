@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { HEADER_API, SOCIALS_API } from "../config/constant";
 import {
@@ -18,10 +18,12 @@ const Header = () => {
   const { width, height } = useWindowSize();
   const [activeSidemenu, setActiveSideMenu] = useState(false);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState(null);
 
   useEffect(() => {
     const loadData = async () => {
+      setIsLoading(true);
       try {
         const res = await axios.get(HEADER_API);
         const data = res.data;
@@ -30,6 +32,8 @@ const Header = () => {
         console.log(res.data);
       } catch (err) {
         console.log(err);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -37,7 +41,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className=" w-full bg-white py-2 pt-4 md:pt-2 px-6 flex justify-between items-end md:items-center fixed top-0 z-50 shadow-md">
+    <div className=" w-full bg-white py-2 pt-4 md:pt-2 px-6 flex justify-between items-end md:items-center fixed top-0 z-[100] shadow-md">
       <AppLogo
         image={data?.logo_image}
         alt={data?.alt}
@@ -70,7 +74,19 @@ const Header = () => {
 
 const MobileNavMenu = ({ data, activeSidemenu }) => {
   const navigate = useNavigate();
-  const [activeDropdown, setActiveDropdown] = useState(false);
+  const [activeDropdownIndex, setActiveDropdownIndex] = useState(null);
+  const dropdownTimeout = useRef(null);
+
+  const handleMouseEnter = (index) => {
+    clearTimeout(dropdownTimeout.current);
+    setActiveDropdownIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeout.current = setTimeout(() => {
+      setActiveDropdownIndex(null);
+    }, 100);
+  };
 
   return (
     <div
@@ -86,21 +102,30 @@ const MobileNavMenu = ({ data, activeSidemenu }) => {
               className={`${
                 !item?.dropdown && "flex gap-x-2 items-center"
               } cursor-pointer relative`}
-              onClick={() => !item?.dropdown && navigate(item?.redirect)}
+              onMouseEnter={
+                item?.dropdown ? () => handleMouseEnter(index) : undefined
+              }
+              onClick={
+                item?.dropdown ? () => handleMouseEnter(index) : undefined
+              }
+              onMouseLeave={item?.dropdown ? handleMouseLeave : undefined}
             >
               <div
                 onClick={() =>
-                  item?.dropdown && setActiveDropdown(!activeDropdown)
+                  item?.dropdown && setActiveDropdownIndex(!activeDropdownIndex)
                 }
                 className="flex gap-x-2 items-center"
               >
-                <a className="text-xl">
+                <a
+                  onClick={() => !item?.dropdown && navigate(item?.redirect)}
+                  className="text-xl"
+                >
                   <p className="hover:text-gold">{item?.item}</p>
                 </a>
-                <ArrowChevronDownIcon size="10" />
+                {item?.dropdown && <ArrowChevronDownIcon size="10" />}
               </div>
 
-              {item?.dropdown && activeDropdown && (
+              {item?.dropdown && activeDropdownIndex === index && (
                 <div className="px-2 w-full duration-300">
                   <Dropdown dropItem={item?.drop_item} />
                 </div>
@@ -114,50 +139,48 @@ const MobileNavMenu = ({ data, activeSidemenu }) => {
 };
 
 const Navigation = ({ data }) => {
-  const [showDropdown, setToggleDropdown] = useState(false);
+  const [activeDropdownIndex, setActiveDropdownIndex] = useState(null);
   const navigate = useNavigate();
-  let dropdownTimeout;
+  const dropdownTimeout = useRef(null);
 
-  const handleMouseEnter = () => {
-    clearTimeout(dropdownTimeout);
-    setToggleDropdown(true);
+  const handleMouseEnter = (index) => {
+    clearTimeout(dropdownTimeout.current);
+    setActiveDropdownIndex(index);
   };
 
   const handleMouseLeave = () => {
-    dropdownTimeout = setTimeout(() => setToggleDropdown(false), 100);
+    dropdownTimeout.current = setTimeout(() => {
+      setActiveDropdownIndex(null);
+    }, 100);
   };
 
   return (
     <nav className="hidden md:flex justify-between items-center">
       <ul className="flex gap-x-6 items-center">
-        {data?.data?.map((item, index) => {
-          return (
-            <li
-              key={index}
-              className="flex gap-x-2 items-center cursor-pointer relative"
-              onMouseEnter={item?.dropdown ? handleMouseEnter : null}
-              onMouseLeave={item?.dropdown ? handleMouseLeave : null}
+        {data?.data?.map((item, index) => (
+          <li
+            key={index}
+            className={`flex gap-x-2 items-center cursor-pointer relative`}
+            onMouseEnter={
+              item?.dropdown ? () => handleMouseEnter(index) : undefined
+            }
+            onMouseLeave={item?.dropdown ? handleMouseLeave : undefined}
+          >
+            <a
+              className="text-xl"
+              onClick={() => !item?.dropdown && navigate(item?.redirect)}
             >
-              <a
-                className="text-xl"
-                onClick={() => !item?.dropdown && navigate(item?.redirect)}
-              >
-                <p className="hover:text-gold">{item?.item}</p>
-              </a>
-              <ArrowChevronDownIcon size="15" />
+              <p className="hover:text-gold">{item?.item}</p>
+            </a>
+            {item?.dropdown && <ArrowChevronDownIcon size="15" />}
 
-              {item?.dropdown && showDropdown && (
-                <div
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                  className=" absolute top-8 -left-20  bg-white rounded-xl border border-slate-200 shadow-lg p-4"
-                >
-                  <Dropdown dropItem={item?.drop_item} />
-                </div>
-              )}
-            </li>
-          );
-        })}
+            {item?.dropdown && activeDropdownIndex === index && (
+              <div className="absolute top-8 -left-20 bg-white rounded-xl border border-slate-200 shadow-lg p-4">
+                <Dropdown dropItem={item?.drop_item} />
+              </div>
+            )}
+          </li>
+        ))}
       </ul>
     </nav>
   );
@@ -168,7 +191,7 @@ const Dropdown = ({ dropItem }) => {
 
   const navigate = useNavigate();
   return (
-    <ul className="w-full">
+    <ul className="sm:min-w-36">
       {dropItem?.map((item, index) => {
         return (
           <li

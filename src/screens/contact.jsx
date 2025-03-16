@@ -2,10 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import Button from "../components/Button";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 import { MapMarkerIcon } from "../components/Icons";
-import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
 import { SUBMIT_CONTACT_FORM_API } from "../config/constant";
 
@@ -75,7 +72,6 @@ const ContactUsScreen = () => {
         transition={Bounce}
       />
 
-      <Header />
       <TitlteBar title="Contact Us" />
 
       <main className="w-full p-4 sm:p-8 max-w-7xl mx-auto">
@@ -112,7 +108,7 @@ const ContactUsScreen = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
 
-        <input
+          <input
             className="col-span-2"
             type="phone"
             placeholder="Phone"
@@ -190,9 +186,6 @@ const ContactUsScreen = () => {
           {companyAddress}
         </p>
       </main>
-
-      <StartConversation />
-      <Footer address={(v) => setCompanyAddress(v)} />
     </div>
   );
 };

@@ -5,10 +5,7 @@ import Img4 from "../assets/images/new-images/icon 4.png";
 import Img1 from "../assets/images/new-images/icon 1.png";
 import CareersWallImg from "../assets/images/new-images/video container.png";
 import Button from "../components/Button";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 import { ArrowChevronDownIcon } from "../components/Icons";
-import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
 
 const CareersScreen = () => {
@@ -31,8 +28,6 @@ const CareersScreen = () => {
 
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
-      <Header />
-
       <TitlteBar title="Careers" />
 
       <section className="w-full max-w-7xl mx-auto p-6 sm:py-20">
@@ -91,54 +86,6 @@ const CareersScreen = () => {
               </p>
             </div>
           </div>
-
-          {/* <div className="w-full flex flex-col md:flex-row-reverse gap-y-6 sm:gap-x-10 items-center">
-            <div className="relative">
-              <img
-                src={SplashIcon}
-                alt=""
-                className="w-full sm:w-[480px] h-full sm:max-h-[400px] object-cover rounded-2xl"
-              />
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-                <Button
-                  fontSize="text-base"
-                  bg="bg-gold"
-                  radius="rounded-full"
-                  padding="py-2 px-8"
-                >
-                  LEARN MORE
-                </Button>
-              </div>
-            </div>
-
-            <div className="flex-1">
-              <b className="text-2xl font-medium">aim the career with</b>
-              <h1 className="text-3xl font-semibold text-gold">
-                YOUR VIRTUAL EXPERIENCE
-              </h1>
-
-              <p className="py-2 text-base sm:text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, eligendi officiis. Tempora animi, quam doloribus illo
-                a, esse labore optio voluptates, ipsa rem reprehenderit
-                laudantium eligendi repellat consequuntur. Magni dolorem
-                consequuntur tempore debitis optio. Sint eum aliquam quos
-                numquam alias eos dolorem. Nihil voluptates sit, natus accusamus
-                voluptate omnis quae!
-              </p>
-              <p className="py-2 text-base sm:text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Corrupti excepturi quo necessitatibus nihil nostrum optio earum
-                laborum, aut eveniet sapiente omnis aspernatur amet nemo unde
-                blanditiis molestiae fugiat quidem rerum.
-              </p>
-              <p className="py-2 text-base sm:text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Sapiente blanditiis dolore excepturi facilis quasi nobis minima
-                hic. Qui, sunt cupiditate!
-              </p>
-            </div>
-          </div> */}
         </div>
       </section>
 
@@ -153,7 +100,7 @@ const CareersScreen = () => {
         </p>
 
         <div className="w-full flex flex-col items-center border-y-8 border-slate-200 py-8">
-          <div className="w-full flex gap-x-20 items-center">
+          <div className="w-full flex flex-col sm:flex-row gap-y-4 sm:gap-x-20 items-center">
             <img
               src={Img3}
               alt=""
@@ -183,7 +130,7 @@ const CareersScreen = () => {
             How to become a <span className="text-gold">VA Partner</span>?
           </h1>
 
-          <div className="w-full sm:p-10 grid grid-cols-2 items-start gap-2 sm:gap-8">
+          <div className="w-full py-6 grid grid-cols-1 sm:grid-cols-2 items-start gap-4 sm:gap-8">
             {dropdownData?.map((item, index) => (
               <DropdownSelect
                 key={index}
@@ -196,10 +143,6 @@ const CareersScreen = () => {
           </div>
         </div>
       </section>
-
-      <StartConversation />
-
-      <Footer />
     </div>
   );
 };

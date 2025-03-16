@@ -5,16 +5,11 @@ import Img7_1 from "../assets/images/new-images/icon 7-1.png";
 import Img8_1 from "../assets/images/new-images/icon 8-1.png";
 
 import Button from "../components/Button";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
 
 const MentoringScreen = () => {
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
-      <Header />
-
       <TitlteBar title="Mentoring" />
 
       <section className="w-full max-w-7xl mx-auto p-6 pt-10 ">
@@ -164,10 +159,6 @@ const MentoringScreen = () => {
           </div>
         </div>
       </section>
-
-      <StartConversation />
-
-      <Footer />
     </div>
   );
 };

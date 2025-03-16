@@ -1,13 +1,9 @@
 import React from "react";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
 
 const ArticlesScreen = () => {
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
-      <Header />
       <TitlteBar title="Articles" />
 
       <main className="w-full h-screen p-20">
@@ -23,10 +19,6 @@ const ArticlesScreen = () => {
           </p>
         </div>
       </main>
-
-      <StartConversation />
-
-      <Footer />
     </div>
   );
 };

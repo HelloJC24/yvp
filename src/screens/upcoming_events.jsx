@@ -8,16 +8,11 @@ import Img6_2 from "../assets/images/new-images/icon 6-2.png";
 import Img7_2 from "../assets/images/new-images/icon 7-2.png";
 
 import Button from "../components/Button";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import StartConversation from "../components/StartConversation";
 import TitlteBar from "../components/TitlteBar";
 
 const UpcomingEventsScreen = () => {
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
-      <Header />
-
       <TitlteBar title="Upcoming Events" />
 
       <section className="w-full max-w-7xl mx-auto p-6 pt-10 ">
@@ -37,7 +32,7 @@ const UpcomingEventsScreen = () => {
               fontSize="text-base"
               bg="bg-gold"
               radius="rounded-full"
-              padding="py-2 px-8"
+              padding="py-2 px-6 sm:px-8"
             >
               LEARN MORE
             </Button>
@@ -63,7 +58,7 @@ const UpcomingEventsScreen = () => {
                 fontSize="text-base"
                 bg="bg-gold"
                 radius="rounded-full"
-                padding="py-2 px-8"
+                padding="py-2 px-6 sm:px-8"
               >
                 JOIN US
               </Button>
@@ -115,7 +110,7 @@ const UpcomingEventsScreen = () => {
                 fontSize="text-base"
                 bg="bg-gold"
                 radius="rounded-full"
-                padding="py-2 px-8"
+                padding="py-2 px-6 sm:px-8"
               >
                 JOIN US
               </Button>
@@ -162,10 +157,6 @@ const UpcomingEventsScreen = () => {
           <CareerGrowthCard image={Img7_2} btnText="BE A MENTEE" />
         </div>
       </section>
-
-      <StartConversation />
-
-      <Footer />
     </div>
   );
 };
@@ -180,7 +171,7 @@ const CareerGrowthCard = ({ image, btnText, redirect }) => {
           fontSize="text-base"
           bg="bg-gold"
           radius="rounded-full"
-          padding="py-2 px-8"
+          padding="py-2 px-6 sm:px-8"
         >
           {btnText}
         </Button>

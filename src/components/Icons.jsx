@@ -2,7 +2,10 @@ export const AppLogo = (props) => {
   return (
     <img
       onClick={props.onClick}
-      src={props.image}
+      src={
+        props.image ||
+        "https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/ZThWSmw1b3lPck81ZlpraHJSY2Q5WFE9.png"
+      }
       className="cursor-pointer"
       alt={props.alt}
       width={props.size}

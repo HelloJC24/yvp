@@ -6,17 +6,16 @@ import Impletemantion from "../assets/images/icons/confidentiality.png";
 import Growth from "../assets/images/icons/optimization.png";
 import Safety from "../assets/images/icons/safety.png";
 import Workteam from "../assets/images/icons/work-team.png";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 import { CloseIcon } from "../components/Icons";
-import StartConversation from "../components/StartConversation";
+import Loading from "../components/Loading";
 import TitlteBar from "../components/TitlteBar";
 import { FAQS, MISSION_VISSION_API, TEAM_API } from "../config/constant";
-
 const AboutUsScreen = () => {
   const [activeModal, setActiveModal] = useState(false);
   const [selectedProfile, setSelectedProfile] = useState(null);
   const [missionVission, setMissionVission] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const coreValues = [
     {
       id: 1,
@@ -62,10 +61,12 @@ const AboutUsScreen = () => {
 
   useEffect(() => {
     const loadMV = async () => {
+      setIsLoading(true);
       try {
         const res = await axios.get(MISSION_VISSION_API);
         const data = res.data?.data;
         setMissionVission(data);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -85,6 +86,7 @@ const AboutUsScreen = () => {
       try {
         const res = await axios.get(FAQS);
         const data = res.data?.data;
+        console.log("data: ", data);
 
         setQuestions(
           data?.map((question) => ({
@@ -126,10 +128,12 @@ const AboutUsScreen = () => {
     setSelectedProfile(null);
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
-      <Header />
-
       <TitlteBar title="About Us" />
 
       <main className="w-full max-w-7xl mx-auto flex flex-col gap-y-6 p-4 sm:p-12">
@@ -231,9 +235,6 @@ const AboutUsScreen = () => {
           </div>
         </div>
       </section>
-
-      <StartConversation />
-      <Footer />
 
       {activeModal && selectedProfile && (
         <ProfileModal

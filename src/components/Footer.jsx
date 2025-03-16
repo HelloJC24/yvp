@@ -28,7 +28,7 @@ const Footer = ({ address }) => {
 
   return (
     <footer className="w-full bg-secondary p-4">
-      <div className="w-full max-w-7xl mx-auto px-2  py-8 flex flex-col md:flex-row justify-center items-start md:items-center">
+      <div className="w-full max-w-7xl mx-auto px-2  py-8 flex flex-col sm:flex-row justify-center items-start sm:items-center">
         <AppLogo
           image={data?.logo?.image}
           size={150}
@@ -42,17 +42,17 @@ const Footer = ({ address }) => {
         </div>
       </div>
 
-      <div className="w-full max-w-7xl mx-auto px-2 flex flex-col  sm:flex-row gap-y-2 gap-x-2 justify-between items-center">
+      <div className="w-full max-w-7xl mx-auto px-2 flex flex-col  sm:flex-row gap-y-2 gap-x-2 justify-around items-center">
         <p className="text-sm text-white">{data?.logo?.year}</p>
         <p className="hidden sm:block text-sm text-white">
-          © ALL RIGHT RESERVED
+          © ALL RIGHT RESERVED 2025
         </p>
 
         <SocialIcon iconColor="#fff" />
       </div>
 
       <p className="block sm:hidden text-center p-4 text-sm text-white">
-        © ALL RIGHT RESERVED
+        © ALL RIGHT RESERVED 2025
       </p>
     </footer>
   );
@@ -71,7 +71,7 @@ const ContactUs = ({ contact, extra }) => {
   return (
     <div className="w-full">
       <h1 className="text-xl text-slate-300">Contact Us</h1>
-      <ul>
+      {/* <ul>
         {extra?.map((item, index) => {
           return (
             <li key={index}>
@@ -88,7 +88,7 @@ const ContactUs = ({ contact, extra }) => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
       <ul>
         <li>
           <p className="text-base text-slate-300">

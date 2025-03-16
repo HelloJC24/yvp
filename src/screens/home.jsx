@@ -3,14 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import CookiesPopupModal from "../components/CookiesPopupModal";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 import { ArrowChevronRightIcon } from "../components/Icons";
 import Loading from "../components/Loading";
 import { NewsletterCon } from "../components/Newsletter";
 import OurPartnersAndInvestors from "../components/Partners";
 import GoogleReviews from "../components/Reviews";
-import StartConversation from "../components/StartConversation";
 import { CONTENT_API, COVER_API, SERVICES_API } from "../config/constant";
 const VideoPlayer = ({ url }) => {
   return (
@@ -33,7 +30,6 @@ const VideoPlayer = ({ url }) => {
 
 const HomeScreen = () => {
   const [showCookiesPopup, setShowCookiesPopup] = useState(false);
-  const navigate = useNavigate();
   const [cover, setCover] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -46,10 +42,11 @@ const HomeScreen = () => {
         const btnData = res.data?.button;
         const video = res.data?.video;
         setCover({ video, ...data, ...btnData });
-        setIsLoading(false);
         console.log(res.data);
       } catch (err) {
         console.log(err);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -73,23 +70,27 @@ const HomeScreen = () => {
     setShowCookiesPopup(false);
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className="w-full h-full bg-white relative overflow-hidden ">
-      {isLoading && <Loading />}
-      {showCookiesPopup && <CookiesPopupModal close={() => handleReject()} />}
+      {showCookiesPopup && (
+        <CookiesPopupModal close={handleReject} accept={handleAccept} />
+      )}
 
-      <Header />
       <main className="mt-24 sm:mt-20 overflow-hidden relative w-full h-full  bg-gradient-to-r from-white to-[#4f4f4f]">
         <VideoPlayer url={cover?.video} />
         <div className="inset-0 absolute h-full z-20 bg-white bg-opacity-50 gap-y-6 sm:gap-y-[80px] px-20 flex flex-col  justify-center items-center">
           <div className="text-center">
-            <h1 className="sm:text-6xl xl:text-7xl text-3xl outfit-500 text-center ">
+            <h1 className="sm:text-6xl xl:text-7xl text-3xl outfit-500 text-center  [text-shadow:_0_2px_4px_rgba(0,0,0,0.3)]">
               {cover?.title1 || "Your Reliable"}
               <span className="ml-3 text-gold">
                 {cover?.title2 || "Partner"}
               </span>
             </h1>
-            <p className="sm:text-3xl text-base font-semibold text-white">
+            <p className="sm:text-3xl text-base font-semibold text-white [text-shadow:_0_2px_4px_rgba(0,0,0,0.5)] ">
               {cover?.subtag || "for Seamless Outsourcing"}
             </p>
           </div>
@@ -192,10 +193,6 @@ const HomeScreen = () => {
       <section>
         <NewsletterCon />
       </section>
-
-      <StartConversation />
-
-      <Footer />
     </div>
   );
 };
@@ -231,16 +228,16 @@ const HomeThirdSection = () => {
             }`}
           >
             <div
-              className={`w-[80%] ${
+              className={`w-[90%] sm:w-[80%] ${
                 isLeftSide
                   ? "border-y border-r border-slate-200 rounded-tr-2xl rounded-br-2xl"
                   : "border-y border-l border-secondary bg-secondary rounded-tl-2xl rounded-bl-2xl"
               } p-4 sm:px-10`}
             >
               <div
-                className={`max-w-7xl flex flex-col ${
+                className={`max-w-7xl mx-auto flex flex-col ${
                   isLeftSide ? "md:flex-row" : "md:flex-row-reverse"
-                }  gap-x-4 items-start md:items-center justify-start`}
+                }  gap-x-4  `}
               >
                 <img
                   src={item?.image}
