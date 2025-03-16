@@ -1,11 +1,23 @@
-const Button = ({ bg, withIcon, textColor, onPress, children }) => {
+const Button = ({
+  bg,
+  withIcon,
+  textColor,
+  fontSize,
+  radius,
+  padding,
+  onPress,
+  children,
+  bwidth,
+}) => {
   if (withIcon) {
     return (
       <div
         onClick={onPress}
-        className={`w-full cursor-pointer ${
-          bg || "bg-primary"
-        } rounded-3xl py-3 px-8 flex gap-x-4 justify-center items-center shadow-md`}
+        className={`w-full cursor-pointer ${bg || "bg-primary"} ${
+          radius || "rounded-3xl"
+        } ${padding || "py-3 px-8"} ${
+          bwidth || "w-full"
+        }  flex gap-x-4 justify-center items-center shadow-md`}
       >
         {children}
       </div>
@@ -15,14 +27,14 @@ const Button = ({ bg, withIcon, textColor, onPress, children }) => {
   return (
     <div
       onClick={onPress}
-      className={`w-full cursor-pointer ${
-        bg || "bg-primary"
-      } rounded-3xl py-3 px-8 shadow-md border border-primary`}
+      className={`w-full cursor-pointer ${bg || "bg-primary"} ${
+        radius || "rounded-3xl"
+      } ${padding || "py-3 px-8"} shadow-md ${bwidth || "w-full"}`}
     >
       <p
-        className={`${
-          textColor || "text-white"
-        } text-center text-sm  sm:text-xl xl:text-2xl whitespace-nowrap `}
+        className={`${textColor || "text-white"} text-center ${
+          fontSize || "text-sm sm:text-xl xl:text-2xl"
+        }  whitespace-nowrap `}
       >
         {children}
       </p>

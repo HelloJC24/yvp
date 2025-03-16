@@ -10,6 +10,12 @@ lerna-debug.log*
 node_modules
 dist
 src/assets/images/giving/
+src/assets/images/new-images
+public/images/images/partners
+public/images/images/giving
+public/images/images/icons
+public/images/images
+public/images/videos
 dist-ssr
 *.local
 

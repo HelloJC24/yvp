@@ -1,15 +1,34 @@
-import logo from "../assets/images/logo.png";
-
 export const AppLogo = (props) => {
   return (
     <img
       onClick={props.onClick}
-      src={logo}
+      src={
+        props.image ||
+        "https://fruitask.com/assets/file_upload/eLA83DpvIiTsDXN/ZThWSmw1b3lPck81ZlpraHJSY2Q5WFE9.png"
+      }
       className="cursor-pointer"
-      alt="logo"
+      alt={props.alt}
       width={props.size}
       height={props.size}
     />
+  );
+};
+
+export const HamburgerIcon = (props) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Outline"
+      viewBox="0 0 24 24"
+      fill={props.fill}
+      width={props.size}
+      height={props.size}
+    >
+      <path d="M1,6H23a1,1,0,0,0,0-2H1A1,1,0,0,0,1,6Z" />
+      <path d="M23,9H9a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z" />
+      <path d="M23,19H9a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z" />
+      <path d="M23,14H1a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z" />
+    </svg>
   );
 };
 
@@ -29,6 +48,24 @@ export const FacebookIcon = (props) => {
       <g>
         <path d="M24,12.073c0,5.989-4.394,10.954-10.13,11.855v-8.363h2.789l0.531-3.46H13.87V9.86c0-0.947,0.464-1.869,1.95-1.869h1.509   V5.045c0,0-1.37-0.234-2.679-0.234c-2.734,0-4.52,1.657-4.52,4.656v2.637H7.091v3.46h3.039v8.363C4.395,23.025,0,18.061,0,12.073   c0-6.627,5.373-12,12-12S24,5.445,24,12.073z" />
       </g>
+    </svg>
+  );
+};
+
+export const TiktokIcon = (props) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      id="Capa_1"
+      x="0px"
+      y="0px"
+      viewBox="0 0 24 24"
+      fill={props.fill}
+      width={props.size}
+      height={props.size}
+    >
+      <path d="M22.465,9.866c-2.139,0-4.122-0.684-5.74-1.846v8.385c0,4.188-3.407,7.594-7.594,7.594c-1.618,0-3.119-0.51-4.352-1.376  c-1.958-1.375-3.242-3.649-3.242-6.218c0-4.188,3.407-7.595,7.595-7.595c0.348,0,0.688,0.029,1.023,0.074v0.977v3.235  c-0.324-0.101-0.666-0.16-1.023-0.16c-1.912,0-3.468,1.556-3.468,3.469c0,1.332,0.756,2.489,1.86,3.07  c0.481,0.253,1.028,0.398,1.609,0.398c1.868,0,3.392-1.486,3.462-3.338L12.598,0h4.126c0,0.358,0.035,0.707,0.097,1.047  c0.291,1.572,1.224,2.921,2.517,3.764c0.9,0.587,1.974,0.93,3.126,0.93V9.866z" />
     </svg>
   );
 };
@@ -213,6 +250,21 @@ export const CloseIcon = (props) => {
       height={props.size}
     >
       <path d="M23.707.293h0a1,1,0,0,0-1.414,0L12,10.586,1.707.293a1,1,0,0,0-1.414,0h0a1,1,0,0,0,0,1.414L10.586,12,.293,22.293a1,1,0,0,0,0,1.414h0a1,1,0,0,0,1.414,0L12,13.414,22.293,23.707a1,1,0,0,0,1.414,0h0a1,1,0,0,0,0-1.414L13.414,12,23.707,1.707A1,1,0,0,0,23.707.293Z" />
+    </svg>
+  );
+};
+
+export const StarIcon = (props) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="Filled"
+      viewBox="0 0 24 24"
+      fill={props.fill}
+      width={props.size}
+      height={props.size}
+    >
+      <path d="M1.327,12.4,4.887,15,3.535,19.187A3.178,3.178,0,0,0,4.719,22.8a3.177,3.177,0,0,0,3.8-.019L12,20.219l3.482,2.559a3.227,3.227,0,0,0,4.983-3.591L19.113,15l3.56-2.6a3.227,3.227,0,0,0-1.9-5.832H16.4L15.073,2.432a3.227,3.227,0,0,0-6.146,0L7.6,6.568H3.231a3.227,3.227,0,0,0-1.9,5.832Z" />
     </svg>
   );
 };
