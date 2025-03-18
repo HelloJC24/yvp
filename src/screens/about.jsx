@@ -384,7 +384,9 @@ const CoreValuesCard = ({ icon, title, text }) => {
 const AboutCard = ({ image, alt, title, text, bg }) => {
   return (
     <div className={`w-full rounded-2xl bg-${bg} px-8 py-6`}>
-      <h1 className="text-2xl font-semibold text-white py-2">{title}</h1>
+      <h1 className="text-2xl sm:text-3xl font-semibold text-white py-2">
+        {title}
+      </h1>
 
       <div className="flex gap-x-4 flex-col gap-y-2 sm:flex-row">
         <img
@@ -393,7 +395,7 @@ const AboutCard = ({ image, alt, title, text, bg }) => {
           className="w-full sm:w-40 h-40 object-cover rounded-xl"
         />
 
-        <p className="text-lg text-white">{text}</p>
+        <p className="text-lg sm:text-2xl text-white">{text}</p>
       </div>
     </div>
   );

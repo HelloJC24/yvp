@@ -21,6 +21,17 @@ const Header = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState(null);
 
+  const redirect = (url) => {
+    if (!url) return;
+
+    const isExternal = url.startsWith("http");
+    if (isExternal) {
+      window.open(url, "_blank");
+    } else {
+      navigate(url);
+    }
+  };
+
   useEffect(() => {
     const loadData = async () => {
       setIsLoading(true);
@@ -49,7 +60,7 @@ const Header = () => {
         onClick={() => navigate("/")}
       />
 
-      <Navigation data={data} />
+      <Navigation redirect={redirect} data={data} />
 
       <div className="hidden md:block">
         <SocialIcon iconColor="#333" />
@@ -67,12 +78,16 @@ const Header = () => {
       </div>
 
       {/* for mobile view */}
-      <MobileNavMenu data={data} activeSidemenu={activeSidemenu} />
+      <MobileNavMenu
+        redirect={redirect}
+        data={data}
+        activeSidemenu={activeSidemenu}
+      />
     </div>
   );
 };
 
-const MobileNavMenu = ({ data, activeSidemenu }) => {
+const MobileNavMenu = ({ redirect, data, activeSidemenu }) => {
   const navigate = useNavigate();
   const [activeDropdownIndex, setActiveDropdownIndex] = useState(null);
   const dropdownTimeout = useRef(null);
@@ -117,17 +132,17 @@ const MobileNavMenu = ({ data, activeSidemenu }) => {
                 className="flex gap-x-2 items-center"
               >
                 <a
-                  onClick={() => !item?.dropdown && navigate(item?.redirect)}
+                  onClick={() => !item?.dropdown && redirect(item?.redirect)}
                   className="text-xl"
                 >
                   <p className="hover:text-gold">{item?.item}</p>
                 </a>
-                {item?.dropdown && <ArrowChevronDownIcon size="10" />}
+                <ArrowChevronDownIcon size="10" />
               </div>
 
               {item?.dropdown && activeDropdownIndex === index && (
                 <div className="px-2 w-full duration-300">
-                  <Dropdown dropItem={item?.drop_item} />
+                  <Dropdown redirect={redirect} dropItem={item?.drop_item} />
                 </div>
               )}
             </li>
@@ -138,7 +153,7 @@ const MobileNavMenu = ({ data, activeSidemenu }) => {
   );
 };
 
-const Navigation = ({ data }) => {
+const Navigation = ({ data, redirect }) => {
   const [activeDropdownIndex, setActiveDropdownIndex] = useState(null);
   const navigate = useNavigate();
   const dropdownTimeout = useRef(null);
@@ -168,15 +183,15 @@ const Navigation = ({ data }) => {
           >
             <a
               className="text-xl"
-              onClick={() => !item?.dropdown && navigate(item?.redirect)}
+              onClick={() => !item?.dropdown && redirect(item?.redirect)}
             >
               <p className="hover:text-gold">{item?.item}</p>
             </a>
-            {item?.dropdown && <ArrowChevronDownIcon size="15" />}
+            <ArrowChevronDownIcon size="15" />
 
             {item?.dropdown && activeDropdownIndex === index && (
               <div className="absolute top-8 -left-20 bg-white rounded-xl border border-slate-200 shadow-lg p-4">
-                <Dropdown dropItem={item?.drop_item} />
+                <Dropdown dropItem={item?.drop_item} redirect={redirect} />
               </div>
             )}
           </li>
@@ -186,7 +201,7 @@ const Navigation = ({ data }) => {
   );
 };
 
-const Dropdown = ({ dropItem }) => {
+const Dropdown = ({ dropItem, redirect }) => {
   const { width } = useWindowSize();
 
   const navigate = useNavigate();
@@ -198,7 +213,7 @@ const Dropdown = ({ dropItem }) => {
             key={index}
             className="w-full flex gap-x-4 justify-between items-center"
           >
-            <a onClick={() => navigate(item?.redirect)}>
+            <a onClick={() => redirect(item?.redirect)}>
               <p className="text-lg whitespace-nowrap">{item?.title}</p>
             </a>
 
@@ -210,7 +225,7 @@ const Dropdown = ({ dropItem }) => {
   );
 };
 
-export const useWindowSize = () => {
+const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,

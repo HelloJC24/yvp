@@ -36,7 +36,7 @@ function App() {
           <Route path="/mentoring" element={<MentoringScreen />} />
           <Route path="/upcoming-event" element={<UpcomingEventsScreen />} />
           <Route path="/business" element={<BusinessScreen />} />
-          <Route path="/available-position" element={<AvailablePosition />} />
+          <Route path="/hiring" element={<AvailablePosition />} />
           <Route path="/testimonials" element={<TestimonialsScreen />} />
         </Routes>
       </Suspense>

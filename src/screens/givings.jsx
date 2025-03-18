@@ -5,10 +5,37 @@ import {
   ArrowChevronLeftIcon,
   ArrowChevronRightIcon,
 } from "../components/Icons";
+import Loading from "../components/Loading";
 import TitlteBar from "../components/TitlteBar";
 import { GIVINGS_GALLERY_API } from "../config/constant";
 
 const GivingsScreen = () => {
+  const [images, setImages] = useState([]);
+  const [youtube, setYoutube] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const loadGalleryData = async () => {
+      setIsLoading(true);
+      try {
+        const res = await axios.get(GIVINGS_GALLERY_API);
+        console.log(res.data.data);
+        setImages(res.data?.data);
+        setYoutube(res.data?.youtube);
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadGalleryData();
+  }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
       <TitlteBar title="Givings" />
@@ -19,37 +46,20 @@ const GivingsScreen = () => {
         </h1>
 
         <div className="w-full ">
-          <ImageGallery />
+          <ImageGallery images={images} youtube={youtube} />
         </div>
       </main>
     </div>
   );
 };
 
-const ImageGallery = () => {
+const ImageGallery = ({ images, youtube }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const thumbnailsRef = useRef(null);
   const interval = 5000;
-  const [images, setImages] = useState([]);
-  const [youtube, setYoutube] = useState([]);
-
-  useEffect(() => {
-    const loadGalleryData = async () => {
-      try {
-        const res = await axios.get(GIVINGS_GALLERY_API);
-        console.log(res.data.data);
-        setImages(res.data?.data);
-        setYoutube(res.data?.youtube);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    loadGalleryData();
-  }, []);
 
   useEffect(() => {
     if (thumbnailsRef.current) {
