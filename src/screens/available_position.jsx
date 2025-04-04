@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { ArrowChevronDownIcon } from "../components/Icons";
 import Loading from "../components/Loading";
@@ -55,7 +56,7 @@ const AvailablePosition = () => {
             selectedJob={selectedJob}
             setSelectedJob={(v) => setSelectedJob(v)}
           />
-          <JobDescription />
+          {/* <JobDescription /> */}
         </div>
       </main>
     </div>
@@ -63,6 +64,8 @@ const AvailablePosition = () => {
 };
 
 const JobDescription = () => {
+  const navigate = useNavigate();
+
   const responsibilities = [
     {
       text: "Client Consultation: Assess mortgage needs, financial goals, and recommend suitable loan products.",
@@ -125,9 +128,14 @@ const JobDescription = () => {
         </ul>
       </div>
 
-      <a href="/#/coming-soon" className="sm:text-xl underline text-white pt-6">
+      <p
+        onClick={() =>
+          window.open("https://forms.gle/8iR5LFBcEufLT13X7", "_blank")
+        }
+        className="sm:text-xl underline text-white pt-6 cursor-pointer"
+      >
         FILL UP THE FORM HERE
-      </a>
+      </p>
     </div>
   );
 };
@@ -269,17 +277,26 @@ const JobDetails = ({ job }) => {
         </div>
       )}
 
-      <div className="pt-8 max-w-60">
-        <Button
-          onPress={() => window.open(job.redirect, "_blank")}
-          fontSize="text-sm sm:text-base"
-          bg="bg-gold"
-          radius="rounded-full"
-          padding="py-2 px-6 sm:px-8"
+      {job.isForm ? (
+        <p
+          onClick={() => window.open(job.redirect, "_blank")}
+          className="sm:text-xl underline text-white pt-6 cursor-pointer"
         >
-          Start Your VA Journey
-        </Button>
-      </div>
+          FILL UP THE FORM HERE
+        </p>
+      ) : (
+        <div className="pt-8 max-w-60">
+          <Button
+            onPress={() => window.open(job.redirect, "_blank")}
+            fontSize="text-sm sm:text-base"
+            bg="bg-gold"
+            radius="rounded-full"
+            padding="py-2 px-6 sm:px-8"
+          >
+            Start Your VA Journey
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

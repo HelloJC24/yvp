@@ -84,7 +84,7 @@ const HomeScreen = () => {
         <VideoPlayer url={cover?.video} />
         <div className="inset-0 absolute h-full z-20 bg-white bg-opacity-50 gap-y-6 sm:gap-y-[80px] px-20 flex flex-col  justify-center items-center">
           <div className="text-center">
-            <h1 className="sm:text-6xl xl:text-7xl text-3xl outfit-500 text-center  [text-shadow:_0_2px_4px_rgba(0,0,0,0.3)]">
+            <h1 className="sm:text-6xl 2xl:text-8xl text-3xl outfit-500 text-center  [text-shadow:_0_2px_4px_rgba(0,0,0,0.3)]">
               {cover?.title1 || "Your Reliable"}
               <span className="ml-3 text-gold">
                 {cover?.title2 || "Partner"}

@@ -125,7 +125,7 @@ const MobileNavMenu = ({ redirect, data, activeSidemenu }) => {
               }
               onMouseLeave={item?.dropdown ? handleMouseLeave : undefined}
             >
-              <div
+              <div 
                 onClick={() =>
                   item?.dropdown && setActiveDropdownIndex(!activeDropdownIndex)
                 }

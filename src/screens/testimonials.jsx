@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import Img1 from "../assets/images/new-images/icon 1-1.png";
-import Img2 from "../assets/images/new-images/icon 1-2.png";
-import Img5 from "../assets/images/new-images/icon 1-5.png";
-import Img6 from "../assets/images/new-images/icon 1-6.png";
-import Img3 from "../assets/images/new-images/icon 3.png";
-import Img4 from "../assets/images/new-images/icon 4.png";
+import AceImg from "../assets/images/new-images/ace.jpg";
+import AlbertImg from "../assets/images/new-images/albert.jpg";
+import DanicaImg from "../assets/images/new-images/danica.jpg";
+import GlendaImg from "../assets/images/new-images/glenda.jpg";
+import JoannaImg from "../assets/images/new-images/joanna.jpg";
+import KandraImg from "../assets/images/new-images/kandra.jpg";
+import MarkImg from "../assets/images/new-images/mark.jpg";
+import MonicaImg from "../assets/images/new-images/monica.jpg";
 import Button from "../components/Button";
 import TitlteBar from "../components/TitlteBar";
 
@@ -12,13 +14,13 @@ const TestimonialsScreen = () => {
   const testimonials = [
     {
       id: 1,
-      img: Img3,
+      img: DanicaImg,
       name: "DANICA DUKE",
       text: "I’ve been with Your Virtual Partner for over 2 years, and I’ve seen a lot of growth both personally and professionally. The company truly invests in employee development, offering continuous training and opportunities to advance. My managers are approachable and supportive, which has made my experience here very rewarding.",
     },
     {
       id: 2,
-      img: Img4,
+      img: AceImg,
       name: "ACE MATHEW BEUP",
       text: "As a proud product of YVP Outsourcing, I can confidently say that their services have been life-changing! 🚀 From providing top-notch outsourcing solutions to helping professionals like me grow in the industry, YVP has been a game-changer. Their expertise, efficiency, and commitment to excellence make them stand out.",
     },
@@ -26,32 +28,32 @@ const TestimonialsScreen = () => {
 
   const [articleData, setArticleData] = useState([
     {
-      image: Img1,
+      image: JoannaImg,
       name: "JOANNA PAOLLA SIGLOS",
       text: "I am very grateful to be part of YVP team , its been an amazing learning experience specially for someone like me who started here with no experience in this kind of field and come to think of it I've been part of the team for 2yrs already. Yohoooo!!",
     },
     {
-      image: Img2,
+      image: GlendaImg,
       name: "GLENDA MAE NONO",
       text: "Working here has been awesome! The work-life balance here is amazing. I'm an executive assistant and I actually have a life outside of work! The company is really understanding and flexible. So glad I found this place!",
     },
     {
-      image: Img3,
+      image: AlbertImg,
       name: "ALBERT MICHAEL AGUILAR",
       text: "Grateful to be part of YVP. Great culture, supportive colleagues, and excellent career development opportunities. Proud to be here!",
     },
     {
-      image: Img4,
+      image: MarkImg,
       name: "MARK IGNACIO",
       text: "I’ve been with Your Virtual Partner for over 2 years, and I’ve seen a lot of growth both personally and professionally. The company truly invests in employee development, offering continuous training and opportunities to advance. My managers are approachable and supportive, which has made my experience here very rewarding.",
     },
     {
-      image: Img5,
+      image: KandraImg,
       name: "KANDRA ANDONE",
       text: "An amazing opportunity with YVP has been unlocked to me. Flexible schedule, supportive workmates, incredible CEO & dedicated Brokers, work-life balance and sharing of ideas are all in this company. My heart is happy to be a part of YVP. ",
     },
     {
-      image: Img6,
+      image: MonicaImg,
       name: "MONICA ORIEL",
       text: "I am truly grateful to be a part of YVP. The culture is great, colleagues and management are very supportive and career development opportunities are available to everyone. Extremely proud to be here!",
     },
@@ -80,7 +82,7 @@ const TestimonialsScreen = () => {
                     <img
                       src={item.img}
                       alt=""
-                      className="w-full max-h-80 object-cover rounded-2xl"
+                      className="w-full sm:max-h-96 object-cover rounded-2xl"
                     />
 
                     <div className="py-4">
@@ -113,8 +115,51 @@ const TestimonialsScreen = () => {
             })}
           </div>
         </section>
+
+        <VideoTestimonial />
       </main>
     </div>
+  );
+};
+
+const VideoTestimonial = () => {
+  const [videoData, setVideoData] = useState([
+    {
+      id: 1,
+      name: "ADRIAN MCVITTIE",
+      video: "https://youtube.com/embed/VXTIGTduZk0?feature=share",
+    },
+    {
+      id: 2,
+      name: "TK YEOH",
+      video: "https://youtube.com/embed/MOnRuaX1Wr8?feature=share",
+    },
+  ]);
+
+  return (
+    <section className="w-full py-10">
+      <h1 className="text-center text-2xl sm:text-3xl font-medium pb-20">
+        <span className="text-gold">VIDEO</span> TESTIMONIAL
+      </h1>
+
+      <div className="w-full flex flex-col gap-y-10 sm:flex-row sm:gap-x-10 justify-center items-center">
+        {videoData?.map((item, index) => {
+          return (
+            <div key={index} className="max-w-[450px]">
+              <iframe
+                className="w-full h-96"
+                src={item.video}
+                allowfullscreen
+              ></iframe>
+
+              <h1 className="text-center text-lg sm:text-2xl font-medium p-4">
+                {item.name}
+              </h1>
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 };
 
@@ -124,7 +169,7 @@ const ArticlesCard = ({ item }) => {
       <img
         src={item.image}
         alt="img"
-        className="w-full h-48 sm:h-72 rounded-xl object-cover "
+        className="w-full max-h-72 rounded-xl object-cover"
       />
 
       <div className="">

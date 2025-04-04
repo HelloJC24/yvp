@@ -351,7 +351,7 @@ const BlogScreen = () => {
           <div className="flex flex-col-reverse sm:flex-row gap-y-4 sm:gap-x-8">
             <div className="flex-1">
               <h1 className="text-2xl sm:text-3xl font-medium ">
-                <span className="text-gold">Impact</span> of Woring at YVP
+                <span className="text-gold">Impact</span> of Working at YVP
               </h1>
 
               <p className="py-4 text-lg">
