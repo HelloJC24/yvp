@@ -11,6 +11,7 @@ node_modules
 dist
 src/assets/images/giving/
 src/assets/images/new-images
+src/assets/images/job-positions
 public/images/images/partners
 public/images/images/giving
 public/images/images/icons

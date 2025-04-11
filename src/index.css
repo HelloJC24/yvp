@@ -50,6 +50,20 @@ li:hover > a {
   color: var(--bg-gold);
 }
 
+.business-image-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.business-image:hover .business-image-text {
+  transform: translateY(0);
+}
+
 input,
 textarea {
   width: 100%;

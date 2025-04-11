@@ -45,14 +45,14 @@ const Footer = ({ address }) => {
       <div className="w-full max-w-7xl mx-auto px-2 flex flex-col  sm:flex-row gap-y-2 gap-x-2 justify-around items-center">
         <p className="text-sm text-white">{data?.logo?.year}</p>
         <p className="hidden sm:block text-sm text-white">
-          © ALL RIGHT RESERVED 2025
+          © ALL RIGHTS RESERVED 2025
         </p>
 
         <SocialIcon iconColor="#fff" />
       </div>
 
       <p className="block sm:hidden text-center p-4 text-sm text-white">
-        © ALL RIGHT RESERVED 2025
+        © ALL RIGHTS RESERVED 2025
       </p>
     </footer>
   );
