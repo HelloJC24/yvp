@@ -128,21 +128,17 @@ const HomeScreen = () => {
           <div className="max-w-60">
             <Button
               padding="px-3 py-2"
-              onPress={() =>
-                window.open(cover?.button?.[0]?.redirect, "_blank")
-              }
+              onPress={() => window.open(cover?.[0].redirect, "_blank")}
             >
-              {cover?.button?.[0]?.text || "Unlock Your Virtual Partner"}
+              {cover?.button?.[0]?.text}
             </Button>
           </div>
           <div className="max-w-60">
             <Button
-              onPress={() =>
-                window.open(cover?.button?.[1]?.redirect, "_blank")
-              }
+              onPress={() => window.open(cover?.[1]?.redirect, "_blank")}
               padding="px-3 py-2"
             >
-              {cover?.button?.[1]?.text || "Start Your VA Journey"}
+              {cover?.button?.[1]?.text}
             </Button>
           </div>
         </div>

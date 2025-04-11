@@ -221,29 +221,31 @@ const JobDetails = ({ job }) => {
 
       {job.companyDescription && (
         <div className="mb-4">
-          <p>{job.companyDescription}</p>
+          <p className="text-base sm:text-lg py-2">{job.companyDescription}</p>
         </div>
       )}
 
       {job.jobDescription && (
         <div className="mb-4">
-          <p className="font-medium">
+          <p className="text-xl sm:text-2xl font-medium">
             {job.id === 1 ? "Job Overview" : "Job Description"}
           </p>
-          <p>{job.jobDescription}</p>
+          <p className="text-base sm:text-lg py-2">{job.jobDescription}</p>
         </div>
       )}
 
       <div className="mb-4">
-        <p className="font-medium">Key Responsibilities:</p>
+        <p className="font-medium text-lg sm:text-xl">Key Responsibilities:</p>
         {job.responsibilities.map((respSection, sectionIndex) => (
           <div key={sectionIndex} className="mt-2">
-            <p className="font-medium">
+            <p className="font-medium text-base">
               {respSection.number}. {respSection.section}
             </p>
             <ul className="list-disc pl-6 mt-1 space-y-1">
               {respSection.tasks.map((task, taskIndex) => (
-                <li key={taskIndex}>{task}</li>
+                <li className="text-base sm:text-lg" key={taskIndex}>
+                  {task}
+                </li>
               ))}
             </ul>
           </div>
@@ -251,20 +253,24 @@ const JobDetails = ({ job }) => {
       </div>
 
       <div className="mb-4">
-        <p className="font-medium">Qualifications:</p>
+        <p className="font-medium text-lg sm:text-xl">Qualifications:</p>
         <ul className="list-disc pl-6 mt-2 space-y-1">
           {job.qualifications.map((qual, index) => (
-            <li key={index}>{qual}</li>
+            <li className="text-base sm:text-lg" key={index}>
+              {qual}
+            </li>
           ))}
         </ul>
       </div>
 
       {job.benefits && (
         <div className="mb-4">
-          <p className="font-medium">Benefits:</p>
+          <p className="font-medium text-lg sm:text-xl">Benefits:</p>
           <ul className="list-disc pl-6 mt-2 space-y-1">
             {job.benefits.map((benefit, index) => (
-              <li key={index}>{benefit}</li>
+              <li className="text-base sm:text-lg" key={index}>
+                {benefit}
+              </li>
             ))}
           </ul>
         </div>
@@ -272,8 +278,8 @@ const JobDetails = ({ job }) => {
 
       {job.workingHours && (
         <div className="mb-4">
-          <p className="font-medium">Working Hours:</p>
-          <p>{job.workingHours}</p>
+          <p className="font-medium text-lg sm:text-xl">Working Hours:</p>
+          <p className="text-base sm:text-lg">{job.workingHours}</p>
         </div>
       )}
 

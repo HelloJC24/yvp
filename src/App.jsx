@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Loading from "./components/Loading";
 import StartConversation from "./components/StartConversation";
+import LearningCentreScreen from "./screens/learning_centre";
 
 const HomeScreen = lazy(() => import("./screens/home"));
 const AboutUsScreen = lazy(() => import("./screens/about"));
@@ -38,6 +39,7 @@ function App() {
           <Route path="/business" element={<BusinessScreen />} />
           <Route path="/hiring" element={<AvailablePosition />} />
           <Route path="/testimonials" element={<TestimonialsScreen />} />
+          <Route path="/learning-centre" element={<LearningCentreScreen />} />
         </Routes>
       </Suspense>
 

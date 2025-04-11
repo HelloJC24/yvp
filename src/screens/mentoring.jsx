@@ -8,6 +8,9 @@ import Button from "../components/Button";
 import TitlteBar from "../components/TitlteBar";
 
 const MentoringScreen = () => {
+  const allensCalendarUrl =
+    "https://outlook.office365.com/book/ZenrgFinanceBookingCopy@zenrgfinance.com.au/";
+
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
       <TitlteBar title="Mentoring" />
@@ -129,6 +132,7 @@ const MentoringScreen = () => {
             />
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
               <Button
+                onPress={() => window.open(allensCalendarUrl, "_blank")}
                 fontSize="text-base"
                 bg="bg-gold"
                 radius="rounded-full"
