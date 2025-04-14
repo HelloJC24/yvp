@@ -1,12 +1,13 @@
 import React from "react";
 import Img5_1 from "../assets/images/new-images/icon 5-1.png";
-import Img7_1 from "../assets/images/new-images/icon 7-1.png";
 
-import { YoutubeIcon } from "../components/Icons";
 import TitlteBar from "../components/TitlteBar";
 
 const LearningCentreScreen = () => {
-  const youtubeUrl = "https://www.youtube.com/@YourVirtualPartner-i4q";
+  const fromZeroToVAHeroUrl =
+    "https://www.youtube.com/embed/ZQIER0tC7jA?si=9qQEEnZEY9qkzUd7";
+  const goalSettingWorkshopUrl =
+    "https://www.youtube.com/embed/JrAitzk09Lc?si=zmOWCByMS8ZE2GB8";
 
   return (
     <div className="w-full h-full bg-white relative overflow-hidden">
@@ -43,18 +44,15 @@ const LearningCentreScreen = () => {
 
         <div className="w-full py-6 flex flex-col md:flex-row gap-y-6 sm:gap-x-10">
           <div className="relative">
-            <img
-              src={Img7_1}
-              alt=""
-              className="w-full sm:w-[580px] h-full sm:max-h-[350px] object-cover rounded-2xl"
-            />
-
-            <div
-              onClick={() => window.open(youtubeUrl, "_blank")}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300"
-            >
-              <YoutubeIcon size={"60"} />
-            </div>
+            <iframe
+              className="w-full sm:w-[580px] min-h-80 sm:min-h-[350px] object-cover rounded-2xl"
+              src={fromZeroToVAHeroUrl}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
           </div>
 
           <div className="flex-1">
@@ -75,18 +73,15 @@ const LearningCentreScreen = () => {
 
         <div className="w-full py-6 flex flex-col md:flex-row-reverse gap-y-6 sm:gap-x-10">
           <div className="relative">
-            <img
-              src={Img7_1}
-              alt=""
-              className="w-full sm:w-[580px] h-full sm:max-h-[350px] object-cover rounded-2xl"
-            />
-
-            <div
-              onClick={() => window.open(youtubeUrl, "_blank")}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300"
-            >
-              <YoutubeIcon size={"60"} />
-            </div>
+            <iframe
+              className="w-full sm:w-[580px] min-h-80 sm:min-h-[350px] object-cover rounded-2xl"
+              src={goalSettingWorkshopUrl}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
           </div>
 
           <div className="flex-1">

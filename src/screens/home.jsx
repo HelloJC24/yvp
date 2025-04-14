@@ -38,11 +38,9 @@ const HomeScreen = () => {
       setIsLoading(true);
       try {
         const res = await axios.get(COVER_API);
-        const data = res.data?.data;
-        const btnData = res.data?.button;
-        const video = res.data?.video;
-        setCover({ video, ...data, ...btnData });
-        console.log(res.data);
+        const data = res.data;
+
+        setCover({ ...data });
       } catch (err) {
         console.log(err);
       } finally {
@@ -85,22 +83,22 @@ const HomeScreen = () => {
         <div className="inset-0 absolute h-full z-20 bg-white bg-opacity-50 gap-y-6 sm:gap-y-[80px] px-20 flex flex-col  justify-center items-center">
           <div className="text-center">
             <h1 className="sm:text-6xl 2xl:text-8xl text-3xl outfit-500 text-center  [text-shadow:_0_2px_4px_rgba(0,0,0,0.3)]">
-              {cover?.title1 || "Your Reliable"}
-              <span className="ml-3 text-gold">
-                {cover?.title2 || "Partner"}
-              </span>
+              {cover?.data.title1}
+              <span className="ml-3 text-gold">{cover?.data.title2}</span>
             </h1>
             <p className="sm:text-3xl text-base font-semibold text-white [text-shadow:_0_2px_4px_rgba(0,0,0,0.5)] ">
-              {cover?.subtag || "for Seamless Outsourcing"}
+              {cover?.data.subtag}
             </p>
           </div>
 
           <div className="w-full hidden sm:w-[50%] sm:flex  gap-x-4 items-center justify-center px-4">
-            <Button onPress={() => window.open(cover?.[0].redirect, "_blank")}>
-              {cover?.button?.[0]?.text || "Unlock Your Virtual Partner"}
+            <Button
+              onPress={() => window.open(cover?.button?.[0].redirect, "_blank")}
+            >
+              {cover?.button?.[0].text}
             </Button>
             <Button
-              onPress={() => window.open(cover?.[1].redirect, "_blank")}
+              onPress={() => window.open(cover?.button?.[1].redirect, "_blank")}
               withIcon={true}
             >
               <svg
@@ -116,7 +114,7 @@ const HomeScreen = () => {
               </svg>
 
               <p className="text-white text-sm sm:text-xl xl:text-2xl whitespace-nowrap">
-                {cover?.button?.[1]?.text || "Start Your VA Journey"}
+                {cover?.button?.[1]?.text}
               </p>
             </Button>
           </div>
@@ -128,14 +126,14 @@ const HomeScreen = () => {
           <div className="max-w-60">
             <Button
               padding="px-3 py-2"
-              onPress={() => window.open(cover?.[0].redirect, "_blank")}
+              onPress={() => window.open(cover?.button?.[0].redirect, "_blank")}
             >
               {cover?.button?.[0]?.text}
             </Button>
           </div>
           <div className="max-w-60">
             <Button
-              onPress={() => window.open(cover?.[1]?.redirect, "_blank")}
+              onPress={() => window.open(cover?.button?.[1].redirect, "_blank")}
               padding="px-3 py-2"
             >
               {cover?.button?.[1]?.text}
@@ -224,10 +222,10 @@ const HomeThirdSection = () => {
             }`}
           >
             <div
-              className={`w-[90%] sm:w-[80%] ${
+              className={`w-full sm:w-[80%] ${
                 isLeftSide
-                  ? "border-y border-r border-slate-200 rounded-tr-2xl rounded-br-2xl"
-                  : "border-y border-l border-secondary bg-secondary rounded-tl-2xl rounded-bl-2xl"
+                  ? "border-y border-r border-slate-200 sm:rounded-tr-2xl sm:rounded-br-2xl"
+                  : "border-y border-l border-secondary bg-secondary sm:rounded-tl-2xl sm:rounded-bl-2xl"
               } p-4 sm:px-10`}
             >
               <div
@@ -237,7 +235,7 @@ const HomeThirdSection = () => {
               >
                 <img
                   src={item?.image}
-                  className="object-cover w-full sm:w-72 h-72 rounded-xl"
+                  className="object-cover w-full sm:max-w-96 h-72 rounded-xl"
                   alt={item?.alt}
                 />
 

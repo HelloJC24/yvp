@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Img1 from "../assets/images/new-images/icon 1-1.png";
 import Img2 from "../assets/images/new-images/icon 1-2.png";
 import Img3 from "../assets/images/new-images/icon 1-3.png";
@@ -13,6 +13,7 @@ import Img8_2 from "../assets/images/new-images/icon 8.png";
 
 import Button from "../components/Button";
 import TitlteBar from "../components/TitlteBar";
+import { VideoTestimonial } from "./testimonials";
 
 const BlogScreen = () => {
   const [articleData, setArticleData] = useState([
@@ -178,8 +179,23 @@ const BlogScreen = () => {
     },
   ]);
 
+  const scrollRef = useRef(null);
+
+  const scrollToDown = (sectionId) => {
+    const section = document.getElementById(sectionId);
+
+    const offsetTop = section.getBoundingClientRect().top + window.scrollY - 80; // Adjust the offset as needed
+    window.scrollTo({
+      top: offsetTop,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <div className="w-full h-full bg-white relative overflow-hidden">
+    <div
+      ref={scrollRef}
+      className="w-full h-full bg-white relative overflow-hidden"
+    >
       <TitlteBar title="Blogs" />
 
       <section className="w-full max-w-7xl mx-auto p-6 pt-10 ">
@@ -195,6 +211,7 @@ const BlogScreen = () => {
 
           <div className="absolute bottom-6 right-6">
             <Button
+              onPress={() => scrollToDown("hiring-process")}
               fontSize="text-base"
               bg="bg-gold"
               radius="rounded-full"
@@ -220,7 +237,7 @@ const BlogScreen = () => {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto p-6 sm:p-10">
+      <section id="hiring-process" className="max-w-7xl mx-auto p-6 sm:p-10">
         <div className="w-full py-8">
           <div className="flex flex-col-reverse sm:flex-row gap-y-4 sm:gap-x-8">
             <div className="flex-1">
@@ -235,25 +252,7 @@ const BlogScreen = () => {
                 support. Here’s how it works:
               </p>
             </div>
-
-            <div className="flex-1 relative">
-              <img
-                src={Img2_1}
-                alt="img"
-                className="w-full max-h-60 rounded-3xl object-cover  border border-slate-200"
-              />
-
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
-                <Button
-                  fontSize="text-base"
-                  bg="bg-gold"
-                  radius="rounded-full"
-                  padding="py-2 px-8"
-                >
-                  READ MORE
-                </Button>
-              </div>
-            </div>
+            <ImageContainer imageSrc={Img2_1} />
           </div>
 
           <div className="w-full flex flex-col sm:flex-row gap-y-4 sm:gap-x-4 py-8">
@@ -297,24 +296,7 @@ const BlogScreen = () => {
               </p>
             </div>
 
-            <div className="flex-1 relative">
-              <img
-                src={Img6_2}
-                alt="img"
-                className="w-full max-h-60 rounded-3xl object-cover  border border-slate-200"
-              />
-
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
-                <Button
-                  fontSize="text-base"
-                  bg="bg-gold"
-                  radius="rounded-full"
-                  padding="py-2 px-8"
-                >
-                  READ MORE
-                </Button>
-              </div>
-            </div>
+            <ImageContainer imageSrc={Img6_2} />
           </div>
 
           <div className="w-full flex flex-col sm:flex-row gap-y-4 sm:gap-x-4 py-8">
@@ -361,25 +343,7 @@ const BlogScreen = () => {
                 positively impact your life:
               </p>
             </div>
-
-            <div className="flex-1 relative">
-              <img
-                src={Img7_2}
-                alt="img"
-                className="w-full max-h-60 rounded-3xl object-cover  border border-slate-200"
-              />
-
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
-                <Button
-                  fontSize="text-base"
-                  bg="bg-gold"
-                  radius="rounded-full"
-                  padding="py-2 px-8"
-                >
-                  READ MORE
-                </Button>
-              </div>
-            </div>
+            <ImageContainer imageSrc={Img7_2} />
           </div>
 
           <div className="w-full flex flex-col sm:flex-row gap-y-4 sm:gap-x-4 py-8">
@@ -424,24 +388,7 @@ const BlogScreen = () => {
               </p>
             </div>
 
-            <div className="flex-1 relative">
-              <img
-                src={Img8_2}
-                alt="img"
-                className="w-full max-h-60 rounded-3xl object-cover  border border-slate-200"
-              />
-
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
-                <Button
-                  fontSize="text-base"
-                  bg="bg-gold"
-                  radius="rounded-full"
-                  padding="py-2 px-8"
-                >
-                  READ MORE
-                </Button>
-              </div>
-            </div>
+            <ImageContainer imageSrc={Img8_2} />
           </div>
 
           <div className="w-full flex flex-col sm:flex-row gap-y-4 sm:gap-x-4 py-8">
@@ -469,6 +416,10 @@ const BlogScreen = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      <section>
+        <VideoTestimonial />
       </section>
     </div>
   );
@@ -505,6 +456,30 @@ const ArticlesCard = ({ image, alt, text }) => {
       />
 
       <p className="text-base">{text}</p>
+    </div>
+  );
+};
+
+const ImageContainer = ({ imageSrc, altText }) => {
+  return (
+    <div className="flex-1 relative group cursor-pointer overflow-hidden">
+      <img
+        src={imageSrc}
+        alt={altText || "yvp-image"}
+        className="w-full max-h-60 rounded-3xl object-cover border border-slate-200"
+      />
+
+      {/* Button that appears on hover */}
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out mb-2">
+        <Button
+          fontSize="text-base"
+          bg="bg-gold"
+          radius="rounded-full"
+          padding="py-2 px-8"
+        >
+          READ MORE
+        </Button>
+      </div>
     </div>
   );
 };

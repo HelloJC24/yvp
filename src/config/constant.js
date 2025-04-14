@@ -16,3 +16,4 @@ export const SERVICES_API = "https://yourvirtualpartner.io/api/services/";
 export const COVER_API = "https://yourvirtualpartner.io/api/cover/";
 export const NEWSLETTER_API = `https://yourvirtualpartner.io/api/newsletter/`;
 export const JOB_POSITIONS_API = `https://yourvirtualpartner.io/api/job-positions/`;
+export const VIDEO_TESTIMONIALS_API = `https://yourvirtualpartner.io/api/video-testimonials/`;

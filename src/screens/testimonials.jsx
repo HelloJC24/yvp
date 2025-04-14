@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import AceImg from "../assets/images/new-images/ace.jpg";
 import AlbertImg from "../assets/images/new-images/albert.jpg";
 import DanicaImg from "../assets/images/new-images/danica.jpg";
@@ -9,6 +10,7 @@ import MarkImg from "../assets/images/new-images/mark.jpg";
 import MonicaImg from "../assets/images/new-images/monica.jpg";
 import Button from "../components/Button";
 import TitlteBar from "../components/TitlteBar";
+import { VIDEO_TESTIMONIALS_API } from "../config/constant";
 
 const TestimonialsScreen = () => {
   const testimonials = [
@@ -122,19 +124,21 @@ const TestimonialsScreen = () => {
   );
 };
 
-const VideoTestimonial = () => {
-  const [videoData, setVideoData] = useState([
-    {
-      id: 1,
-      name: "ADRIAN MCVITTIE",
-      video: "https://youtube.com/embed/VXTIGTduZk0?feature=share",
-    },
-    {
-      id: 2,
-      name: "TK YEOH",
-      video: "https://youtube.com/embed/MOnRuaX1Wr8?feature=share",
-    },
-  ]);
+export const VideoTestimonial = () => {
+  const [videoData, setVideoData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(VIDEO_TESTIMONIALS_API);
+        setVideoData(res.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <section className="w-full py-10">
